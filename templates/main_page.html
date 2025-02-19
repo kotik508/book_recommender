@@ -46,8 +46,8 @@
     <div class="container">
         <h2>{{ question }}</h2>
         <form action="/submit" method="post" class="button-container">
-            {% for answer in answers %}
-                <button type="submit" name="answer" value="{{ answer }}">{{ answer }}</button>
+            {% for index, row in answers.iterrows() %}
+                <button type="submit" name="answer" value="{{ index }}">{{ row['description'] }}</button>
             {% endfor %}
         </form>
     </div>
