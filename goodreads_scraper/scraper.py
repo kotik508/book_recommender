@@ -1,5 +1,4 @@
 import csv
-import json
 from urllib.error import HTTPError
 import os.path
 from tqdm import tqdm
@@ -14,25 +13,29 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
 
 
-def get_whole_page(url):
-    driver_loc = '/snap/firefox/current/usr/lib/firefox/geckodriver'
-    binary_loc = '/snap/firefox/current/usr/lib/firefox/firefox'
-    service = Service(driver_loc)
-    opts = webdriver.FirefoxOptions()
-    opts.binary_location = binary_loc
-    driver = webdriver.Firefox(service=service, options=opts)
+def get_whole_page(driver, url):
     driver.get(url)
     time.sleep(1)
 
     try:
         ce = driver.find_elements(By.CSS_SELECTOR, ".Button.Button--inline.Button--medium")[1]
         ce.click()
+        ce = driver.find_element(By.XPATH, "//button[span[text()='...more']]")
+        ce.click()
         html = driver.page_source
-        driver.close()
         return html
     except:
-        driver.close()
         return None
+
+def get_tags(soup):
+    try:
+        tags = []
+        tag_spans = soup.find_all('span', class_='BookPageMetadataSection__genreButton')
+        for tag in tag_spans:
+            tags.append(tag.text)
+        return tags
+    except:
+        return ''
 
 def get_cover_image_uri(soup):
     try:
@@ -115,9 +118,9 @@ def get_series_length(soup):
     except:
         return None
 
-def scrape_book(url):
+def scrape_book(driver, url):
 
-    source = get_whole_page(url)
+    source = get_whole_page(driver, url)
 
     if source:
         soup = bs4.BeautifulSoup(source, 'html.parser')
@@ -141,7 +144,8 @@ def scrape_book(url):
         'series_length': get_series_length(soup),
         'year_first_published': get_year_first_published(soup),
         'average_rating': soup.find('div', class_='RatingStatistics__rating').text.strip(),
-        'rating_distribution': get_rating_distribution(soup)
+        'rating_distribution': get_rating_distribution(soup),
+        'tags': get_tags(soup)
     }
 
 def get_book_urls():
@@ -193,6 +197,13 @@ def check_last_title(books_file, url_file):
 
 def main(urls_enaled: bool):
 
+    driver_loc = '/snap/firefox/current/usr/lib/firefox/geckodriver'
+    binary_loc = '/snap/firefox/current/usr/lib/firefox/firefox'
+    service = Service(driver_loc)
+    opts = webdriver.FirefoxOptions()
+    opts.binary_location = binary_loc
+    driver = webdriver.Firefox(service=service, options=opts)
+
     if urls_enaled:
         urls = get_book_urls()
         data = pd.DataFrame({'urls': urls})
@@ -207,7 +218,7 @@ def main(urls_enaled: bool):
 
     book_data = []
     for i in tqdm(range(start_index, len(urls))):
-        book_data.append(scrape_book(urls.iloc[i]))
+        book_data.append(scrape_book(driver, urls.iloc[i]))
 
         if i % 100 == 0 or i == len(urls) - 1:
             book_data = [book for book in book_data if book is not None]
