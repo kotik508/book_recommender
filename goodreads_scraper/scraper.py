@@ -22,19 +22,22 @@ def get_whole_page(driver, url):
     try:
         overlay = driver.find_elements(By.CSS_SELECTOR, ".Overlay.Overlay--floating")
         if overlay:
-            time.sleep(2)
-            button = overlay[0].find_element(By.XPATH, ".//button[@aria-label='Close']")
-            time.sleep(2)
-            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
-            time.sleep(2)
-            WebDriverWait(driver, 10000).until(
-                EC.element_to_be_clickable(button)
-            ).click()
+            time.sleep(1)
+            button = overlay[0].find_elements(By.XPATH, ".//button[@aria-label='Close']")
+            if button:
+                time.sleep(1)
+                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button[0])
+                time.sleep(1)
+                button[0].click()
+                time.sleep(1)
 
         ce = driver.find_elements(By.CSS_SELECTOR, ".Button.Button--inline.Button--medium")
         ce[1].click()
-        ce = driver.find_element(By.XPATH, "//button[span[text()='...more']]")
-        ce.click()
+        mb = driver.find_elements(By.XPATH, "//button[span[text()='...more']]")
+        if mb:
+            mb[0].click()
+        else:
+            print(f"No ...more button on url:\n{url}")
         html = driver.page_source
         return html
     except Exception as e:
