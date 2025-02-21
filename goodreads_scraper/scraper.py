@@ -1,6 +1,8 @@
 import csv
 from urllib.error import HTTPError
 import os.path
+
+from selenium.webdriver.support.wait import WebDriverWait
 from tqdm import tqdm
 import re
 import time
@@ -11,20 +13,32 @@ from urllib.request import urlopen
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 
 def get_whole_page(driver, url):
     driver.get(url)
-    time.sleep(1)
 
     try:
-        ce = driver.find_elements(By.CSS_SELECTOR, ".Button.Button--inline.Button--medium")[1]
-        ce.click()
+        overlay = driver.find_elements(By.CSS_SELECTOR, ".Overlay.Overlay--floating")
+        if overlay:
+            time.sleep(2)
+            button = overlay[0].find_element(By.XPATH, ".//button[@aria-label='Close']")
+            time.sleep(2)
+            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
+            time.sleep(2)
+            WebDriverWait(driver, 10000).until(
+                EC.element_to_be_clickable(button)
+            ).click()
+
+        ce = driver.find_elements(By.CSS_SELECTOR, ".Button.Button--inline.Button--medium")
+        ce[1].click()
         ce = driver.find_element(By.XPATH, "//button[span[text()='...more']]")
         ce.click()
         html = driver.page_source
         return html
-    except:
+    except Exception as e:
+        print(e)
         return None
 
 def get_tags(soup):
@@ -224,6 +238,8 @@ def main(urls_enaled: bool):
             book_data = [book for book in book_data if book is not None]
             write_to_csv('books.csv', book_data)
             book_data = []
+
+    driver.close()
 
 if __name__ == '__main__':
     main(urls_enaled=False)
