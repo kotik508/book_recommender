@@ -1,11 +1,15 @@
-from pyexpat.errors import messages
-
+from scores import initialize_scores
+import pandas as pd
+import ast
 from flask import Flask, render_template, request, redirect, url_for
-from books import init_books
 
 app = Flask(__name__)
 
-books = init_books()
+books = pd.read_csv('goodreads_scraper/books_desc.csv')
+books['tags'] = books['tags'].apply(ast.literal_eval)
+
+scores = initialize_scores(len(books))
+
 
 def get_answers():
     return "Který z těchto popisů nejvíce vystihuje knihu, kterou byste si rád přečetl/přečetla?", books.nlargest(4, 'score')
