@@ -1,17 +1,17 @@
-from computations import load_embeddings, cluster
-from scores import initialize_scores
+from computations import load_embeddings
 import numpy as np
 
 
 
-embeddings = load_embeddings()
+d = {}
 
-scores = initialize_scores(len(embeddings))
+d['1'] = [1, 5, 6]
+d['tes'] = [9, 8, 9]
 
-labels, centroids = cluster(embeddings, scores)
-
-print(centroids)
-
+for i, l in d.items():
+    print(d[i])
+    print('---')
+    print(l)
 # clusters = {}
 #
 # for cluster in np.unique(results):

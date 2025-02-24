@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionnaire</title>
+    <title>Bookie</title>
     <style>
         body {
             margin-top: 10vh;
@@ -46,8 +46,8 @@
     <div class="container">
         <h2>{{ question }}</h2>
         <form action="/submit" method="post" class="button-container">
-            {% for index, row in answers.iterrows() %}
-                <button type="submit" name="answer" value="{{ index }}">{{ row['description'] }}</button>
+            {% for index, description in answers.items() %}
+                <button type="submit" name="answer" value="{{ index }}">{{ description }}</button>
             {% endfor %}
         </form>
     </div>
