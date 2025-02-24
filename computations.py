@@ -53,7 +53,7 @@ def initialize_scores(books_len: int):
     return scores
 
 
-def update_scores(scores, embeddings, selected_cluster, centroids, sigma: np.float32 = np.float32(0.01)):
+def update_scores(scores, embeddings, selected_cluster, centroids, sigma: np.float32 = np.float32(0.1)):
 
     res = np.full(len(embeddings), np.float32(1))
     for index, book in enumerate(embeddings):

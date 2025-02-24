@@ -22,7 +22,6 @@ def get_answers():
 
     summaries = {}
     for cluster in best_embeddings.keys():
-        time.sleep(1)
         summaries[cluster] = books.loc[best_embeddings[cluster][0], 'description']
 
     return "Který z těchto popisů nejvíce vystihuje knihu, kterou byste si rád přečetl/přečetla?", summaries
