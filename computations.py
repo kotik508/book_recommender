@@ -7,9 +7,9 @@ from transformers import pipeline
 
 
 def create_embeddings():
-    model = SentenceTransformer('../models/multilingual-e5-large').to('cuda')
+    model = SentenceTransformer('Snowflake/snowflake-arctic-embed-l-v2.0')
 
-    books = pd.read_csv('goodreads_scraper/books_desc.csv')
+    books = pd.read_csv('goodreads_scraper/books_cleaned.csv')
 
     embeddings = model.encode(books['description'], )
 
