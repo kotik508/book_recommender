@@ -15,7 +15,7 @@ def create_embeddings():
 
     print('Embeddings created')
 
-    np.save('../embeddings', embeddings)
+    np.save('../embeddings.npy', embeddings)
 
 
 def load_embeddings():
