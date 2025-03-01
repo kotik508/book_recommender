@@ -2,8 +2,8 @@ import pandas as pd
 import ast
 import umap
 import plotly.express as px
+import plotly.graph_objs as go
 from computations import load_embeddings, clustering, initialize_scores
-import matplotlib.pyplot as plt
 
 embeddings = load_embeddings()
 scores = initialize_scores(len(embeddings))
@@ -18,14 +18,16 @@ print(umap_2d.embedding_.shape)
 print(len(books))
 
 
-
-highlighted_books = {'Harry Potter and the Order of the Phoenix', 'Harry Potter and the Chamber of Secrets', 
-                     'Harry Potter and the Goblet of Fire', 'The Chronicles of Narnia', 'The Fellowship of the Ring',
-                     'The Two Towers', 'The Return of the King', 'The Great Gatsby'}
+highlighted_authors = {'J.R.R. Tolkien', 'J.K. Rowling', 'Oscar Wilde', 'William Shakespeare', 'John Green'}
+highlighted_books = {'The Fellowship of the Ring', 'The Two Towers', 'The Return of the King',
+                     'Harry Potter and the Chamber of Secrets', 'Harry Potter and the Goblet of Fire',
+                     'Harry Potter and the Deathly Hallows', 'The Picture of Dorian Gray', 'Romeo and Juliet',
+                     'The Fault in Our Stars'}
 
 df = pd.DataFrame(umap_2d.embedding_, columns=['x', 'y'])
 df['title'] = books['book_title']
-df['highlight'] = df['title'].apply(lambda t: 'highlight' if t in highlighted_books else 'normal')
+df['author'] = books['author']
+df['highlight'] = df.apply(lambda t: 'highlight' if (t['author'] in highlighted_authors) and (t['title'] in highlighted_books ) else 'normal', axis=1)
 df['knn_label'] = labels
 
 color_map = {0: '#AB63FA', 1: '#EF553B', 2: '#00CC96', 3: '#636EFA', 'highlight': 'black'}
@@ -34,50 +36,30 @@ centroids = df.groupby('knn_label')[['x', 'y']].mean().reset_index()
 centroids['title'] = 'Centroid ' + centroids['knn_label'].astype(str)
 
 fig = px.scatter(
-    df[df['highlight'] == 'normal'], x='x', y='y', hover_data=['title'], 
+    df[df['highlight'] == 'normal'], x='x', y='y', hover_data=['title'],
     color=df[df['highlight'] == 'normal']['knn_label'].astype(str),
     title="UMAP with Highlighted Books",
-    color_discrete_map={str(k): v for k, v in color_map.items()}
+    color_discrete_map={str(k): v for k, v in color_map.items()},
 )
+
+fig.update_traces(marker=dict(opacity=0.4), selector=dict(mode='markers'))
 
 # Plot highlighted points (black)
 fig.add_scatter(
-    x=df[df['highlight'] == 'highlight']['x'], 
-    y=df[df['highlight'] == 'highlight']['y'], 
+    x=df[df['highlight'] == 'highlight']['x'],
+    y=df[df['highlight'] == 'highlight']['y'],
     mode='markers', marker=dict(size=12, color='black', symbol='star'),
     name="Highlighted Books"
 )
 
-annotations = []
-
-arrow_offset = 0.2  # Adjusts arrow length
-label_offset_y = 0.25  # Adjusts text position to prevent overlap
-
-highlight_df = df[df['highlight'] == 'highlight'].sort_values(by='y')
-
-# Add arrows + labels
-for i, (_, row) in enumerate(highlight_df.iterrows()):
-    y_adjustment = ((i % 2) * 2 - 1) * label_offset_y  # Alternate up and down
-    annotations.append(
-        dict(
-            x=row['x'], y=row['y'],  # Arrow points to book
-            xref="x", yref="y",
-            ax=row['x'] + arrow_offset,  
-            ay=row['y'] + arrow_offset + y_adjustment,  # Shift text up/down
-            axref="x", ayref="y",
-            text=row['title'],  # Book title as label
-            showarrow=True,
-            arrowhead=2,
-            arrowsize=2,  # Thicker arrow
-            arrowcolor="black",
-            font=dict(size=12, color="black"),
-            bgcolor="white",
-            bordercolor="black",
-            borderwidth=1
-        )
-    )
-
-# Apply annotations
-fig.update_layout(annotations=annotations)
+fig.add_trace(go.Scatter(
+    x=df[df['highlight'] == 'highlight']['x'],
+    y=df[df['highlight'] == 'highlight']['y'],
+    mode='text',
+    text=df[df['highlight'] == 'highlight']['title'],
+    textposition='top center',
+    marker=dict(size=12, color='black', symbol='star', opacity=0),
+    showlegend=False
+))
 
 fig.show()
