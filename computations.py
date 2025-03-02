@@ -46,6 +46,9 @@ def clustering(embeddings: np.ndarray, scores: np.array):
 
         best_embeddings[cluster_id] = top_indices.tolist()
 
+    for i in range(len(centroids)):
+        centroids[i] = centroids[i].tolist()
+
     return labels, centroids, best_embeddings
 
 def initialize_scores(books_len: int):
