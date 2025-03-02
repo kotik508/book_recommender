@@ -3,7 +3,6 @@ from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
 import numpy as np
 import pandas as pd
-from transformers import pipeline
 
 
 def create_embeddings():
@@ -72,11 +71,3 @@ def update_scores(scores, embeddings, selected_cluster, centroids, sigma: np.flo
     res = np.divide(res, np.max(res))
 
     return res
-
-
-def generate_text(texts):
-    summarizer = pipeline('summarization', model='facebook/bart-large-cnn')
-
-    text = '\n'.join(texts)
-
-    return summarizer(text)[0]['summary_text']
