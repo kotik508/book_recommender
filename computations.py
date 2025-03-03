@@ -1,9 +1,24 @@
 from scipy.spatial.distance import cdist
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
+from text_generation import create_prompt, get_description
 import numpy as np
 import pandas as pd
 
+
+# def get_answers():
+#     global centroids, best_embeddings, scores
+#     hights_ind = np.argsort(scores)[-5:][::-1]
+#     print(scores[hights_ind])
+
+#     labels, centroids, best_embeddings = clustering(embeddings, scores)
+
+#     summaries = {}
+#     for cluster in best_embeddings.keys():
+#         prompt = create_prompt(books.loc[best_embeddings[cluster], 'description'].tolist())
+#         summaries[cluster] = get_description(genai_client, prompt)
+
+#    return "Which of these descriptions best suits your book preference?", summaries
 
 def create_embeddings():
     model = SentenceTransformer('Snowflake/snowflake-arctic-embed-l-v2.0')
@@ -55,8 +70,10 @@ def initialize_scores(books_len: int):
     return scores
 
 
-def update_scores(scores, embeddings, selected_cluster, centroids, sigma: np.float32 = np.float32(0.1)):
+def update_scores(scores, embeddings, selected_cluster, centroids, sigma: np.float32 = np.float32(0.05)):
 
+    # lowest_dist = 0
+    # lowest_dist_ind = None
     res = np.full(len(embeddings), np.float32(1))
     for index, book in enumerate(embeddings):
         disp_sum = 0
@@ -68,6 +85,13 @@ def update_scores(scores, embeddings, selected_cluster, centroids, sigma: np.flo
         like_val = np.exp(-(np.divide(np.linalg.norm(selected_cluster - book), sigma)))
         res[index] = res[index] * (like_val / (disp_sum + like_val)) * scores[index]
 
+        # dist = like_val / (disp_sum + like_val)
+        # if dist > lowest_dist:
+        #     lowest_dist = dist
+        #     lowest_dist_ind = index
+
     res = np.divide(res, np.max(res))
+    # print(f'Highest score: {np.argmax(res)}')
+    # print(f'Lowest distance: {lowest_dist_ind}')
 
     return res
