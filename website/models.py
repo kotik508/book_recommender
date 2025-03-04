@@ -24,9 +24,9 @@ class Book(db.Model):
     __tablename__ = "book"
     
     id = db.Column(db.Integer, primary_key=True)
-    goodreads_id = db.Column(db.Integer)
+    goodreads_id = db.Column(db.BigInteger)
     title = db.Column(db.String(250))
-    isbn = db.Column(db.Integer)
+    isbn = db.Column(db.String(150))
     author = db.Column(db.String(150))
     num_pages = db.Column(db.Integer)
     description = db.Column(db.String(10000))
@@ -37,5 +37,4 @@ class Book(db.Model):
     tags = db.Column(db.String(250))
     rating_distribution = db.Column(db.String(300))
     score = db.relationship('Score')
-
 
