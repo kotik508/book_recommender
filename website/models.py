@@ -16,8 +16,8 @@ class Score(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     score = db.Column(db.Float)
-    session_id = db.Column(db.Integer, db.ForeignKey('usersession.id'))
-    book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
+    session_id = db.Column(db.Integer, db.ForeignKey('session.id'))
+    book_id = db.Column(db.Integer, db.ForeignKey('book.id'))
 
 
 class Book(db.Model):
@@ -28,7 +28,7 @@ class Book(db.Model):
     title = db.Column(db.String(250))
     isbn = db.Column(db.Integer)
     author = db.Column(db.String(150))
-    num_pages = db.Column(db.Integer(db.Integer))
+    num_pages = db.Column(db.Integer)
     description = db.Column(db.String(10000))
     cover_image_uri = db.Column(db.String(150))
     series_length = db.Column(db.Integer)

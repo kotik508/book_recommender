@@ -1,0 +1,31 @@
+#centered-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.welcome {
+    height: calc(100vh - 56px);
+}
+
+.custom-btn {
+    display: inline-flex;
+    background-color: antiquewhite;
+    color:black;
+    border: none;
+    height: 10%;
+    width: 20%;
+}
+
+.custom-btn:hover {
+    background-color: rgb(230, 220, 215);
+}
+
+.custom-btn.btn-lg {
+    font-size: 1.5rem;
+}
+
+.custom-btn i {
+    margin-right: 0.5rem;
+}

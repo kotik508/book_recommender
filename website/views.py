@@ -1,16 +1,19 @@
 from flask import Blueprint, redirect, render_template, url_for, request
 from computations import update_scores
+from .models import Session
 
 views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        pass
-    elif request.method == 'GET':
-    # question, answers = get_answers()
-    # return render_template("main_page.html", question=question, answers=answers)
-        return render_template('home.html')
+        new_session = Session()
+    return render_template('home.html')
+
+@views.route('/books', methods=['GET', 'POST'])
+def books():
+    return render_template('base.html')
+    
 
 # @views.route("/submit", methods=['POST'])
 # def submit():
