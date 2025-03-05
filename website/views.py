@@ -1,14 +1,26 @@
-from flask import Blueprint, redirect, render_template, url_for, request
+from flask import Blueprint, redirect, render_template, url_for, request, flash, session
 from computations import update_scores
-from .models import Session
+from .models import Session, Book, Score
+from . import db
 
 views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
+
         new_session = Session()
-    return render_template('home.html')
+        db.session.add(new_session)
+        session['session_id'] = new_session.id
+
+        books = Book.query.all()
+        scores = [Score(session_id=new_session.id, book_id=b.id, score=1/len(books)) for b in books]
+        db.session.add_all(scores)
+
+        db.session.commit()
+        flash('Started a session!', category='success')
+
+    return render_template('main_page.html')
 
 @views.route('/books', methods=['GET', 'POST'])
 def books():
