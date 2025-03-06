@@ -2,23 +2,24 @@ from scipy.spatial.distance import cdist
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
 from text_generation import create_prompt, get_description
+from website.models import Score, Session, Book
+from website import genai_client
 import numpy as np
 import pandas as pd
 
 
-# def get_answers():
-#     global centroids, best_embeddings, scores
-#     hights_ind = np.argsort(scores)[-5:][::-1]
-#     print(scores[hights_ind])
+def get_answers(embeddings, scores, books):
+    hights_ind = np.argsort(scores)[-5:][::-1]
+    print(scores[hights_ind])
 
-#     labels, centroids, best_embeddings = clustering(embeddings, scores)
+    labels, centroids, best_embeddings = clustering(embeddings, scores)
 
-#     summaries = {}
-#     for cluster in best_embeddings.keys():
-#         prompt = create_prompt(books.loc[best_embeddings[cluster], 'description'].tolist())
-#         summaries[cluster] = get_description(genai_client, prompt)
+    summaries = {}
+    for cluster in best_embeddings.keys():
+        prompt = create_prompt(books.loc[best_embeddings[cluster], 'description'].tolist())
+        summaries[cluster] = get_description(genai_client, prompt)
 
-#    return "Which of these descriptions best suits your book preference?", summaries
+    return "Which of these descriptions best suits your book preference?", summaries
 
 def create_embeddings():
     model = SentenceTransformer('Snowflake/snowflake-arctic-embed-l-v2.0')
@@ -30,7 +31,6 @@ def create_embeddings():
     print('Embeddings created')
 
     np.save('../embeddings.npy', embeddings)
-
 
 def load_embeddings():
     desc_emb = np.load('../embeddings.npy')
@@ -95,3 +95,24 @@ def update_scores(scores, embeddings, selected_cluster, centroids, sigma: np.flo
     # print(f'Lowest distance: {lowest_dist_ind}')
 
     return res
+
+def update_scores_obj(books: list[Book], selected_cluster: int, centroids, sigma: np.float32 = np.float(32)):
+
+    # Score calculation based on embedding distance
+    for book in books:
+        disp_sum = 0
+        for x in centroids:
+
+            if not np.array_equal(x, centroids[selected_cluster]):
+                disp_sum += np.exp(-(np.divide(np.linalg.norm(x - np.array(book.embedding), sigma))))
+        
+        like_val = np.exp(-(np.divide(np.linalg.norm(centroids[selected_cluster] - np.array(book.embedding), sigma))))
+        book.score = book.score * (like_val / (disp_sum + like_val))
+
+    # Score adjustment to keep values between 0 and 1
+    books_cal = np.array([book.score for book in books])
+    scores = np.divide(books_cal, np.max(books_cal))
+
+    for book, new_score in zip(books, scores):
+        book.score = new_score
+
