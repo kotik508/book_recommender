@@ -1,6 +1,8 @@
 from . import db
 from sqlalchemy.sql import func
 from pgvector.sqlalchemy import Vector
+from flask import session
+import numpy as np
 
 
 class Session(db.Model):
@@ -8,21 +10,35 @@ class Session(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     picked_books = db.Column(db.String)
+    centroid1 = db.Column(Vector(1024))
+    centroid2 = db.Column(Vector(1024))
+    centroid3 = db.Column(Vector(1024))
+    centroid4 = db.Column(Vector(1024))
     start_date = db.Column(db.DateTime(timezone=True), default=func.now())
+    rounds = db.Column(db.Integer, default=0)
     scores = db.relationship('Score', back_populates='session', cascade='all, delete-orphan')
 
+    @classmethod
+    def increase_session_round(cls):
+        sess = cls.query.filter(cls.id == session['session_id']).first()
+        sess.rounds += 1
+        db.session.commit()
 
-class Score(db.Model):
-    __tablename__ = "score"
+    @classmethod
+    def assign_centroids(cls, centroids):
+        sess = cls.query.filter(cls.id == session['session_id']).first()
+        sess.centroid1 = centroids[0].tolist()
+        sess.centroid2 = centroids[1].tolist()
+        sess.centroid3 = centroids[2].tolist()
+        sess.centroid4 = centroids[3].tolist()
+        db.session.commit()
 
-    id = db.Column(db.Integer, primary_key=True)
-    score = db.Column(db.Float)
-    session_id = db.Column(db.Integer, db.ForeignKey('session.id', ondelete='CASCADE'), nullable=False)
-    book_id = db.Column(db.Integer, db.ForeignKey('book.id', ondelete='CASCADE'), nullable=False)
-
-    session = db.relationship('Session', back_populates='scores')
-    books = db.relationship('Book', back_populates='scores')
-
+    @classmethod
+    def get_centroids(cls):
+        sess = cls.query.filter(cls.id == session['session_id']).first()
+        centroids = [np.array(sess.centroid1), np.array(sess.centroid2), 
+                     np.array(sess.centroid3), np.array(sess.centroid4)]
+        return centroids
 
 class Book(db.Model):
     __tablename__ = "book"
@@ -41,5 +57,21 @@ class Book(db.Model):
     tags = db.Column(db.String(250))
     rating_distribution = db.Column(db.String(300))
     embedding = db.Column(Vector(1024))
-    scores = db.relationship('Score', back_populates='books', cascade='all, delete-orphan')
+    scores = db.relationship('Score', back_populates='book', cascade='all, delete-orphan')
 
+class Score(db.Model):
+    __tablename__ = "score"
+
+    id = db.Column(db.Integer, primary_key=True)
+    score = db.Column(db.Float)
+    session_id = db.Column(db.Integer, db.ForeignKey('session.id', ondelete='CASCADE'), nullable=False)
+    book_id = db.Column(db.Integer, db.ForeignKey('book.id', ondelete='CASCADE'), nullable=False)
+
+    session = db.relationship('Session', back_populates='scores')
+    book = db.relationship('Book', back_populates='scores')
+
+    @classmethod
+    def get_scores_from_sample(cls, session_id: int, books: list[Book]):
+        book_ids = [book.id for book in books]
+        scores = cls.query.filter((cls.session_id == session_id) & (cls.book_id.in_(book_ids))).all()
+        return scores

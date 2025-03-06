@@ -3,7 +3,7 @@ import ast
 import umap
 import plotly.express as px
 import plotly.graph_objs as go
-from computations import load_embeddings, clustering, initialize_scores
+from website.computations import load_embeddings, clustering, initialize_scores
 
 embeddings = load_embeddings()
 scores = initialize_scores(len(embeddings))

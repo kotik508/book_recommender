@@ -1,16 +1,36 @@
 from flask import Blueprint, redirect, render_template, url_for, request, flash, session
-from computations import update_scores
+from .computations import update_scores, get_answers
 from .models import Session, Book, Score
 from . import db
+import random
 
 views = Blueprint('views', __name__)
 
+
+@views.route('/books', methods=['GET', 'POST'])
+def book_choice():
+    if request.method == 'GET':
+        return render_template('main_page.html', summaries=session['summaries'])
+    
+    elif request.method == 'POST':
+        Session.increase_session_round()
+        
+        scores = Score.query.filter(Score.session_id == session['session_id'])
+        selected_cluster = int(request.form.get('answer'))
+
+        update_scores(scores, selected_cluster, )
+        return render_template('base.html')
+    
 @views.route('/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return render_template('home.html')
+
+    elif request.method == 'POST':
 
         new_session = Session()
         db.session.add(new_session)
+        db.session.commit()
         session['session_id'] = new_session.id
 
         books = Book.query.all()
@@ -20,12 +40,11 @@ def home():
         db.session.commit()
         flash('Started a session!', category='success')
 
-    return render_template('main_page.html')
+        sampled_books = random.sample(books, 500)
 
-@views.route('/books', methods=['GET', 'POST'])
-def books():
-    return render_template('base.html')
-    
+        session['summaries'] = get_answers(sampled_books)
+
+    return redirect(url_for('views.book_choice'))
 
 # @views.route("/submit", methods=['POST'])
 # def submit():

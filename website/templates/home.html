@@ -1,9 +1,11 @@
-{% extends "base.html" %} {% block title %}Changed{% endblock %}
+{% extends "base.html" %} {% block title %}Bookie{% endblock %}
 
 {% block content %}
 <div class="welcome">
-    <a href="/books" class="btn btn-lg rounded-pill custom-btn align-items-center justify-content-center" id="centered-button">
-        <i class="bi bi-book"></i> Start
-    </a>
+    <form action="/" method="POST">
+        <button class="btn btn-lg rounded-pill custom-btn align-items-center justify-content-center" id="centered-button" type="submit">
+            <i class="bi bi-book"></i> Start
+        </button>
+    </form>
 </div>
 {% endblock %}
