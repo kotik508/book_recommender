@@ -2,7 +2,8 @@ from flask import Blueprint, redirect, render_template, url_for, request, flash,
 from .computations import update_scores, get_answers
 from .models import Session, Book, Score
 from . import db
-import random
+import numpy as np
+import time
 
 views = Blueprint('views', __name__)
 
@@ -14,12 +15,22 @@ def book_choice():
     
     elif request.method == 'POST':
         Session.increase_session_round()
+
+        embeddings = Book.get_embeddings()
         
         scores = Score.query.filter(Score.session_id == session['session_id'])
         selected_cluster = int(request.form.get('answer'))
 
-        update_scores(scores, selected_cluster, )
-        return render_template('base.html')
+        now = time.time()
+        update_scores(scores, embeddings, selected_cluster)
+        print(f'Update scores took: {round(time.time()- now)} seconds')
+
+        if Session.query.filter(Session.id == session['session_id']).first().rounds < 5:
+            get_answers()
+            return redirect(url_for('views.book_choice'))
+        else:
+            best_books = Book.get_best_books()
+            return render_template('final.html', best_books=best_books)
     
 @views.route('/', methods=['GET', 'POST'])
 def home():
@@ -39,29 +50,10 @@ def home():
 
         db.session.commit()
         flash('Started a session!', category='success')
-
-        sampled_books = random.sample(books, 500)
-
-        session['summaries'] = get_answers(sampled_books)
+        
+        now = time.time()
+        get_answers()
+        print(f'Prepare questions took: {round(time.time()- now)} seconds')
 
     return redirect(url_for('views.book_choice'))
 
-# @views.route("/submit", methods=['POST'])
-# def submit():
-#     global centroids, best_embeddings, scores, rnd
-#     selected_answer = request.form.get("answer")
-#     print(f"User selected: {selected_answer}")
-#     print(centroids[3])
-#     scores = update_scores(scores, embeddings, centroids[int(selected_answer)], centroids)
-#     rnd += 1
-
-#     if max(scores) <= 0.85 or rnd < 4:
-#         return render_template("main_page.html", question=question, answers=answers)
-#     else:
-#         print(books.loc[int(np.max(np.argsort(scores)[-1:])), "book_title"])
-#         return redirect(url_for('final_page', message=books.loc[int(np.max(np.argsort(scores)[-1:])), "description"]))
-    
-# @app.route("/final")
-# def final_page():
-#     message = request.args.get('message', 'Def if nothing')
-#     return message

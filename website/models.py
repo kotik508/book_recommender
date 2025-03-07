@@ -2,6 +2,7 @@ from . import db
 from sqlalchemy.sql import func
 from pgvector.sqlalchemy import Vector
 from flask import session
+from sqlalchemy import text
 import numpy as np
 
 
@@ -59,6 +60,17 @@ class Book(db.Model):
     embedding = db.Column(Vector(1024))
     scores = db.relationship('Score', back_populates='book', cascade='all, delete-orphan')
 
+    @classmethod
+    def get_embeddings(cls):
+        results = db.session.query(cls.embedding).all()
+        return [row[0] for row in results]
+    
+    @classmethod
+    def get_best_books(cls):
+        query = text("SELECT b.* FROM book b LEFT JOIN score s ON b.id = s.book_id WHERE s.session_id = :session_id ORDER BY s.score DESC LIMIT 5;")
+        results = db.session.execute(query, {"session_id": int(session['session_id'])})
+        return results.fetchall()
+
 class Score(db.Model):
     __tablename__ = "score"
 
@@ -75,3 +87,4 @@ class Score(db.Model):
         book_ids = [book.id for book in books]
         scores = cls.query.filter((cls.session_id == session_id) & (cls.book_id.in_(book_ids))).all()
         return scores
+    

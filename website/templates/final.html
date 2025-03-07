@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}Final{% endblock %}
+
+{% block content %}
+<div class="welcome">
+    {% for book in best_books %}
+    <div>
+        {{book.title}}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

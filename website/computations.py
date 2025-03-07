@@ -5,19 +5,28 @@ from sklearn.cluster import KMeans
 from .text_generation import get_description
 from .models import Score, Session, Book
 from . import db
+import random
+import time
 import numpy as np
 import pandas as pd
 
 
-def get_answers(books):
+def get_answers():
 
-    best_embeddings = clustering(books)
+    books = Book.query.all()
+    books_sampled = random.sample(books, 500)
 
+    now = time.time()
+    best_embeddings = clustering(books_sampled)
+    print(f'Clustering took: {round(time.time()- now)} seconds')
+
+    now = time.time()
     summaries = {}
     for cluster in best_embeddings.keys():
         summaries[cluster] = get_description(best_embeddings[cluster])
+    print(f'Generating descriptions took: {round(time.time()- now)} seconds')
 
-    return summaries
+    session['summaries'] = summaries
 
 def create_embeddings():
     model = SentenceTransformer('Snowflake/snowflake-arctic-embed-l-v2.0')
@@ -63,25 +72,25 @@ def clustering(books: list[Book]):
 
     return best_embeddings
 
-def update_scores(scores: list[Score], selected_cluster: int, sigma: np.float32 = np.float32(0.1)):
+def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma: np.float32 = np.float32(0.1)):
 
     centroids = Session.get_centroids()
 
     # Score calculation based on embedding distance
-    for score in scores:
+    for score, embedding in zip(scores, embeddings):
         disp_sum = 0
         for x in centroids:
 
             if not np.array_equal(x, centroids[selected_cluster]):
-                disp_sum += np.exp(-(np.divide(np.linalg.norm(x - np.array(Book.query.get(score.book_id).embedding)), sigma)))
+                disp_sum += np.exp(-(np.divide(np.linalg.norm(x - embedding), sigma)))
         
-        like_val = np.exp(-(np.divide(np.linalg.norm(centroids[selected_cluster] - np.array(Book.query.get(score.book_id).embedding)), sigma)))
+        like_val = np.exp(-(np.divide(np.linalg.norm(centroids[selected_cluster] - embedding), sigma)))
         score.score = float(score.score * (like_val / (disp_sum + like_val)))
 
     # Score adjustment to keep values between 0 and 1
     scores_list = np.array([s.score for s in scores])
     scores_cal = np.divide(scores_list, np.max(scores_list))
-
+    
     for score, new_score in zip(scores, scores_cal):
         score.score = float(new_score)
     
