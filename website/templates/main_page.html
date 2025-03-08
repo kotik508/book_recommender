@@ -1,16 +1,25 @@
 {% extends "base.html" %} {% block title %}Bookie{% endblock %}
 
 {% block content %}
-<body>
-    <div class="container">
-        <h2>
+<div class="main">
+    <div class="spacer">
+        <h2 class="mb-4" >
             Which of these texts best describe what you are looking for in a book?
         </h2>
-        <form action="/books" method="post" class="button-container">
-            {% for index, description in summaries.items() %}
-                <button type="submit" name="answer" value="{{ index }}">{{ description }}</button>
-            {% endfor %}
-        </form>
     </div>
-</body>
+    <form action="/books" method="post">
+        <div class="row justify-content-center">
+            {% for index, description in summaries.items() %}
+            <div class="col-md-6 mb-4 d-flex">
+                <button type="submit" name="answer" value="{{ index }}" class="description-btn">
+                    {{ description }}
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+<div class="best-books">
+    <h3>Most relevant books</h3>
+</div>
 {% endblock %}

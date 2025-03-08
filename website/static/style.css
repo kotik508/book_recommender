@@ -1,3 +1,23 @@
+body {
+    background-color: #D1B39D; /* Ivory */
+    font-family: 'Georgia', serif; /* Classic book-like font */
+    color: #5A463A; /* Warm brown for readability */
+    background-image: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
+        linear-gradient(225deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%);
+    background-size: 5; /* Adjust size for grain texture effect */
+    background-position: 0 0, 0 0, 0 0, 0 0;
+    background-blend-mode: overlay; /* Blends the texture with the background */
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    color: rgba(60, 25, 8, 0.9);
+    font-weight: bold;
+}
+
 #centered-button {
     position: absolute;
     top: 50%;
@@ -5,8 +25,10 @@
     transform: translate(-50%, -50%)
 }
 
-.welcome {
+.container {
     height: calc(100vh - 56px);
+    width: 100%;
+    padding-top: 2%;
 }
 
 .custom-btn {
@@ -28,4 +50,63 @@
 
 .custom-btn i {
     margin-right: 0.5rem;
+}
+
+.description-btn {
+    background: rgba(92, 43, 15, 0.630);
+    color: antiquewhite;
+    border: none;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 18px;
+    border-radius: 25px;
+    width: 100%;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    font-weight: bold;
+}
+
+.description-btn:hover {
+    background: rgba(70, 30, 10, 0.700);
+    transform: scale(1.01);
+}
+
+.description-btn:active {
+    background: rgba(60, 25, 8, 0.780);
+    transform: scale(0.99);
+}
+
+.spacer {
+    height: 10vh;
+    text-align: center;
+    text-justify: center;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(104, 73, 58);
+    width: 60%;
+    z-index: 1000;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 3%;
+}
+
+.best-books {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: rgba(92, 43, 15, 1);
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    transition: width 0.3s ease;
+    color: antiquewhite;
+    border-top-left-radius: 40px;
+    width: 10%;
 }
