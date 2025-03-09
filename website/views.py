@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, url_for, request, flash, session
+from flask import Blueprint, redirect, render_template, url_for, request, flash, session, jsonify
 from .computations import update_scores, get_answers
 from .models import Session, Book, Score
 from . import db
@@ -11,27 +11,42 @@ views = Blueprint('views', __name__)
 @views.route('/books', methods=['GET', 'POST'])
 def book_choice():
     if request.method == 'GET':
-        return render_template('main_page.html', summaries=session['summaries'])
+        best_books = Book.get_best_books()
+        picked_books = Session.get_picked_books()
+        return render_template('main_page.html', summaries=session['summaries'], round=Session.get_rounds(), 
+                               best_books=best_books, picked_books=picked_books)
     
     elif request.method == 'POST':
-        Session.increase_session_round()
-
-        embeddings = Book.get_embeddings()
         
-        scores = Score.query.filter(Score.session_id == session['session_id'])
-        selected_cluster = int(request.form.get('answer'))
+        data = request.get_json()
 
-        now = time.time()
-        update_scores(scores, embeddings, selected_cluster)
-        print(f'Update scores took: {round(time.time()- now)} seconds')
-
-        if Session.query.filter(Session.id == session['session_id']).first().rounds < 5:
-            get_answers()
-            return redirect(url_for('views.book_choice'))
-        else:
+        if 'book_id' in data:
+            Session.pick_book(int(data['book_id']), data['add'])
             best_books = Book.get_best_books()
-            return render_template('final.html', best_books=best_books)
-    
+            return jsonify({
+                'status': 'success',
+                'message': 'Book picked/removed'
+            }), 200
+
+        else:
+            Session.increase_session_round()
+
+            embeddings = Book.get_embeddings()
+            
+            scores = Score.query.filter(Score.session_id == session['session_id'])
+            selected_cluster = int(request.form.get('answer'))
+
+            now = time.time()
+            update_scores(scores, embeddings, selected_cluster)
+            print(f'Update scores took: {round(time.time()- now)} seconds')
+
+            if Session.query.filter(Session.id == session['session_id']).first().rounds < 5:
+                get_answers()
+                return redirect(url_for('views.book_choice'))
+            else:
+                best_books = Book.get_best_books()
+                return render_template('final.html', best_books=best_books)
+
 @views.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'GET':

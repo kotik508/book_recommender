@@ -1,0 +1,257 @@
+body {
+    background-color: #EADBC8; /* Ivory */
+    font-family: 'Georgia', serif; /* Classic book-like font */
+    color: #4A3223; /* Warm brown for readability */
+    /* background-image: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
+        linear-gradient(225deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%); */
+    background-size: 5; /* Adjust size for grain texture effect */
+    background-position: 0 0, 0 0, 0 0, 0 0;
+    background-blend-mode: overlay; /* Blends the texture with the background */
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    color: #4A261A;
+    font-weight: bold;
+    text-align: center;
+}
+
+h3 {
+    color: #F7E7CE
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 80%;
+}
+
+#centered-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.cont {
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 85% !important;
+    margin-left: 0;
+    margin-right: 15%;
+    padding-top: max(10vh, 50px);
+}
+
+.custom-btn {
+    display: inline-flex;
+    background-color: antiquewhite;
+    color:black;
+    border: none;
+    height: 10%;
+    width: 20%;
+}
+
+.custom-btn:hover {
+    background-color: rgb(230, 220, 215);
+}
+
+.custom-btn.btn-lg {
+    font-size: 1.5rem;
+}
+
+.custom-btn i {
+    margin-right: 0.5rem;
+}
+
+.description-btn {
+    background: #5E3826;
+    color: #F7E7CE;
+    border: none;
+    padding: 2vh;
+    border-radius: 25px;
+    width: 100%;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    font-weight: bold;
+    text-align: center;
+}
+
+.description-btn:hover {
+    background: #4A261A;
+    transform: scale(1.01);
+}
+
+.description-btn:active {
+    background: #3D1E10;
+    transform: scale(0.99);
+}
+
+.navbar {
+    position: fixed;
+    left: calc((100% - 15%) / 2);
+    transform: translateX(-50%);
+    background-color: #4A261A; /* Rich warm brown */
+    width: 60%; /* Matches the `.main` section width */
+    z-index: 1000;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 5vh;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar Text */
+.navbar a {
+    color: #F7E7CE; /* Soft cream text */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+    padding: 0 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar span {
+    color: #F7E7CE; /* Soft cream text */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+    padding: 0 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.navbar a:hover {
+    color: #EADBC8; /* Lighter parchment color for a subtle glow */
+}
+
+.best-books {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 15%;
+    background-color: #3D1E10;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    color: #F7E7CE;
+    border-top-left-radius: 40px;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: start;
+}
+
+.best-books .upper-section {
+    font-size: 1.2rem;
+    font-weight: bold;
+    flex: 0 1 50%;
+    width: 100%;
+}
+
+.best-books .divider {
+    height: 2px;
+    background-color: #6f4f3b;
+    width: 100%;
+    justify-content: start;
+}
+
+.best-books .lower-section {
+    font-size: 1.2rem;
+    flex: 1;
+    margin-top: 1vh;
+    width: 100%;
+}
+
+.best-books .pick-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F7E7CE; /* Soft cream background */
+    color: #4A261A; /* Warm brown for text */
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 10px;
+}
+
+img.book-image {
+    width: 20%;
+    height: 5vh;
+    object-fit: cover;
+    border-radius: 25%;
+    margin-right: 10px;
+}
+
+.best-books .pick-btn:hover {
+    background-color: rgb(94, 58, 46);
+    color: #F7E7CE; /* Lighter cream text on hover */
+}
+
+
+.best-books .pick-btn:hover .pick-text {
+    background-color: #F7E7CE;
+    color: #4A261A;
+}
+
+.best-books .pick-btn:active {
+    transform: scale(0.98);
+}
+
+.best-books ul {
+    list-style-type: none;
+}
+
+.best-books .book-entry {
+    width: 100%;
+    padding: 0;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    min-height: 45vh;
+    margin-top: 5vh;
+}
+
+.col-md-6 {
+    flex: 0 1 calc(50% - 20px);
+    display: flex;
+    justify-content: center;
+    font-size: 1.3em;
+}
+
+.round-box {
+    display: inline-block;
+    padding: 2% 1vh;
+    border: 2px solid #6f4f3b;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+}

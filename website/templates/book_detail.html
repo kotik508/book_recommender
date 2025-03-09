@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block title %}Book Detail{% endblock %}
+
+{% block navbar %}
+<div class="navbar-nav mx-auto">
+    <span class="navbar-text ml-3">
+        <div class="round-box">
+            {{ round }} / 10
+        </div>
+    </span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="main">
+    {{book.description}}
+</div>
+<div class="best-books">
+    <div class="upper-section">
+        <h3>Most relevant books</h3>
+        <ul>
+            {% for book in best_books %}
+            <li class="book-entry">
+                <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
+                    <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
+                    <span>{{ book.title }}</span>
+                </button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="lower-section">
+        <h3>Picked books</h3>
+    </div>
+</div>
+{% endblock %}

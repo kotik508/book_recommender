@@ -1,12 +1,20 @@
 {% extends "base.html" %} {% block title %}Bookie{% endblock %}
 
+{% block navbar %}
+<div class="navbar-nav mx-auto">
+    <span class="navbar-text ml-3">
+        <div class="round-box">
+            {{ round }} / 10
+        </div>
+    </span>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="main">
-    <div class="spacer">
-        <h2 class="mb-4" >
+        <h2 class="mb-2" >
             Which of these texts best describe what you are looking for in a book?
         </h2>
-    </div>
     <form action="/books" method="post">
         <div class="row justify-content-center">
             {% for index, description in summaries.items() %}
@@ -20,6 +28,32 @@
     </form>
 </div>
 <div class="best-books">
-    <h3>Most relevant books</h3>
+    <div class="upper-section">
+        <h3>Most relevant books</h3>
+        <ul>
+            {% for book in best_books[:5] %}
+            <li class="book-entry">
+                <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
+                    <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
+                    <span>{{ book.title }}</span>
+                </button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="lower-section">
+        <h3>Picked books</h3>
+        <ul>
+            {% for book in picked_books %}
+            <li class="book-entry">
+                <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
+                    <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
+                    <span>{{ book.title }}</span>
+                </button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock %}

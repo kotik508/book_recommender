@@ -6,11 +6,17 @@ from sqlalchemy import text
 import numpy as np
 
 
+session_books = db.Table(
+    'session_books',
+    db.Column('session_id', db.Integer, db.ForeignKey('session.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('book_id', db.Integer, db.ForeignKey('book.id', ondelete='CASCADE'), primary_key=True)
+)
+
 class Session(db.Model):
     __tablename__ = "session"
 
     id = db.Column(db.Integer, primary_key=True)
-    picked_books = db.Column(db.String)
+    picked_books = db.relationship('Book', secondary=session_books, backref='sessions')
     centroid1 = db.Column(Vector(1024))
     centroid2 = db.Column(Vector(1024))
     centroid3 = db.Column(Vector(1024))
@@ -24,6 +30,11 @@ class Session(db.Model):
         sess = cls.query.filter(cls.id == session['session_id']).first()
         sess.rounds += 1
         db.session.commit()
+
+    @classmethod
+    def get_rounds(cls):
+        sess = cls.query.filter(cls.id == session['session_id']).first()
+        return sess.rounds
 
     @classmethod
     def assign_centroids(cls, centroids):
@@ -40,6 +51,31 @@ class Session(db.Model):
         centroids = [np.array(sess.centroid1), np.array(sess.centroid2), 
                      np.array(sess.centroid3), np.array(sess.centroid4)]
         return centroids
+    
+    @classmethod
+    def pick_book(cls, book_id: int, add: bool):
+        session_obj = cls.query.get(session['session_id'])
+        book_obj = Book.query.get(book_id)
+
+        if not session_obj or not book_obj:
+            return False
+
+        if add==True:
+            if book_obj not in session_obj.picked_books and len(session_obj.picked_books) < 5:
+                session_obj.picked_books.append(book_obj)
+            else:
+                print('Too many picked books')
+        else:
+            if book_obj in session_obj.picked_books:
+                session_obj.picked_books.remove(book_obj)
+
+        db.session.commit()
+        return True
+    
+    @classmethod
+    def get_picked_books(cls):
+        session_obj = cls.query.get(session['session_id'])
+        return session_obj.picked_books
 
 class Book(db.Model):
     __tablename__ = "book"
@@ -67,9 +103,12 @@ class Book(db.Model):
     
     @classmethod
     def get_best_books(cls):
-        query = text("SELECT b.* FROM book b LEFT JOIN score s ON b.id = s.book_id WHERE s.session_id = :session_id ORDER BY s.score DESC LIMIT 5;")
+        query = text("SELECT b.* FROM book b LEFT JOIN score s ON b.id = s.book_id WHERE s.session_id = :session_id ORDER BY s.score DESC LIMIT 10;")
         results = db.session.execute(query, {"session_id": int(session['session_id'])})
-        return results.fetchall()
+        best_books = results.fetchall()
+        picked_books = [b.id for b in Session.get_picked_books()]
+        return [book for book in best_books if book.id not in picked_books]
+
 
 class Score(db.Model):
     __tablename__ = "score"
@@ -87,4 +126,3 @@ class Score(db.Model):
         book_ids = [book.id for book in books]
         scores = cls.query.filter((cls.session_id == session_id) & (cls.book_id.in_(book_ids))).all()
         return scores
-    
