@@ -1,0 +1,65 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-top: max(10vh, 50px);
+}
+
+.separator {
+    width: 50%;
+    justify-items: center;
+    align-items: start;
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    color: #4A261A;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 1.5vh;
+}
+
+.cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+}
+
+/* .picked {
+    padding-left: 15%;
+    padding-right: 7.5%;
+}
+
+.recom {
+    padding-left: 7.5%;
+    padding-right: 15%;
+} */
+
+.booklet {
+    margin-bottom: 1vh;
+}
+
+img.book-image {
+    width: 10vh;
+    height: 15vh;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 15px;
+}
+
+
+/* 
+-----------------------------------------NAVBAR-----------------------------------------
+*/
+
+.navbar-sp {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .navbar-text-end {
+    transform: translate(-40%);
+}

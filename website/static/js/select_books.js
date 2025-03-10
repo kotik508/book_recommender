@@ -2,39 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const upperSection = document.querySelector(".upper-section ul");
     const lowerSection = document.querySelector(".lower-section ul");
 
-    // Function to add a new book to the upper section
-    function addNewBookToUpperSection() {
-        // Check if there are still books available to add
-        if (best_books.length > 0) {
-            let book = best_books.shift(); // Get the first book and remove it from the array
-
-            // Create a new list item for the book
-            let bookItem = document.createElement("li");
-            bookItem.classList.add("book-entry");
-
-            // Create the button with book information
-            let button = document.createElement("button");
-            button.classList.add("pick-btn");
-            button.setAttribute("type", "button");
-            button.setAttribute("data-book-id", book.id);
-
-            let img = document.createElement("img");
-            img.setAttribute("src", book.cover_image_uri);
-            img.setAttribute("alt", book.title);
-            img.classList.add("book-image");
-
-            let span = document.createElement("span");
-            span.textContent = book.title;
-
-            // Append the button and its child elements
-            button.appendChild(img);
-            button.appendChild(span);
-            bookItem.appendChild(button);
-
-            // Append the new book to the upper section
-            upperSection.appendChild(bookItem);
-        }
-    }
+    console.log('here')
 
     // Add event listener to the pick buttons in the upper section
     upperSection.addEventListener("click", function (event) {
@@ -61,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch("/books", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ book_id: bookId, add: true })
+                body: JSON.stringify({ book_id: bookId, add: 'pick' })
             })
             .then(response => response.json())
             .then(data => {
@@ -87,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch("/books", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ book_id: bookId, add: false })
+                body: JSON.stringify({ book_id: bookId, add: 'rm_pick' })
             })
             .then(response => response.json())
             .then(data => {

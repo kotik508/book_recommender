@@ -70,9 +70,14 @@ def clustering(books: list[Book]):
 
         best_embeddings[cluster_id] = [books[i] for i in top_indices]
 
+    for cs in best_embeddings.keys():
+        print(f'Best book for cluster {cs}: {best_embeddings[cs][0].tags[:20]}')
+        print(f'Second best book for cluster {cs}: {best_embeddings[cs][1].tags[:20]}')
+        print(f'Third best book for cluster {cs}: {best_embeddings[cs][3].tags[:20]}')
+
     return best_embeddings
 
-def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma: np.float32 = np.float32(0.1)):
+def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma: np.float32 = np.float32(0.5)):
 
     centroids = Session.get_centroids()
 

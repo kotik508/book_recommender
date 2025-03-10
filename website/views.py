@@ -12,16 +12,18 @@ views = Blueprint('views', __name__)
 def book_choice():
     if request.method == 'GET':
         best_books = Book.get_best_books()
+        # for book in best_books:
+            # print(f'{book.title}: {Score.get_score(int(session['session_id']), book.id)}')
         picked_books = Session.get_picked_books()
         return render_template('main_page.html', summaries=session['summaries'], round=Session.get_rounds(), 
                                best_books=best_books, picked_books=picked_books)
     
     elif request.method == 'POST':
         
-        data = request.get_json()
 
-        if 'book_id' in data:
-            Session.pick_book(int(data['book_id']), data['add'])
+        if request.is_json:
+            data = request.get_json()
+            Session.move_book(int(data['book_id']), data['add'])
             best_books = Book.get_best_books()
             return jsonify({
                 'status': 'success',
@@ -40,7 +42,7 @@ def book_choice():
             update_scores(scores, embeddings, selected_cluster)
             print(f'Update scores took: {round(time.time()- now)} seconds')
 
-            if Session.query.filter(Session.id == session['session_id']).first().rounds < 5:
+            if Session.query.filter(Session.id == session['session_id']).first().rounds < 11:
                 get_answers()
                 return redirect(url_for('views.book_choice'))
             else:
@@ -71,4 +73,11 @@ def home():
         print(f'Prepare questions took: {round(time.time()- now)} seconds')
 
     return redirect(url_for('views.book_choice'))
+
+@views.route('/final', methods=['GET'])
+def final_page():
+    picked_books = Session.get_picked_books()
+    if len(picked_books) < 5:
+        recom_books = Book.get_best_books()
+    return render_template('final.html', picked_books=picked_books, recom_books=recom_books)
 

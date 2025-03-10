@@ -1,11 +1,48 @@
 {% extends "base.html" %} {% block title %}Final{% endblock %}
 
+{% block links %}
+<link 
+rel="stylesheet" 
+href="static/css/final.css" />
+{% endblock %}
+
+{% block navbar_class %}navbar-sp{% endblock %}
+{% block navbar %}
+<div class="navbar-nav-final mx-auto">
+    <span class="navbar-text">
+        <div class="round-box">
+            <a class="nav-item nav-link" id="new_sess" href="/">Start Again</a>
+        </div>
+</div>
+{% endblock %}
+
 {% block content %}
-<div class="welcome">
-    {% for book in best_books %}
-    <div>
-        {{book.title}}
+<div class="main">
+    <div class="separator">
+        <div class="cont picked">
+            <h2 class="mb-2" >
+                Books you picked:
+            </h2>
+            {% for book in picked_books %}
+            <div class="booklet">
+                <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
+                <span>{{book.title}}</span>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    {% endfor %}
+    <div class="separator">
+        <div class="cont recom">
+            <h2 class="mb-2" >
+                More recommendations:
+            </h2>
+            {% for book in recom_books[:5] %}
+            <div class="booklet">
+                <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
+                <span>{{book.title}}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

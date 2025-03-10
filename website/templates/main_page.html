@@ -1,9 +1,25 @@
 {% extends "base.html" %} {% block title %}Bookie{% endblock %}
 
+{% block links %}
+<link 
+rel="stylesheet" 
+href="static/css/main_page.css" />
+{% endblock %}
+
 {% block navbar_class %}navbar-mp{% endblock %}
 {% block navbar %}
 <div class="navbar-nav mx-auto">
-    <span class="navbar-text ml-3">
+    <span class="navbar-text">
+        <div class="round-box">
+            <a class="nav-item nav-link home" id="new_sess" href="/">New Session</a>
+        </div>
+    </span>
+    <span class="navbar-text-end">
+        <div class="round-box">
+            <a class="nav-item nav-link" id="end" href="/final">End</a>
+        </div>
+    </span>
+    <span class="navbar-text">
         <div class="round-box">
             {{ round }} / 10
         </div>
@@ -12,49 +28,53 @@
 {% endblock %}
 
 {% block content %}
-<div class="main">
-        <h2 class="mb-2" >
-            Which of these texts best describe what you are looking for in a book?
-        </h2>
-    <form action="/books" method="post">
-        <div class="row justify-content-center">
-            {% for index, description in summaries.items() %}
-            <div class="col-md-6 mb-4 d-flex">
-                <button type="submit" name="answer" value="{{ index }}" class="description-btn">
-                    {{ description }}
-                </button>
+<div class="cont">
+    <div class="main">
+            <h2 class="mp mb-2" >
+                Which of these texts best describe what you are looking for in a book?
+            </h2>
+        <form action="/books" method="post">
+            <div class="row justify-content-center">
+                {% for index, description in summaries.items() %}
+                <div class="col-md-6 mb-4 d-flex">
+                    <button type="submit" name="answer" value="{{ index }}" class="description-btn">
+                        {{ description }}
+                    </button>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-    </form>
-</div>
-<div class="best-books">
-    <div class="upper-section">
-        <h3>Most relevant books</h3>
-        <ul>
-            {% for book in best_books[:5] %}
-            <li class="book-entry">
-                <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
-                    <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
-                    <span>{{ book.title }}</span>
-                </button>
-            </li>
-            {% endfor %}
-        </ul>
+        </form>
     </div>
-    <div class="divider"></div>
-    <div class="lower-section">
-        <h3>Picked books</h3>
-        <ul>
-            {% for book in picked_books %}
-            <li class="book-entry">
-                <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
-                    <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
-                    <span>{{ book.title }}</span>
-                </button>
-            </li>
-            {% endfor %}
-        </ul>
+    <div class="best-books">
+        <div class="upper-section">
+            <h3>Most relevant books</h3>
+            <ul>
+                {% for book in best_books[:5] %}
+                <li class="book-entry">
+                    <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
+                        <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
+                        <span>{{ book.title }}</span>
+                        <span>{{ book.avg_rating }}</span>
+                    </button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="divider"></div>
+        <div class="lower-section">
+            <h3>Picked books</h3>
+            <ul>
+                {% for book in picked_books %}
+                <li class="book-entry">
+                    <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
+                        <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
+                        <span>{{ book.title }}</span>
+                        <span>{{ book.avg_rating }}</span>
+                    </button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
