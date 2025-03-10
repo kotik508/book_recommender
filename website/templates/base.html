@@ -25,7 +25,7 @@
         <title>{% block title %}Home{% endblock %}</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg ">
+        <nav class="navbar navbar-expand-lg {% block navbar_class %}navbar-default{% endblock %} ">
             <button 
                 class="navbar-toggler" 
                 type="button" 
@@ -42,28 +42,21 @@
                 </div>
             </div>
         </nav>
-        
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-            {% if category == 'error' %}
-            <div class="alert alert-danger alert-dismissable fade show" role="alert">
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            {% else %}
-            <div class="alert alert-success alert-dismissable fade show" role="alert">
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+
+        <div class="flash-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert flash-message alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissable fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
             {% endif %}
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
+            {% endwith %}
+        </div>
 
         <div class="cont">
             {% block content %}
@@ -90,6 +83,8 @@
         ></script>
         <script 
             src="{{ url_for('static', filename='js/select_books.js') }}"
+        ></script>
+        <script src="{{ url_for('static', filename='js/flash_messages.js') }}"
         ></script>
     </body>
 
