@@ -52,8 +52,7 @@ def book_choice():
                 get_answers()
                 return redirect(url_for('views.book_choice'))
             else:
-                best_books = Book.get_best_books()
-                return render_template('final.html', best_books=best_books)
+                return redirect(url_for('views.final_page'))
 
 @views.route('/', methods=['GET', 'POST'])
 def home():

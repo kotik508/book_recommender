@@ -28,12 +28,16 @@ href="static/css/main_page.css" />
 {% endblock %}
 
 {% block content %}
+<div id="loader" class="loader-overlay" style="display: none;">
+    <div class="spinner"></div>
+</div>
+
 <div class="cont">
     <div class="main">
-            <h2 class="mp mb-2" >
-                Which of these texts best describe what you are looking for in a book?
-            </h2>
-        <form action="/books" method="post">
+        <h2 class="mp mb-2" >
+            Which of these texts best describe what you are looking for in a book?
+        </h2>
+        <form action="/books" method="post" onsubmit="showLoader()">
             <div class="row justify-content-center">
                 {% for index, description in summaries.items() %}
                 <div class="col-md-6 mb-4 d-flex">
@@ -77,4 +81,10 @@ href="static/css/main_page.css" />
         </div>
     </div>
 </div>
+
+<script>
+        function showLoader() {
+        document.getElementById("loader").style.display = "block"; // Show loader
+    }
+</script>
 {% endblock %}

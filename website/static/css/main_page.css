@@ -125,8 +125,8 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #F7E7CE; /* Soft cream background */
-    color: #4A261A; /* Warm brown for text */
+    background-color: #F7E7CE;
+    color: #4A261A;
     border: none;
     padding: 15px;
     border-radius: 15px;
@@ -148,7 +148,7 @@ img.book-image {
 
 .best-books .pick-btn:hover {
     background-color: rgb(94, 58, 46);
-    color: #F7E7CE; /* Lighter cream text on hover */
+    color: #F7E7CE;
 }
 
 
@@ -168,4 +168,39 @@ img.book-image {
 .best-books .book-entry {
     width: 100%;
     padding: 0;
+}
+
+/* 
+-----------------------------------------LOADER-----------------------------------------
+*/
+
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); 
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: flex;
+}
+
+.spinner {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
