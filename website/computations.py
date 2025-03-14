@@ -14,17 +14,22 @@ import pandas as pd
 def get_answers():
 
     books = Book.query.all()
-    books_sampled = random.sample(books, 500)
+    now = time.time()
+    scores = np.array([score.score for score in Score.get_scores_from_sample(books)])
+    weights = np.log1p(scores)
+    print(sum(weights))
+    print(f'Log transform took: {round(time.time()- now, 4)} seconds')
+    books_sampled = random.choices(books, weights=weights, k=500)
 
     now = time.time()
     best_embeddings = clustering(books_sampled)
-    print(f'Clustering took: {round(time.time()- now)} seconds')
+    print(f'Clustering took: {round(time.time()- now, 4)} seconds')
 
     now = time.time()
     summaries = {}
     for cluster in best_embeddings.keys():
         summaries[cluster] = get_description(best_embeddings[cluster])
-    print(f'Generating descriptions took: {round(time.time()- now)} seconds')
+    print(f'Generating descriptions took: {round(time.time()- now, 4)} seconds')
 
     session['summaries'] = summaries
 
@@ -45,14 +50,17 @@ def load_embeddings():
 
 def clustering(books: list[Book]):
 
-    Book.query.filter()
-
-    embeddings = np.array([book.embedding for book in books])
-    scores = np.array([score.score for score in Score.get_scores_from_sample(int(session['session_id']), books)])
+    if session['type'] == 'descriptions':
+        embeddings = np.array([book.embedding for book in books])
+    elif session['type'] == 'tags':
+        embeddings = np.array([book.svd for book in books])
+    else:
+        print(f'WARNING INVALID SESSION TYPE: {session['type']}')
+        embeddings = np.array([book.embedding for book in books])
 
     # find clusters using k-means with k = 4
     kmeans = KMeans(n_clusters=4, n_init=10, max_iter=1000)
-    kmeans.fit(embeddings, sample_weight=scores)
+    kmeans.fit(embeddings)
     labels = kmeans.labels_
     centroids = kmeans.cluster_centers_
     Session.assign_centroids(centroids)
@@ -100,31 +108,5 @@ def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma:
         score.score = float(new_score)
     
     db.session.commit()
-
-def update_scores_old(scores, embeddings, selected_cluster, centroids, sigma: np.float32 = np.float32(0.05)):
-
-    # lowest_dist = 0
-    # lowest_dist_ind = None
-    res = np.full(len(embeddings), np.float32(1))
-    for index, book in enumerate(embeddings):
-        disp_sum = 0
-        for x in centroids:
-
-            if not np.array_equal(x, selected_cluster):
-                disp_sum += np.exp(-(np.divide(np.linalg.norm(x - book), sigma)))
-
-        like_val = np.exp(-(np.divide(np.linalg.norm(selected_cluster - book), sigma)))
-        res[index] = res[index] * (like_val / (disp_sum + like_val)) * scores[index]
-
-        # dist = like_val / (disp_sum + like_val)
-        # if dist > lowest_dist:
-        #     lowest_dist = dist
-        #     lowest_dist_ind = index
-
-    res = np.divide(res, np.max(res))
-    # print(f'Highest score: {np.argmax(res)}')
-    # print(f'Lowest distance: {lowest_dist_ind}')
-
-    return res
 
 

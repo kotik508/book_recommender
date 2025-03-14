@@ -12,10 +12,27 @@ href="static/css/home.css" />
 
 {% block content %}
 <div class="welcome">
-    <form action="/" method="POST">
-        <button class="btn btn-lg rounded-pill custom-btn align-items-center justify-content-center" id="centered-button" type="submit">
-            <i class="bi bi-book"></i> Start
-        </button>
-    </form>
+    <div class="separator">
+        <form class="post-form" action="/" method="POST">
+            <button class="btn btn-lg rounded-pill custom-btn align-items-center justify-content-center" 
+            id="centered-button" 
+            type="submit"
+            name="action"
+            value="descriptions">
+                <i class="bi bi-book"></i> Descriptions
+            </button>
+        </form>
+    </div>
+    <div class="separator">
+        <form class="post-form" action="/" method="POST">
+            <button class="btn btn-lg rounded-pill custom-btn align-items-center justify-content-center" 
+            id="centered-button-2" 
+            type="submit"
+            name="action"
+            value="tags">
+                <i class="bi bi-book"></i> Tags
+            </button>
+        </form>
+    </div>
 </div>
 {% endblock %}

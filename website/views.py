@@ -33,7 +33,13 @@ def book_choice():
         else:
             Session.increase_session_round()
 
-            embeddings = Book.get_embeddings()
+            if session['type'] == 'descriptions':
+                embeddings = np.array(Book.get_embeddings())
+            elif session['type'] == 'tags':
+                embeddings = np.array(Book.get_svds())
+            else:
+                print(f'WARNING INVALID SESSION TYPE: {session['type']}')
+                embeddings = np.array(Book.get_embeddings())
             
             scores = Score.query.filter(Score.session_id == session['session_id'])
             selected_cluster = int(request.form.get('answer'))
@@ -56,6 +62,8 @@ def home():
 
     elif request.method == 'POST':
 
+        session['type'] = request.form.get('action')
+
         new_session = Session()
         db.session.add(new_session)
         db.session.commit()
@@ -67,7 +75,7 @@ def home():
 
         db.session.commit()
         flash('Started a session!', category='success')
-        
+
         now = time.time()
         get_answers()
         print(f'Prepare questions took: {round(time.time()- now)} seconds')

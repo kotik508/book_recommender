@@ -24,10 +24,10 @@ class Session(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     picked_books = db.relationship('Book', secondary=picked_books, backref='picked_by_session')
     disabled_books = db.relationship('Book', secondary=disabled_books, backref='disabled_by_session')
-    centroid1 = db.Column(Vector(1024))
-    centroid2 = db.Column(Vector(1024))
-    centroid3 = db.Column(Vector(1024))
-    centroid4 = db.Column(Vector(1024))
+    centroid1 = db.Column(Vector)
+    centroid2 = db.Column(Vector)
+    centroid3 = db.Column(Vector)
+    centroid4 = db.Column(Vector)
     start_date = db.Column(db.DateTime(timezone=True), default=func.now())
     rounds = db.Column(db.Integer, default=0)
     scores = db.relationship('Score', back_populates='session', cascade='all, delete-orphan')
@@ -113,11 +113,17 @@ class Book(db.Model):
     tags = db.Column(db.String(250))
     rating_distribution = db.Column(db.String(300))
     embedding = db.Column(Vector(1024))
+    svd = db.Column(Vector(150))
     scores = db.relationship('Score', back_populates='book', cascade='all, delete-orphan')
 
     @classmethod
     def get_embeddings(cls):
         results = db.session.query(cls.embedding).all()
+        return [row[0] for row in results]
+    
+    @classmethod
+    def get_svds(cls):
+        results = db.session.query(cls.svd).all()
         return [row[0] for row in results]
     
     @classmethod
@@ -141,7 +147,8 @@ class Score(db.Model):
     book = db.relationship('Book', back_populates='scores')
 
     @classmethod
-    def get_scores_from_sample(cls, session_id: int, books: list[Book]):
+    def get_scores_from_sample(cls, books: list[Book]):
+        session_id = session['session_id']
         book_ids = [book.id for book in books]
         scores = cls.query.filter((cls.session_id == session_id) & (cls.book_id.in_(book_ids))).all()
         return scores

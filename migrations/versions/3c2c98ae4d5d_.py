@@ -1,8 +1,8 @@
-"""Disabled books
+"""empty message
 
-Revision ID: 66ea858000cb
+Revision ID: 3c2c98ae4d5d
 Revises: 
-Create Date: 2025-03-10 15:21:50.847593
+Create Date: 2025-03-14 18:46:38.021717
 
 """
 from alembic import op
@@ -11,7 +11,7 @@ import pgvector
 
 
 # revision identifiers, used by Alembic.
-revision = '66ea858000cb'
+revision = '3c2c98ae4d5d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,14 +34,15 @@ def upgrade():
     sa.Column('tags', sa.String(length=250), nullable=True),
     sa.Column('rating_distribution', sa.String(length=300), nullable=True),
     sa.Column('embedding', pgvector.sqlalchemy.vector.VECTOR(dim=1024), nullable=True),
+    sa.Column('svd', pgvector.sqlalchemy.vector.VECTOR(dim=150), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('session',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('centroid1', pgvector.sqlalchemy.vector.VECTOR(dim=1024), nullable=True),
-    sa.Column('centroid2', pgvector.sqlalchemy.vector.VECTOR(dim=1024), nullable=True),
-    sa.Column('centroid3', pgvector.sqlalchemy.vector.VECTOR(dim=1024), nullable=True),
-    sa.Column('centroid4', pgvector.sqlalchemy.vector.VECTOR(dim=1024), nullable=True),
+    sa.Column('centroid1', pgvector.sqlalchemy.vector.VECTOR(), nullable=True),
+    sa.Column('centroid2', pgvector.sqlalchemy.vector.VECTOR(), nullable=True),
+    sa.Column('centroid3', pgvector.sqlalchemy.vector.VECTOR(), nullable=True),
+    sa.Column('centroid4', pgvector.sqlalchemy.vector.VECTOR(), nullable=True),
     sa.Column('start_date', sa.DateTime(timezone=True), nullable=True),
     sa.Column('rounds', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
