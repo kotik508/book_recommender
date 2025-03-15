@@ -18,10 +18,17 @@ disabled_books = db.Table(
     db.Column('book_id', db.Integer, db.ForeignKey('book.id', ondelete='CASCADE'), primary_key=True)
 )
 
+recommended_books = db.Table(
+    'recommended_books',
+    db.Column('session_id', db.Integer, db.ForeignKey('session.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('book_id', db.Integer, db.ForeignKey('book.id', ondelete='CASCADE'), primary_key=True)
+)
+
 class Session(db.Model):
     __tablename__ = "session"
 
     id = db.Column(db.Integer, primary_key=True)
+    version = db.Column(db.String(50))
     picked_books = db.relationship('Book', secondary=picked_books, backref='picked_by_session')
     disabled_books = db.relationship('Book', secondary=disabled_books, backref='disabled_by_session')
     centroid1 = db.Column(Vector)
@@ -85,6 +92,23 @@ class Session(db.Model):
 
         db.session.commit()
         return True
+    
+    @classmethod
+    def move_to_recommend(cls, book_ids: list[int]):
+        session_obj = cls.query.get(session['session_id'])
+
+        for book_id in book_ids:
+            book_obj = Book.query.get(book_id)
+
+            if not session_obj or not book_obj:
+                return False
+            
+            if book_obj not in session_obj.recommended_books:
+                session_obj.recommended_books.append(book_obj)
+            
+        db.session.commit()
+        return True
+
     
     @classmethod
     def get_picked_books(cls):

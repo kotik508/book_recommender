@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, url_for, request, flash, session, jsonify
+from flask import Blueprint, redirect, render_template, url_for, request, flash, session, jsonify, current_app
 from .computations import update_scores, get_answers
 from .models import Session, Book, Score
 from . import db
@@ -63,7 +63,7 @@ def home():
 
         session['type'] = request.form.get('action')
 
-        new_session = Session()
+        new_session = Session(version=session['type'])
         db.session.add(new_session)
         db.session.commit()
         session['session_id'] = new_session.id
@@ -78,6 +78,8 @@ def home():
         now = time.time()
         get_answers()
         print(f'Prepare questions took: {round(time.time()- now)} seconds')
+    
+        current_app.logger.info(f'Started session: {session['session_id']}')
 
     return redirect(url_for('views.book_choice'))
 
@@ -85,5 +87,10 @@ def home():
 def final_page():
     picked_books = Session.get_picked_books()
     recom_books = Book.get_best_books()
+    recom_ids = [book.id for book in recom_books[:5]]
+    Session.move_to_recommend(recom_ids)
+    current_app.logger.info(f'Session with id: {session["session_id"]} ended.')
+    current_app.logger.info(f'Session ended with these picked books: {", ".join(book.title for book in picked_books)}')
+    current_app.logger.info(f'Session ended with these recommended books: {", ".join(book.title for book in recom_books[:5])}')
     return render_template('final.html', picked_books=picked_books, recom_books=recom_books)
 

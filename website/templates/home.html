@@ -4,6 +4,8 @@
 <link 
 rel="stylesheet" 
 href="static/css/home.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 {% endblock %}
 
 {% block navbar_class %}navbar-sp{% endblock %}
@@ -12,27 +14,65 @@ href="static/css/home.css" />
 
 {% block content %}
 <div class="welcome">
-    <div class="separator">
-        <form class="post-form" action="/" method="POST">
-            <button class="btn btn-lg rounded-pill custom-btn align-items-center justify-content-center" 
-            id="centered-button" 
-            type="submit"
-            name="action"
-            value="descriptions">
-                <i class="bi bi-book"></i> Descriptions
-            </button>
-        </form>
+    <div class="description">
+        <h2>
+            Welcome to Bookie!
+        </h2>
+        <p>
+            Bookie is here to help you find new books that might interest you. Answer questions to get recommendations on the right side panel. You can select up to 5 titles from the recommendations. 
+            When you have selected 5 books you can click <b>End</b> to finish, otherwise the application will end automatically after 10 rounds of questions and display the best books for you.
+        </p>
+        <p>
+            This project is made as a part of my Bachelor thesis and the data from here will be anaymized and used in it.
+            There are two main approaches to Bookie. One is based on book descriptions and the second on book tags as indicated by the start button names.
+            I would greatly appreciate it if you completed both versions as it is essential for the thesis.
+        </p>
+        <p>
+            Start by clicking either of these buttons.
+        </p>
     </div>
-    <div class="separator">
-        <form class="post-form" action="/" method="POST" onsubmit="showLoader()">
-            <button class="btn btn-lg rounded-pill custom-btn align-items-center justify-content-center" 
-            id="centered-button-2" 
-            type="submit"
-            name="action"
-            value="tags">
-                <i class="bi bi-book"></i> Tags
-            </button>
-        </form>
+    <div class="buttons">
+        <div class="separator">
+            <form class="post-form" action="/" method="POST" onsubmit="showLoader()">
+                <button class="btn" 
+                id="centered-button" 
+                type="submit"
+                name="action"
+                value="descriptions">
+                    <i class="bi bi-book"></i> Descriptions
+                </button>
+            </form>
+        </div>
+        <div class="separator">
+            <form class="post-form" action="/" method="POST" onsubmit="showLoader()">
+                <button class="btn" 
+                id="centered-button-2" 
+                type="submit"
+                name="action"
+                value="tags">
+                    <i class="bi bi-book"></i> Tags
+                </button>
+            </form>
+        </div>
     </div>
 </div>
+
+<script>
+    window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+            palette: {
+                popup: { background: "#000" },
+                button: { background: "#f1d600" }
+            },
+            theme: "classic",
+            content: {
+                message: "This website uses cookies to ensure you get the best experience.",
+                dismiss: "Got it!",
+                link: "Learn more",
+                href: "/privacy-policy"
+            }
+        });
+    });
+    </script>
 {% endblock %}
+
