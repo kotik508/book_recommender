@@ -28,10 +28,6 @@ href="static/css/main_page.css" />
 {% endblock %}
 
 {% block content %}
-<div id="loader" class="loader-overlay" style="display: none;">
-    <div class="spinner"></div>
-</div>
-
 <div class="cont">
     <div class="main">
         <h2 class="mp mb-2" >
@@ -58,7 +54,7 @@ href="static/css/main_page.css" />
                     <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
                         <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
                         <span>{{ book.title }}</span>
-                        <span>{{ book.avg_rating }}</span>
+                        <span class="rating">{{ book.avg_rating }}</span>
                     </button>
                 </li>
                 {% endfor %}
@@ -73,7 +69,7 @@ href="static/css/main_page.css" />
                     <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
                         <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
                         <span>{{ book.title }}</span>
-                        <span>{{ book.avg_rating }}</span>
+                        <span class="rating">{{ book.avg_rating }}</span>
                     </button>
                 </li>
                 {% endfor %}
@@ -81,10 +77,4 @@ href="static/css/main_page.css" />
         </div>
     </div>
 </div>
-
-<script>
-        function showLoader() {
-        document.getElementById("loader").style.display = "block"; // Show loader
-    }
-</script>
 {% endblock %}

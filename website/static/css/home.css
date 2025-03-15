@@ -34,9 +34,10 @@
 }
 
 .separator {
+    display: flex;
     width: 50%;
-    justify-items: center;
-    align-content: end;
+    justify-content: center;
+    align-items: end;
     padding-bottom: 25vh;
 }
 

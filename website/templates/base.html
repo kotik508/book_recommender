@@ -26,6 +26,9 @@
         <title>{% block title %}Home{% endblock %}</title>
     </head>
     <body>
+        <div id="loader" class="loader-overlay" style="display: none;">
+            <div class="spinner"></div>
+        </div>
         <nav class="navbar navbar-expand-lg {% block navbar_class %}navbar-default{% endblock %} ">
             <div class="collapse navbar-collapse" id="navbar">
                 <div class="navbar-nav">
@@ -53,6 +56,11 @@
         {% block content %}
         {% endblock %}
 
+        <script>
+            function showLoader() {
+            document.getElementById("loader").style.display = "flex"; // Show loader
+        }
+        </script>
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

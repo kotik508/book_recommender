@@ -84,7 +84,6 @@ def home():
 @views.route('/final', methods=['GET'])
 def final_page():
     picked_books = Session.get_picked_books()
-    if len(picked_books) < 5:
-        recom_books = Book.get_best_books()
+    recom_books = Book.get_best_books()
     return render_template('final.html', picked_books=picked_books, recom_books=recom_books)
 

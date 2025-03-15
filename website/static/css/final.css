@@ -8,8 +8,9 @@
 
 .separator {
     width: 50%;
-    justify-items: center;
+    justify-content: center;
     align-items: start;
+    margin-left: 15%;
 }
 
 h2 {
