@@ -1,4 +1,5 @@
 tqdm>=4.67.1
+flask[async]
 beautifulsoup4>=4.13.3
 pandas>=2.2.3
 selenium>=4.29.0

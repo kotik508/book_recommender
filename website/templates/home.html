@@ -23,37 +23,20 @@ href="static/css/home.css" />
             When you have selected 5 books you can click <b>End</b> to finish, otherwise the application will end automatically after 10 rounds of questions and display the best books for you.
         </p>
         <p>
-            This project is made as a part of my Bachelor thesis and the data from here will be anaymized and used in it.
-            There are two main approaches to Bookie. One is based on book descriptions and the second on book tags as indicated by the start button names.
-            I would greatly appreciate it if you completed both versions as it is essential for the thesis.
+            This project is made as a part of my Bachelor thesis and the data from here will be anonymized and used in it.
         </p>
         <p>
-            Start by clicking either of these buttons.
+            Start by clicking the button below.
         </p>
     </div>
     <div class="buttons">
-        <div class="separator">
-            <form class="post-form" action="/" method="POST" onsubmit="showLoader()">
-                <button class="btn" 
-                id="centered-button" 
-                type="submit"
-                name="action"
-                value="descriptions">
-                    <i class="bi bi-book"></i> Descriptions
-                </button>
-            </form>
-        </div>
-        <div class="separator">
-            <form class="post-form" action="/" method="POST" onsubmit="showLoader()">
-                <button class="btn" 
-                id="centered-button-2" 
-                type="submit"
-                name="action"
-                value="tags">
-                    <i class="bi bi-book"></i> Tags
-                </button>
-            </form>
-        </div>
+        <form class="post-form" action="/" method="POST" onsubmit="showLoader()">
+            <button class="btn" 
+            id="centered-button" 
+            type="submit">
+                <i class="bi bi-book"></i> Start
+            </button>
+        </form>
     </div>
 </div>
 
@@ -66,10 +49,8 @@ href="static/css/home.css" />
             },
             theme: "classic",
             content: {
-                message: "This website uses cookies to ensure you get the best experience.",
+                message: "This website uses technical cookies.",
                 dismiss: "Got it!",
-                link: "Learn more",
-                href: "/privacy-policy"
             }
         });
     });

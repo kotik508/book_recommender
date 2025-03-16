@@ -49,7 +49,7 @@ href="static/css/main_page.css" />
         <div class="upper-section">
             <h3>Most relevant books</h3>
             <ul>
-                {% for book in best_books[:5] %}
+                {% for book in best_books[:20] %}
                 <li class="book-entry">
                     <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
                         <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
@@ -62,7 +62,7 @@ href="static/css/main_page.css" />
         </div>
         <div class="divider"></div>
         <div class="lower-section">
-            <h3>Picked books</h3>
+            <h3>Selected books</h3>
             <ul>
                 {% for book in picked_books %}
                 <li class="book-entry">

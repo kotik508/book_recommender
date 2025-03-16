@@ -1,3 +1,277 @@
 2025-03-15 20:51:10,435 - ERROR - Table 'book' does not exist.
 2025-03-15 20:51:57,902 - ERROR - Table 'book' does not exist.
 2025-03-15 20:52:13,304 - ERROR - Table 'book' does not exist.
+2025-03-16 14:39:59,509 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:40:26,999 - INFO - Started session: 2
+2025-03-16 14:44:21,696 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:44:37,759 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:49:21,767 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:49:47,850 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:50:53,108 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:51:28,238 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:53:10,592 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:53:44,057 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:53:46,493 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:54:10,557 - INFO - Started session: 3 and type: tags.
+2025-03-16 14:54:10,595 - INFO - Session: 3 in round: 0 has these picked books: 
+2025-03-16 14:54:10,595 - INFO - Session: 3 in round: 0 has these best books: Harry Potter and the Order of the Phoenix, Pride and Prejudice, The Book Thief, Twilight, The Chronicles of Narnia, The Fault in Our Stars, The Picture of Dorian Gray, The Giving Tree, Wuthering Heights, The Hunger Games
+2025-03-16 14:54:43,435 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:54:58,549 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:56:21,992 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:56:29,249 - INFO - Update scores for session: 3 and round: 0 took: 2 seconds
+2025-03-16 14:56:35,373 - INFO - Moving session with id: 3 to round: 1
+2025-03-16 14:56:35,392 - INFO - Session: 3 in round: 1 has these picked books: 
+2025-03-16 14:57:22,045 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 14:57:22,086 - INFO - Session: 3 in round: 1 has these picked books: 
+2025-03-16 14:57:22,086 - INFO - Session: 3 in round: 1 has these best books: 160, 119, 2935, 8238, 8156, 2513, 92, 625, 112, 7897
+2025-03-16 14:59:11,463 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 15:02:58,480 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 15:03:01,118 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 15:18:08,222 - INFO - Started session: 4 with type: descriptions.
+2025-03-16 15:18:08,267 - INFO - Session: 4 in round: 0 has these picked books: 
+2025-03-16 15:18:08,268 - INFO - Session: 4 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 15:20:07,938 - INFO - Update scores for session: 4 and round: 0 took: 2 seconds
+2025-03-16 15:20:13,588 - INFO - Moving session with id: 4 to round: 1
+2025-03-16 15:20:13,608 - INFO - Session: 4 in round: 1 has these picked books: 
+2025-03-16 15:20:13,609 - INFO - Session: 4 in round: 1 has these best books: 600, 8391, 3333, 830, 7902
+2025-03-16 15:21:13,941 - INFO - Added book: 600 to selected books.
+2025-03-16 15:23:09,217 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 15:23:18,867 - INFO - Session: 4 in round: 1 has these picked books: 600
+2025-03-16 15:23:18,868 - INFO - Session: 4 in round: 1 has these best books: 8391, 3333, 830, 7902, 3970
+2025-03-16 15:23:40,994 - INFO - Update scores for session: 4 and round: 1 took: 2 seconds
+2025-03-16 15:23:47,159 - INFO - Moving session with id: 4 to round: 2
+2025-03-16 15:23:47,178 - INFO - Session: 4 in round: 2 has these picked books: 600
+2025-03-16 15:23:47,179 - INFO - Session: 4 in round: 2 has these best books: 3009, 7755, 2487, 3797, 6256
+2025-03-16 15:25:37,229 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 15:25:37,274 - INFO - Session: 4 in round: 2 has these picked books: 600
+2025-03-16 15:25:37,275 - INFO - Session: 4 in round: 2 has these best books: 3009, 7755, 2487, 3797, 6256
+2025-03-16 15:25:48,175 - INFO - Update scores for session: 4 and round: 2 took: 2 seconds
+2025-03-16 15:25:53,071 - INFO - Moving session with id: 4 to round: 3
+2025-03-16 15:25:53,092 - INFO - Session: 4 in round: 3 has these picked books: 600
+2025-03-16 15:25:53,094 - INFO - Session: 4 in round: 3 has these best books: 6585, 6629, 2821, 6290, 3060
+2025-03-16 15:30:39,796 - INFO - Removed book: 600 from selected books.
+2025-03-16 15:30:39,797 - INFO - Added book: 600 to disabled books.
+2025-03-16 15:34:32,458 - INFO - Started session: 5 with type: tags.
+2025-03-16 15:34:32,495 - INFO - Session: 5 in round: 0 has these picked books: 
+2025-03-16 15:34:32,496 - INFO - Session: 5 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 15:36:55,597 - INFO - Update scores for session: 5 and round: 0 took: 2 seconds
+2025-03-16 15:37:00,678 - INFO - Moving session with id: 5 to round: 1
+2025-03-16 15:37:00,695 - INFO - Session: 5 in round: 1 has these picked books: 
+2025-03-16 15:37:00,696 - INFO - Session: 5 in round: 1 has these best books: 3995, 2045, 1346, 3457, 4540
+2025-03-16 15:37:44,922 - INFO - Update scores for session: 5 and round: 1 took: 2 seconds
+2025-03-16 15:37:49,867 - INFO - Moving session with id: 5 to round: 2
+2025-03-16 15:37:49,884 - INFO - Session: 5 in round: 2 has these picked books: 
+2025-03-16 15:37:49,884 - INFO - Session: 5 in round: 2 has these best books: 3995, 1346, 4751, 3459, 3457
+2025-03-16 15:38:31,499 - INFO - Update scores for session: 5 and round: 2 took: 2 seconds
+2025-03-16 15:38:36,354 - INFO - Moving session with id: 5 to round: 3
+2025-03-16 15:38:36,371 - INFO - Session: 5 in round: 3 has these picked books: 
+2025-03-16 15:38:36,372 - INFO - Session: 5 in round: 3 has these best books: 4841, 4931, 3536, 5849, 222
+2025-03-16 15:39:19,520 - INFO - Update scores for session: 5 and round: 3 took: 2 seconds
+2025-03-16 15:39:24,155 - INFO - Moving session with id: 5 to round: 4
+2025-03-16 15:39:24,172 - INFO - Session: 5 in round: 4 has these picked books: 
+2025-03-16 15:39:24,173 - INFO - Session: 5 in round: 4 has these best books: 1862, 7649, 2639, 2683, 7663
+2025-03-16 15:40:03,846 - INFO - Update scores for session: 5 and round: 4 took: 2 seconds
+2025-03-16 15:40:08,820 - INFO - Moving session with id: 5 to round: 5
+2025-03-16 15:40:08,836 - INFO - Session: 5 in round: 5 has these picked books: 
+2025-03-16 15:40:08,837 - INFO - Session: 5 in round: 5 has these best books: 7649, 4668, 8795, 2639, 3450
+2025-03-16 15:45:05,638 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 15:47:26,627 - INFO - Started session: 6 with type: descriptions.
+2025-03-16 15:47:26,670 - INFO - Session: 6 in round: 0 has these picked books: 
+2025-03-16 15:47:26,671 - INFO - Session: 6 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 15:48:01,967 - INFO - Update scores for session: 6 and round: 0 took: 2 seconds
+2025-03-16 15:48:06,963 - INFO - Moving session with id: 6 to round: 1
+2025-03-16 15:48:06,982 - INFO - Session: 6 in round: 1 has these picked books: 
+2025-03-16 15:48:06,983 - INFO - Session: 6 in round: 1 has these best books: 600, 3798, 830, 631, 1334
+2025-03-16 15:48:44,400 - INFO - Update scores for session: 6 and round: 1 took: 2 seconds
+2025-03-16 15:48:49,480 - INFO - Moving session with id: 6 to round: 2
+2025-03-16 15:48:49,499 - INFO - Session: 6 in round: 2 has these picked books: 
+2025-03-16 15:48:49,500 - INFO - Session: 6 in round: 2 has these best books: 686, 418, 7719, 9074, 4646
+2025-03-16 15:49:00,237 - INFO - Added book: 4646 to selected books.
+2025-03-16 15:50:41,005 - INFO - Update scores for session: 6 and round: 2 took: 2 seconds
+2025-03-16 15:50:46,303 - INFO - Moving session with id: 6 to round: 3
+2025-03-16 15:50:46,326 - INFO - Session: 6 in round: 3 has these picked books: 4646
+2025-03-16 15:50:46,327 - INFO - Session: 6 in round: 3 has these best books: 686, 6250, 1924, 2094, 1470
+2025-03-16 15:51:57,121 - INFO - Update scores for session: 6 and round: 3 took: 2 seconds
+2025-03-16 15:52:02,306 - INFO - Moving session with id: 6 to round: 4
+2025-03-16 15:52:02,326 - INFO - Session: 6 in round: 4 has these picked books: 4646
+2025-03-16 15:52:02,327 - INFO - Session: 6 in round: 4 has these best books: 686, 9074, 2016, 3898, 5370
+2025-03-16 15:53:57,225 - INFO - Update scores for session: 6 and round: 4 took: 2 seconds
+2025-03-16 15:54:02,519 - INFO - Moving session with id: 6 to round: 5
+2025-03-16 15:54:02,539 - INFO - Session: 6 in round: 5 has these picked books: 4646
+2025-03-16 15:54:02,540 - INFO - Session: 6 in round: 5 has these best books: 1982, 3898, 2067, 1924, 8915
+2025-03-16 15:54:45,206 - INFO - Update scores for session: 6 and round: 5 took: 2 seconds
+2025-03-16 15:54:50,834 - INFO - Moving session with id: 6 to round: 6
+2025-03-16 15:54:50,853 - INFO - Session: 6 in round: 6 has these picked books: 4646
+2025-03-16 15:54:50,854 - INFO - Session: 6 in round: 6 has these best books: 2067, 1982, 3898, 7348, 1924
+2025-03-16 15:55:27,699 - INFO - Update scores for session: 6 and round: 6 took: 2 seconds
+2025-03-16 15:55:32,858 - INFO - Moving session with id: 6 to round: 7
+2025-03-16 15:55:32,878 - INFO - Session: 6 in round: 7 has these picked books: 4646
+2025-03-16 15:55:32,879 - INFO - Session: 6 in round: 7 has these best books: 974, 9074, 3725, 1637, 5803
+2025-03-16 15:56:03,530 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 15:58:00,131 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 15:59:08,600 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 15:59:16,219 - INFO - Update scores for session: 6 and round: 7 took: 2 seconds
+2025-03-16 15:59:21,641 - INFO - Moving session with id: 6 to round: 8
+2025-03-16 15:59:21,665 - INFO - Session: 6 in round: 8 has these picked books: 4646
+2025-03-16 15:59:21,666 - INFO - Session: 6 in round: 8 has these best books: 3898, 7348, 9074, 2067, 1982
+2025-03-16 16:04:07,186 - INFO - Session: 6 in round: 8 has these picked books: 4646
+2025-03-16 16:04:07,188 - INFO - Session: 6 in round: 8 has these best books: 3898, 7348, 9074, 2067, 1982
+2025-03-16 16:07:22,527 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:07:32,402 - INFO - Started session: 7 with type: descriptions.
+2025-03-16 16:07:32,444 - INFO - Session: 7 in round: 0 has these picked books: 
+2025-03-16 16:07:32,445 - INFO - Session: 7 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 16:08:12,518 - INFO - Update scores for session: 7 and round: 0 took: 2 seconds
+2025-03-16 16:08:17,645 - INFO - Moving session with id: 7 to round: 1
+2025-03-16 16:08:17,665 - INFO - Session: 7 in round: 1 has these picked books: 
+2025-03-16 16:08:17,666 - INFO - Session: 7 in round: 1 has these best books: 3333, 7610, 1069, 7516, 830
+2025-03-16 16:09:07,136 - INFO - Update scores for session: 7 and round: 1 took: 2 seconds
+2025-03-16 16:09:12,198 - INFO - Moving session with id: 7 to round: 2
+2025-03-16 16:09:12,219 - INFO - Session: 7 in round: 2 has these picked books: 
+2025-03-16 16:09:12,220 - INFO - Session: 7 in round: 2 has these best books: 600, 3333, 4342, 1980, 8708
+2025-03-16 16:10:21,218 - INFO - Update scores for session: 7 and round: 2 took: 2 seconds
+2025-03-16 16:10:26,364 - INFO - Moving session with id: 7 to round: 3
+2025-03-16 16:10:26,384 - INFO - Session: 7 in round: 3 has these picked books: 
+2025-03-16 16:10:26,385 - INFO - Session: 7 in round: 3 has these best books: 600, 1980, 7336, 6558, 3349
+2025-03-16 16:11:27,589 - INFO - Update scores for session: 7 and round: 3 took: 2 seconds
+2025-03-16 16:11:32,323 - INFO - Moving session with id: 7 to round: 4
+2025-03-16 16:11:32,344 - INFO - Session: 7 in round: 4 has these picked books: 
+2025-03-16 16:11:32,345 - INFO - Session: 7 in round: 4 has these best books: 3098, 3106, 2735, 7006, 3349
+2025-03-16 16:16:07,722 - INFO - Started session: 8 with type: tags.
+2025-03-16 16:16:22,648 - INFO - Started session: 9 with type: descriptions.
+2025-03-16 16:16:22,691 - INFO - Session: 9 in round: 0 has these picked books: 
+2025-03-16 16:16:22,692 - INFO - Session: 9 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 16:16:38,445 - INFO - Update scores for session: 9 and round: 0 took: 2 seconds
+2025-03-16 16:16:43,667 - INFO - Moving session with id: 9 to round: 1
+2025-03-16 16:16:43,688 - INFO - Session: 9 in round: 1 has these picked books: 
+2025-03-16 16:16:43,689 - INFO - Session: 9 in round: 1 has these best books: 8839, 5353, 7623, 2402, 1159
+2025-03-16 16:17:19,885 - INFO - Update scores for session: 9 and round: 1 took: 2 seconds
+2025-03-16 16:17:24,426 - INFO - Moving session with id: 9 to round: 2
+2025-03-16 16:17:24,446 - INFO - Session: 9 in round: 2 has these picked books: 
+2025-03-16 16:17:24,447 - INFO - Session: 9 in round: 2 has these best books: 3693, 577, 5353, 8839, 7623
+2025-03-16 16:35:18,985 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:35:21,590 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:35:24,497 - INFO - Session: 9 in round: 2 has these picked books: 
+2025-03-16 16:35:24,499 - INFO - Session: 9 in round: 2 has these best books: 3693, 577, 5353, 8839, 7623
+2025-03-16 16:35:34,154 - INFO - Update scores for session: 9 and round: 2 took: 2 seconds
+2025-03-16 16:37:34,338 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:37:52,623 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:38:05,509 - INFO - Started session: 10 with type: descriptions.
+2025-03-16 16:38:05,553 - INFO - Session: 10 in round: 0 has these picked books: 
+2025-03-16 16:38:05,554 - INFO - Session: 10 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 16:38:33,038 - INFO - Update scores for session: 10 and round: 0 took: 2 seconds
+2025-03-16 16:38:37,641 - INFO - Moving session with id: 10 to round: 1
+2025-03-16 16:38:37,665 - INFO - Session: 10 in round: 1 has these picked books: 
+2025-03-16 16:38:37,666 - INFO - Session: 10 in round: 1 has these best books: 7610, 1544, 1746, 1334, 2508
+2025-03-16 16:39:22,746 - INFO - Update scores for session: 10 and round: 1 took: 2 seconds
+2025-03-16 16:39:27,689 - INFO - Moving session with id: 10 to round: 2
+2025-03-16 16:39:27,709 - INFO - Session: 10 in round: 2 has these picked books: 
+2025-03-16 16:39:27,710 - INFO - Session: 10 in round: 2 has these best books: 1746, 7610, 1544, 34, 8148
+2025-03-16 16:40:24,649 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:40:24,740 - INFO - Session: 10 in round: 2 has these picked books: 
+2025-03-16 16:40:24,741 - INFO - Session: 10 in round: 2 has these best books: 1746, 7610, 1544, 34, 8148
+2025-03-16 16:40:36,865 - INFO - Started session: 11 with type: descriptions.
+2025-03-16 16:40:36,907 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-16 16:40:36,909 - INFO - Session: 11 in round: 0 has these best books: 18, 19, 20, 31, 21
+2025-03-16 16:40:57,267 - INFO - Update scores for session: 11 and round: 0 took: 2 seconds
+2025-03-16 16:41:02,411 - INFO - Moving session with id: 11 to round: 1
+2025-03-16 16:41:02,436 - INFO - Session: 11 in round: 1 has these picked books: 
+2025-03-16 16:41:02,437 - INFO - Session: 11 in round: 1 has these best books: 3102, 709, 6153, 3112, 5285
+2025-03-16 16:45:59,042 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:46:24,430 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:46:33,739 - INFO - Started session: 12 with type: descriptions.
+2025-03-16 16:46:33,781 - INFO - Session: 12 in round: 0 has these picked books: 
+2025-03-16 16:46:33,782 - INFO - Session: 12 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 16:46:39,440 - INFO - Update scores for session: 12 and round: 0 took: 2 seconds
+2025-03-16 16:46:44,433 - INFO - Moving session with id: 12 to round: 1
+2025-03-16 16:46:44,455 - INFO - Session: 12 in round: 1 has these picked books: 
+2025-03-16 16:46:44,456 - INFO - Session: 12 in round: 1 has these best books: 1254, 403, 1058, 1544, 4494
+2025-03-16 16:48:30,546 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:48:30,597 - INFO - Session: 12 in round: 1 has these picked books: 
+2025-03-16 16:48:30,598 - INFO - Session: 12 in round: 1 has these best books: 1254, 403, 1058, 1544, 4494
+2025-03-16 16:48:38,991 - INFO - Started session: 13 with type: descriptions.
+2025-03-16 16:48:39,032 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-16 16:48:39,033 - INFO - Session: 13 in round: 0 has these best books: 9172, 9173, 9174, 9175, 9176
+2025-03-16 16:49:51,221 - INFO - Update scores for session: 13 and round: 0 took: 2 seconds
+2025-03-16 16:49:56,312 - INFO - Moving session with id: 13 to round: 1
+2025-03-16 16:49:56,337 - INFO - Session: 13 in round: 1 has these picked books: 
+2025-03-16 16:49:56,338 - INFO - Session: 13 in round: 1 has these best books: 1007, 7573, 535, 4755, 5311
+2025-03-16 16:54:47,263 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 16:54:49,888 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 19:55:04,531 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:00:43,624 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:01:59,883 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:02:06,975 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:02:09,562 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:02:14,086 - INFO - Started session: 14 with type: None.
+2025-03-16 20:02:14,121 - INFO - Session: 14 in round: 0 has these picked books: 
+2025-03-16 20:02:14,121 - INFO - Session: 14 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 20:05:55,762 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:06:43,116 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:07:31,923 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:07:34,474 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:07:39,712 - INFO - Started session: 15 with type: None.
+2025-03-16 20:07:39,747 - INFO - Session: 15 in round: 0 has these picked books: 
+2025-03-16 20:07:39,747 - INFO - Session: 15 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 20:10:10,167 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:10:11,794 - INFO - Session: 15 in round: 0 has these picked books: 
+2025-03-16 20:10:11,794 - INFO - Session: 15 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 20:10:19,502 - INFO - Started session: 16 with type: None.
+2025-03-16 20:10:19,537 - INFO - Session: 16 in round: 0 has these picked books: 
+2025-03-16 20:10:19,538 - INFO - Session: 16 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 20:10:28,242 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:10:30,667 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:10:34,951 - INFO - Started session: 17 with type: None.
+2025-03-16 20:10:34,988 - INFO - Session: 17 in round: 0 has these picked books: 
+2025-03-16 20:10:34,988 - INFO - Session: 17 in round: 0 has these best books: 8998, 8999, 9000, 9001, 9002
+2025-03-16 20:11:22,078 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:14:31,898 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:14:34,469 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:14:38,422 - INFO - Started session: 18 with type: None.
+2025-03-16 20:16:17,505 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:16:20,037 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:16:24,005 - INFO - Started session: 19 with type: None.
+2025-03-16 20:16:24,044 - INFO - Session: 19 in round: 0 has these picked books: 
+2025-03-16 20:16:24,044 - INFO - Session: 19 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 20:17:05,015 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:17:07,587 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:17:10,664 - INFO - Started session: 20 with type: None.
+2025-03-16 20:17:10,703 - INFO - Session: 20 in round: 0 has these picked books: 
+2025-03-16 20:17:10,703 - INFO - Session: 20 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 20:18:49,965 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:24:06,051 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:24:12,369 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:24:14,945 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:24:18,725 - INFO - Started session: 21 with type: None.
+2025-03-16 20:24:18,763 - INFO - Session: 21 in round: 0 has these picked books: 
+2025-03-16 20:24:18,763 - INFO - Session: 21 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 20:24:39,672 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:26:45,114 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:33:09,380 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:33:11,906 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:33:17,036 - INFO - Started session: 22 with type: None.
+2025-03-16 20:33:17,077 - INFO - Session: 22 in round: 0 has these picked books: 
+2025-03-16 20:33:17,078 - INFO - Session: 22 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 20:37:03,230 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:37:05,796 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:37:12,839 - INFO - Started session: 23 with type: None.
+2025-03-16 20:37:12,886 - INFO - Session: 23 in round: 0 has these picked books: 
+2025-03-16 20:37:12,887 - INFO - Session: 23 in round: 0 has these best books: 125, 126, 127, 128, 129
+2025-03-16 20:38:23,416 - WARNING - WARNING INVALID SESSION TYPE: None
+2025-03-16 20:38:26,435 - INFO - Update scores for session: 23 and round: 0 took: 2 seconds
+2025-03-16 20:38:29,354 - INFO - Moving session with id: 23 to round: 1
+2025-03-16 20:38:29,381 - INFO - Session: 23 in round: 1 has these picked books: 
+2025-03-16 20:38:29,382 - INFO - Session: 23 in round: 1 has these best books: 3363, 7640, 1101, 80, 744
+2025-03-16 20:40:50,499 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:41:07,611 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:41:14,298 - INFO - Started session: 24 with type: None.
+2025-03-16 20:41:14,345 - INFO - Session: 24 in round: 0 has these picked books: 
+2025-03-16 20:41:14,346 - INFO - Session: 24 in round: 0 has these best books: 116, 117, 118, 119, 120
+2025-03-16 20:43:28,199 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:43:29,417 - WARNING - WARNING INVALID SESSION TYPE: None
+2025-03-16 20:43:32,581 - INFO - Update scores for session: 24 and round: 0 took: 2 seconds
+2025-03-16 20:43:35,585 - INFO - Generating descriptions took: 3.0029 seconds
+2025-03-16 20:43:35,597 - INFO - Moving session with id: 24 to round: 1
+2025-03-16 20:43:35,630 - INFO - Session: 24 in round: 1 has these picked books: 
+2025-03-16 20:43:35,631 - INFO - Session: 24 in round: 1 has these best books: 8248, 6374, 8988, 6508, 5151
+2025-03-16 20:44:23,103 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 20:46:36,618 - INFO - Table 'book' exists with 9214 books present.

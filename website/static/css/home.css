@@ -58,13 +58,6 @@ p {
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
-}
-
-.separator {
-    display: flex;
-    width: 50%;
-    justify-content: center;
-    align-items: end;
     padding-bottom: 25vh;
 }
 

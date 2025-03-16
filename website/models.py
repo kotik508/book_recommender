@@ -1,7 +1,7 @@
 from . import db
 from sqlalchemy.sql import func
 from pgvector.sqlalchemy import Vector
-from flask import session
+from flask import session, current_app
 from sqlalchemy import text
 import numpy as np
 
@@ -51,6 +51,11 @@ class Session(db.Model):
         return sess.rounds
 
     @classmethod
+    def get_type(cls):
+        sess = cls.query.filter(cls.id == session['session_id']).first()
+        return sess.version
+
+    @classmethod
     def assign_centroids(cls, centroids):
         sess = cls.query.filter(cls.id == session['session_id']).first()
         sess.centroid1 = centroids[0].tolist()
@@ -77,18 +82,22 @@ class Session(db.Model):
         if add=='pick':
             if book_obj not in session_obj.picked_books and len(session_obj.picked_books) < 5:
                 session_obj.picked_books.append(book_obj)
+                current_app.logger.info(f'Added book: {book_obj.id} to selected books.')
             else:
-                print('Too many picked books')
+                current_app.logger.error('Too many picked books.')
         elif add=='rm_pick':
             if book_obj in session_obj.picked_books:
                 session_obj.picked_books.remove(book_obj)
+                current_app.logger.info(f'Removed book: {book_obj.id} from selected books.')
             if book_obj not in session_obj.disabled_books:
                 session_obj.disabled_books.append(book_obj)
+                current_app.logger.info(f'Added book: {book_obj.id} to disabled books.')
         elif add=='rm_disable':
             if book_obj in session_obj.disabled_books:
                 session_obj.disabled_books.remove(book_obj)
+                current_app.logger.info(f'Removed book: {book_obj.id} from disabled books.')
         else:
-            print('Wrong add messsage')
+            current_app.logger.error('Wrong add messsage')
 
         db.session.commit()
         return True
@@ -152,7 +161,7 @@ class Book(db.Model):
     
     @classmethod
     def get_best_books(cls):
-        query = text("SELECT b.* FROM book b LEFT JOIN score s ON b.id = s.book_id WHERE s.session_id = :session_id ORDER BY s.score DESC LIMIT 10;")
+        query = text("SELECT b.* FROM book b LEFT JOIN score s ON b.id = s.book_id WHERE s.session_id = :session_id ORDER BY s.score DESC LIMIT 20;")
         results = db.session.execute(query, {"session_id": int(session['session_id'])})
         best_books = results.fetchall()
         picked_books = [b.id for b in Session.get_picked_books()]

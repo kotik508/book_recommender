@@ -1,35 +1,41 @@
 from scipy.spatial.distance import cdist
-from flask import session
+from flask import session, current_app
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
 from .text_generation import get_description
 from .models import Score, Session, Book
 from . import db
-import random
+import asyncio
 import time
 import numpy as np
 import pandas as pd
 
 
-def get_answers():
+async def get_answers():
 
     books = Book.query.all()
     now = time.time()
     scores = np.array([score.score for score in Score.get_scores_from_sample(books)])
-    weights = np.log1p(scores)
-    print(sum(weights))
-    print(f'Log transform took: {round(time.time()- now, 4)} seconds')
-    books_sampled = random.choices(books, weights=weights, k=500)
+    weights = scores**15
+    weights = np.divide(weights, np.sum(weights))
+    print(weights[np.argsort(weights)[:5]])
+    print(weights[np.argsort(weights)[-6:]])
+    current_app.logger.info(f'Score transform took: {round(time.time()- now, 4)} seconds')
+    books_sampled = np.random.choice(list(range(len(books))), size=500, replace=False, p=weights)
+    current_app.logger.info("Mean rank: " + str(np.mean(np.argsort(scores)[books_sampled])))
+    books_sampled = [books[book] for book in books_sampled]
 
     now = time.time()
     best_embeddings = clustering(books_sampled)
-    print(f'Clustering took: {round(time.time()- now, 4)} seconds')
+    current_app.logger.info(f'Clustering took: {round(time.time()- now, 4)} seconds')
 
-    now = time.time()
     summaries = {}
-    for cluster in best_embeddings.keys():
-        summaries[cluster] = get_description(best_embeddings[cluster])
-    print(f'Generating descriptions took: {round(time.time()- now, 4)} seconds')
+    summaries[0], summaries[1], summaries[2], summaries[3] = await asyncio.gather(
+        get_description(best_embeddings[0]),
+        get_description(best_embeddings[1]),
+        get_description(best_embeddings[2]),
+        get_description(best_embeddings[3])
+    )
 
     session['summaries'] = summaries
 
@@ -55,7 +61,7 @@ def clustering(books: list[Book]):
     elif session['type'] == 'tags':
         embeddings = np.array([book.svd for book in books])
     else:
-        print(f'WARNING INVALID SESSION TYPE: {session['type']}')
+        current_app.logger.warning(f'WARNING INVALID SESSION TYPE: {session['type']}')
         embeddings = np.array([book.embedding for book in books])
 
     # find clusters using k-means with k = 4
@@ -79,13 +85,12 @@ def clustering(books: list[Book]):
         best_embeddings[cluster_id] = [books[i] for i in top_indices]
 
     for cs in best_embeddings.keys():
-        print(f'Best book for cluster {cs}: {best_embeddings[cs][0].tags[:20]}')
-        print(f'Second best book for cluster {cs}: {best_embeddings[cs][1].tags[:20]}')
-        print(f'Third best book for cluster {cs}: {best_embeddings[cs][3].tags[:20]}')
+        for i in range(4):
+            current_app.logger.info(f'Best book for cluster {cs}: Book {i} {best_embeddings[cs][i].title}')
 
     return best_embeddings
 
-def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma: np.float32 = np.float32(0.5)):
+def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma: np.float32 = np.float32(0.1)):
 
     centroids = Session.get_centroids()
 
