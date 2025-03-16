@@ -1,25 +1,10 @@
-import asyncio
-from website.text_generation import init_genai
+import numpy as np
 
-genai_client = init_genai()
+sel = np.array([5, 1, 3])
 
-async def get_answers(prompt):
+ar = np.array([1, 6, 9, 3, 5, 7])
 
-    response = await genai_client.aio.models.generate_content(
-        model="gemini-2.0-flash-lite",
-        contents = prompt
-    )
 
-    return response
-
-async def question():
-    summaries = {}
-
-    summaries[0], summaries[1], summaries[2], summaries[3] = await asyncio.gather(
-        get_answers("What is the name of the first Harry Potter book"),
-        get_answers("What is the name of the second Harry Potter book"),
-        get_answers("What is the name of the third Harry Potter book"),
-        get_answers("What is the name of the fourth Harry Potter book")
-    )
-
-    print(summaries)
+ranked_ar = np.argsort(-ar)
+print(ranked_ar[:, None])
+print(np.mean(np.where(ranked_ar[:, None] == sel)[0]))

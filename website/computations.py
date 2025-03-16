@@ -16,13 +16,11 @@ async def get_answers():
     books = Book.query.all()
     now = time.time()
     scores = np.array([score.score for score in Score.get_scores_from_sample(books)])
-    weights = scores**15
+    weights = scores**6
     weights = np.divide(weights, np.sum(weights))
-    print(weights[np.argsort(weights)[:5]])
-    print(weights[np.argsort(weights)[-6:]])
     current_app.logger.info(f'Score transform took: {round(time.time()- now, 4)} seconds')
     books_sampled = np.random.choice(list(range(len(books))), size=500, replace=False, p=weights)
-    current_app.logger.info("Mean rank: " + str(np.mean(np.argsort(scores)[books_sampled])))
+    current_app.logger.info("Mean rank: " + str(np.mean(np.where(np.argsort(-scores)[:, None] == books_sampled)[0])))
     books_sampled = [books[book] for book in books_sampled]
 
     now = time.time()

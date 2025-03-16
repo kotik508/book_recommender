@@ -66,12 +66,13 @@ async def home():
 
     elif request.method == 'POST':
 
-        session['type'] = request.form.get('action')
-
-        new_session = Session(version=session['type'])
+        new_session = Session()
         db.session.add(new_session)
         db.session.commit()
         session['session_id'] = new_session.id
+        session['type'] = 'description' if new_session.id % 2 == 1 else 'tags'
+        new_session.version = session['type']
+        db.session.commit()
 
         books = Book.query.all()
         scores = [Score(session_id=new_session.id, book_id=b.id, score=1/len(books)) for b in books]

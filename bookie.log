@@ -275,3 +275,136 @@
 2025-03-16 20:43:35,631 - INFO - Session: 24 in round: 1 has these best books: 8248, 6374, 8988, 6508, 5151
 2025-03-16 20:44:23,103 - INFO - Table 'book' exists with 9214 books present.
 2025-03-16 20:46:36,618 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 22:12:04,587 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 22:19:07,292 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 22:19:09,886 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 22:20:30,205 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 22:20:34,473 - INFO - Score transform took: 0.1748 seconds
+2025-03-16 22:20:34,473 - INFO - Mean rank: 4642.718
+2025-03-16 22:21:31,647 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 22:21:35,123 - INFO - Score transform took: 0.1778 seconds
+2025-03-16 22:21:35,124 - INFO - Mean rank: 4558.962
+2025-03-16 22:21:35,380 - INFO - Best book for cluster 0: Book 0 A Time for Change: How White Supremacy Ideology Harms All Americans
+2025-03-16 22:21:35,381 - INFO - Best book for cluster 0: Book 1 The Oaks
+2025-03-16 22:21:35,381 - INFO - Best book for cluster 0: Book 2 Beyblade - Episodes: A Knight to Remember, a Majestic Battle... a Majestic Victory?, a Score to Settle, a Star Is Born, a Wicked Wind Blows, Art Attack, Attack of the Rock Bit Beast, Bad Seed in the Big Apple, Battle in the Sky
+2025-03-16 22:21:35,382 - INFO - Best book for cluster 0: Book 3 The Ways of Autumn
+2025-03-16 22:21:35,382 - INFO - Best book for cluster 1: Book 0 Fairy, Fairy, Quite Contrary
+2025-03-16 22:21:35,383 - INFO - Best book for cluster 1: Book 1 Akarnae
+2025-03-16 22:21:35,383 - INFO - Best book for cluster 1: Book 2 Unlocked
+2025-03-16 22:21:35,384 - INFO - Best book for cluster 1: Book 3 Hellboy and the B.P.R.D.: 1952 #1
+2025-03-16 22:21:35,384 - INFO - Best book for cluster 2: Book 0 One Small Sacrifice
+2025-03-16 22:21:35,385 - INFO - Best book for cluster 2: Book 1 No Exit
+2025-03-16 22:21:35,385 - INFO - Best book for cluster 2: Book 2 The Other Emily
+2025-03-16 22:21:35,385 - INFO - Best book for cluster 2: Book 3 Raven Black
+2025-03-16 22:21:35,386 - INFO - Best book for cluster 3: Book 0 Carnal: Somewhere Over 40 Winks
+2025-03-16 22:21:35,386 - INFO - Best book for cluster 3: Book 1 Her Own Legacy
+2025-03-16 22:21:35,387 - INFO - Best book for cluster 3: Book 2 The Last Dying Light
+2025-03-16 22:21:35,387 - INFO - Best book for cluster 3: Book 3 Joey and His Friend Water
+2025-03-16 22:21:35,388 - INFO - Clustering took: 0.2638 seconds
+2025-03-16 22:21:36,661 - INFO - Generating descriptions took: 3.0563 seconds
+2025-03-16 22:21:36,662 - INFO - Started session: 26 with type: tags.
+2025-03-16 22:21:36,708 - INFO - Session: 26 in round: 0 has these picked books: 
+2025-03-16 22:21:36,708 - INFO - Session: 26 in round: 0 has these best books: 151, 152, 153, 154, 156
+2025-03-16 22:22:10,645 - INFO - Update scores for session: 26 and round: 0 took: 2 seconds
+2025-03-16 22:22:12,311 - INFO - Score transform took: 0.1725 seconds
+2025-03-16 22:22:12,312 - INFO - Mean rank: 4540.738
+2025-03-16 22:22:12,498 - INFO - Best book for cluster 0: Book 0 Everybody Knows
+2025-03-16 22:22:12,499 - INFO - Best book for cluster 0: Book 1 Stillhouse Lake
+2025-03-16 22:22:12,499 - INFO - Best book for cluster 0: Book 2 The Turn of the Key
+2025-03-16 22:22:12,500 - INFO - Best book for cluster 0: Book 3 Kisscut
+2025-03-16 22:22:12,500 - INFO - Best book for cluster 1: Book 0 Drum Beats, Heart Beats
+2025-03-16 22:22:12,501 - INFO - Best book for cluster 1: Book 1 From Brexit to Brazil
+2025-03-16 22:22:12,502 - INFO - Best book for cluster 1: Book 2 Shadow Team GB
+2025-03-16 22:22:12,502 - INFO - Best book for cluster 1: Book 3 Alphabet Amigos
+2025-03-16 22:22:12,503 - INFO - Best book for cluster 2: Book 0 The Crystal Shard
+2025-03-16 22:22:12,503 - INFO - Best book for cluster 2: Book 1 Days of Blood & Starlight
+2025-03-16 22:22:12,504 - INFO - Best book for cluster 2: Book 2 Under the Never Sky
+2025-03-16 22:22:12,504 - INFO - Best book for cluster 2: Book 3 Skyhunter
+2025-03-16 22:22:12,505 - INFO - Best book for cluster 3: Book 0 Triumph: Life on the Other Side of Trials, Transplants, Transition and Transformation
+2025-03-16 22:22:12,505 - INFO - Best book for cluster 3: Book 1 Madam Speaker: Nancy Pelosi and the Lessons of Power
+2025-03-16 22:22:12,506 - INFO - Best book for cluster 3: Book 2 The Six Wives of Henry VIII
+2025-03-16 22:22:12,506 - INFO - Best book for cluster 3: Book 3 Steve Jobs
+2025-03-16 22:22:12,506 - INFO - Clustering took: 0.1944 seconds
+2025-03-16 22:22:13,598 - INFO - Generating descriptions took: 2.9527 seconds
+2025-03-16 22:22:13,608 - INFO - Moving session with id: 26 to round: 1
+2025-03-16 22:22:13,634 - INFO - Session: 26 in round: 1 has these picked books: 
+2025-03-16 22:22:13,635 - INFO - Session: 26 in round: 1 has these best books: 3549, 5212, 77, 4019, 2058
+2025-03-16 22:47:37,152 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 22:47:39,650 - INFO - Table 'book' exists with 9214 books present.
+2025-03-16 22:47:44,429 - INFO - Score transform took: 0.0528 seconds
+2025-03-16 22:47:44,438 - INFO - Mean rank: 4486.614
+2025-03-16 22:47:44,439 - WARNING - WARNING INVALID SESSION TYPE: description
+2025-03-16 22:47:44,743 - INFO - Best book for cluster 0: Book 0 Safe Haven
+2025-03-16 22:47:44,743 - INFO - Best book for cluster 0: Book 1 The Maddest Obsession
+2025-03-16 22:47:44,744 - INFO - Best book for cluster 0: Book 2 Spellbound
+2025-03-16 22:47:44,744 - INFO - Best book for cluster 0: Book 3 Hopeless
+2025-03-16 22:47:44,745 - INFO - Best book for cluster 1: Book 0 Giovanni’s Room
+2025-03-16 22:47:44,745 - INFO - Best book for cluster 1: Book 1 In the Dream House
+2025-03-16 22:47:44,746 - INFO - Best book for cluster 1: Book 2 The Man Who Loved Books Too Much: The True Story of a Thief, a Detective, and a World of Literary Obsession
+2025-03-16 22:47:44,746 - INFO - Best book for cluster 1: Book 3 "Surely You're Joking, Mr. Feynman!": Adventures of a Curious Character
+2025-03-16 22:47:44,747 - INFO - Best book for cluster 2: Book 0 A Stroke of Midnight
+2025-03-16 22:47:44,747 - INFO - Best book for cluster 2: Book 1 Wizard's First Rule
+2025-03-16 22:47:44,747 - INFO - Best book for cluster 2: Book 2 Iron Crowned
+2025-03-16 22:47:44,748 - INFO - Best book for cluster 2: Book 3 Heir of Broken Fate
+2025-03-16 22:47:44,748 - INFO - Best book for cluster 3: Book 0 Gregor the Overlander
+2025-03-16 22:47:44,749 - INFO - Best book for cluster 3: Book 1 Timeline
+2025-03-16 22:47:44,749 - INFO - Best book for cluster 3: Book 2 A World Without Heroes
+2025-03-16 22:47:44,750 - INFO - Best book for cluster 3: Book 3 Gone
+2025-03-16 22:47:44,750 - INFO - Clustering took: 0.3109 seconds
+2025-03-16 22:47:46,054 - INFO - Generating descriptions took: 3.0223 seconds
+2025-03-16 22:47:46,055 - INFO - Started session: 27 with type: description.
+2025-03-16 22:47:46,103 - INFO - Session: 27 in round: 0 has these picked books: 
+2025-03-16 22:47:46,104 - INFO - Session: 27 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-16 22:48:03,336 - WARNING - WARNING INVALID SESSION TYPE: description
+2025-03-16 22:48:06,331 - INFO - Update scores for session: 27 and round: 0 took: 2 seconds
+2025-03-16 22:48:08,013 - INFO - Score transform took: 0.1754 seconds
+2025-03-16 22:48:08,023 - INFO - Mean rank: 1053.104
+2025-03-16 22:48:08,023 - WARNING - WARNING INVALID SESSION TYPE: description
+2025-03-16 22:48:08,289 - INFO - Best book for cluster 0: Book 0 Growth of the Soil
+2025-03-16 22:48:08,289 - INFO - Best book for cluster 0: Book 1 Parnassus on Wheels
+2025-03-16 22:48:08,290 - INFO - Best book for cluster 0: Book 2 Player Piano
+2025-03-16 22:48:08,290 - INFO - Best book for cluster 0: Book 3 Less
+2025-03-16 22:48:08,291 - INFO - Best book for cluster 1: Book 0 Relentless
+2025-03-16 22:48:08,291 - INFO - Best book for cluster 1: Book 1 The Magicians' Guild
+2025-03-16 22:48:08,292 - INFO - Best book for cluster 1: Book 2 Court
+2025-03-16 22:48:08,292 - INFO - Best book for cluster 1: Book 3 Torment
+2025-03-16 22:48:08,292 - INFO - Best book for cluster 2: Book 0 Into the Darkest Corner
+2025-03-16 22:48:08,293 - INFO - Best book for cluster 2: Book 1 Pushing the Limits
+2025-03-16 22:48:08,293 - INFO - Best book for cluster 2: Book 2 The Longest Ride
+2025-03-16 22:48:08,294 - INFO - Best book for cluster 2: Book 3 The Problem with Forever
+2025-03-16 22:48:08,294 - INFO - Best book for cluster 3: Book 0 A Monster Calls
+2025-03-16 22:48:08,295 - INFO - Best book for cluster 3: Book 1 The Whisper Man
+2025-03-16 22:48:08,295 - INFO - Best book for cluster 3: Book 2 Midnight
+2025-03-16 22:48:08,295 - INFO - Best book for cluster 3: Book 3 The Alchemy Fire Murder
+2025-03-16 22:48:08,296 - INFO - Clustering took: 0.2724 seconds
+2025-03-16 22:48:12,156 - INFO - Generating descriptions took: 5.824 seconds
+2025-03-16 22:48:12,168 - INFO - Moving session with id: 27 to round: 1
+2025-03-16 22:48:12,196 - INFO - Session: 27 in round: 1 has these picked books: 
+2025-03-16 22:48:12,197 - INFO - Session: 27 in round: 1 has these best books: 3151, 1031, 6985, 3742, 6195
+2025-03-16 22:48:16,857 - WARNING - WARNING INVALID SESSION TYPE: description
+2025-03-16 22:48:19,968 - INFO - Update scores for session: 27 and round: 1 took: 2 seconds
+2025-03-16 22:48:21,655 - INFO - Score transform took: 0.1744 seconds
+2025-03-16 22:48:21,664 - INFO - Mean rank: 561.26
+2025-03-16 22:48:21,664 - WARNING - WARNING INVALID SESSION TYPE: description
+2025-03-16 22:48:21,864 - INFO - Best book for cluster 0: Book 0 Before They Are Hanged
+2025-03-16 22:48:21,865 - INFO - Best book for cluster 0: Book 1 Dueling Fates
+2025-03-16 22:48:21,865 - INFO - Best book for cluster 0: Book 2 War Storm
+2025-03-16 22:48:21,866 - INFO - Best book for cluster 0: Book 3 The Crimson Crown
+2025-03-16 22:48:21,867 - INFO - Best book for cluster 1: Book 0 The Edge of Never
+2025-03-16 22:48:21,867 - INFO - Best book for cluster 1: Book 1 The Housemaid
+2025-03-16 22:48:21,868 - INFO - Best book for cluster 1: Book 2 Act Your Age, Eve Brown
+2025-03-16 22:48:21,868 - INFO - Best book for cluster 1: Book 3 Fall From Grace
+2025-03-16 22:48:21,869 - INFO - Best book for cluster 2: Book 0 Tier One
+2025-03-16 22:48:21,869 - INFO - Best book for cluster 2: Book 1 The Client
+2025-03-16 22:48:21,870 - INFO - Best book for cluster 2: Book 2 The Cold One
+2025-03-16 22:48:21,870 - INFO - Best book for cluster 2: Book 3 Still Life With Crows
+2025-03-16 22:48:21,871 - INFO - Best book for cluster 3: Book 0 The Aleph and Other Stories
+2025-03-16 22:48:21,871 - INFO - Best book for cluster 3: Book 1 Parnassus on Wheels
+2025-03-16 22:48:21,872 - INFO - Best book for cluster 3: Book 2 Invisible
+2025-03-16 22:48:21,872 - INFO - Best book for cluster 3: Book 3 The Metamorphosis and Other Stories
+2025-03-16 22:48:21,872 - INFO - Clustering took: 0.2079 seconds
+2025-03-16 22:48:22,868 - INFO - Generating descriptions took: 2.8993 seconds
+2025-03-16 22:48:22,880 - INFO - Moving session with id: 27 to round: 2
+2025-03-16 22:48:22,907 - INFO - Session: 27 in round: 2 has these picked books: 
+2025-03-16 22:48:22,908 - INFO - Session: 27 in round: 2 has these best books: 9132, 8192, 3128, 3396, 7942
+2025-03-16 22:48:56,760 - INFO - Table 'book' exists with 9214 books present.
