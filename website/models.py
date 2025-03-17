@@ -12,12 +12,6 @@ picked_books = db.Table(
     db.Column('book_id', db.Integer, db.ForeignKey('book.id', ondelete='CASCADE'), primary_key=True)
 )
 
-disabled_books = db.Table(
-    'disabled_books',
-    db.Column('session_id', db.Integer, db.ForeignKey('session.id', ondelete='CASCADE'), primary_key=True),
-    db.Column('book_id', db.Integer, db.ForeignKey('book.id', ondelete='CASCADE'), primary_key=True)
-)
-
 recommended_books = db.Table(
     'recommended_books',
     db.Column('session_id', db.Integer, db.ForeignKey('session.id', ondelete='CASCADE'), primary_key=True),
@@ -30,7 +24,7 @@ class Session(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     version = db.Column(db.String(50))
     picked_books = db.relationship('Book', secondary=picked_books, backref='picked_by_session')
-    disabled_books = db.relationship('Book', secondary=disabled_books, backref='disabled_by_session')
+    recommended_books = db.relationship('Book', secondary=recommended_books, backref='recommended_by_session')
     centroid1 = db.Column(Vector)
     centroid2 = db.Column(Vector)
     centroid3 = db.Column(Vector)
@@ -89,13 +83,6 @@ class Session(db.Model):
             if book_obj in session_obj.picked_books:
                 session_obj.picked_books.remove(book_obj)
                 current_app.logger.info(f'Removed book: {book_obj.id} from selected books.')
-            if book_obj not in session_obj.disabled_books:
-                session_obj.disabled_books.append(book_obj)
-                current_app.logger.info(f'Added book: {book_obj.id} to disabled books.')
-        elif add=='rm_disable':
-            if book_obj in session_obj.disabled_books:
-                session_obj.disabled_books.remove(book_obj)
-                current_app.logger.info(f'Removed book: {book_obj.id} from disabled books.')
         else:
             current_app.logger.error('Wrong add messsage')
 
@@ -151,12 +138,12 @@ class Book(db.Model):
 
     @classmethod
     def get_embeddings(cls):
-        results = db.session.query(cls.embedding).all()
+        results = db.session.query(cls.embedding).order_by(cls.id).all()
         return [row[0] for row in results]
     
     @classmethod
     def get_svds(cls):
-        results = db.session.query(cls.svd).all()
+        results = db.session.query(cls.svd).order_by(cls.id).all()
         return [row[0] for row in results]
     
     @classmethod
@@ -165,8 +152,7 @@ class Book(db.Model):
         results = db.session.execute(query, {"session_id": int(session['session_id'])})
         best_books = results.fetchall()
         picked_books = [b.id for b in Session.get_picked_books()]
-        disabled_books = [d.id for d in Session.get_disabled_books()]
-        return [book for book in best_books if book.id not in picked_books + disabled_books]
+        return [book for book in best_books if book.id not in picked_books]
 
 class Score(db.Model):
     __tablename__ = "score"
@@ -182,8 +168,8 @@ class Score(db.Model):
     @classmethod
     def get_scores_from_sample(cls, books: list[Book]):
         session_id = session['session_id']
-        book_ids = [book.id for book in books]
-        scores = cls.query.filter((cls.session_id == session_id) & (cls.book_id.in_(book_ids))).all()
+        book_ids = [int(book.id) for book in books]
+        scores = cls.query.filter((cls.session_id == session_id) & (cls.book_id.in_(book_ids))).order_by(cls.book_id).all()
         return scores
     
     @classmethod

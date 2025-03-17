@@ -13,14 +13,20 @@ import pandas as pd
 
 async def get_answers():
 
-    books = Book.query.all()
+    books = Book.query.order_by(Book.id).all()
     now = time.time()
     scores = np.array([score.score for score in Score.get_scores_from_sample(books)])
-    weights = scores**6
+    exp = (15 - Session.get_rounds()) / 2
+    weights = scores**(exp)
     weights = np.divide(weights, np.sum(weights))
     current_app.logger.info(f'Score transform took: {round(time.time()- now, 4)} seconds')
     books_sampled = np.random.choice(list(range(len(books))), size=500, replace=False, p=weights)
-    current_app.logger.info("Mean rank: " + str(np.mean(np.where(np.argsort(-scores)[:, None] == books_sampled)[0])))
+    sorted = np.argsort(-scores)
+    current_app.logger.info("Mean rank: " + str(np.mean(np.where(sorted[:, None] == books_sampled)[0])))
+    # current_app.logger.info(f'HP position: {np.where(sorted[:, None] == 120)[0]}')
+    # current_app.logger.info(f'HP score: {Score.query.filter((Score.book_id == 121) & (Score.session_id == session['session_id'])).first().score}')
+    current_app.logger.info(f'1984 position: {np.where(sorted[:, None] == 2714)[0]}')
+    current_app.logger.info(f'1984 score: {Score.query.filter((Score.book_id == 2715) & (Score.session_id == session['session_id'])).first().score}')
     books_sampled = [books[book] for book in books_sampled]
 
     now = time.time()
@@ -78,17 +84,17 @@ def clustering(books: list[Book]):
         cluster_embeddings = embeddings[cluster_indices]
         distances = cdist(cluster_embeddings, centroids[cluster_id].reshape(1, -1), metric='euclidean').flatten()
 
-        top_indices = cluster_indices[np.argsort(distances)[:5]].tolist()
+        top_indices = cluster_indices[np.argsort(distances)[:10]].tolist()
 
         best_embeddings[cluster_id] = [books[i] for i in top_indices]
 
-    for cs in best_embeddings.keys():
-        for i in range(4):
-            current_app.logger.info(f'Best book for cluster {cs}: Book {i} {best_embeddings[cs][i].title}')
+    # for cs in best_embeddings.keys():
+    #     for i in range(4):
+    #         current_app.logger.info(f'Best book for cluster {cs}: Book {i} {best_embeddings[cs][i].title}')
 
     return best_embeddings
 
-def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma: np.float32 = np.float32(0.1)):
+def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma: np.float32 = np.float32(0.25)):
 
     centroids = Session.get_centroids()
 
@@ -98,9 +104,9 @@ def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma:
         for x in centroids:
 
             if not np.array_equal(x, centroids[selected_cluster]):
-                disp_sum += np.exp(-(np.divide(np.linalg.norm(x - embedding), sigma)))
+                disp_sum += np.exp(-np.linalg.norm(x - embedding) / sigma)
         
-        like_val = np.exp(-(np.divide(np.linalg.norm(centroids[selected_cluster] - embedding), sigma)))
+        like_val = np.exp(-np.linalg.norm(centroids[selected_cluster] - embedding) / sigma)
         score.score = float(score.score * (like_val / (disp_sum + like_val)))
 
     # Score adjustment to keep values between 0 and 1

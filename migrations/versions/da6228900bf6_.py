@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3f55d803155a
+Revision ID: da6228900bf6
 Revises: 
-Create Date: 2025-03-15 20:51:10.460801
+Create Date: 2025-03-17 18:58:48.590931
 
 """
 from alembic import op
@@ -11,7 +11,7 @@ import pgvector
 
 
 # revision identifiers, used by Alembic.
-revision = '3f55d803155a'
+revision = 'da6228900bf6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -48,13 +48,6 @@ def upgrade():
     sa.Column('rounds', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('disabled_books',
-    sa.Column('session_id', sa.Integer(), nullable=False),
-    sa.Column('book_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['book_id'], ['book.id'], ondelete='CASCADE'),
-    sa.ForeignKeyConstraint(['session_id'], ['session.id'], ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('session_id', 'book_id')
-    )
     op.create_table('picked_books',
     sa.Column('session_id', sa.Integer(), nullable=False),
     sa.Column('book_id', sa.Integer(), nullable=False),
@@ -86,7 +79,6 @@ def downgrade():
     op.drop_table('score')
     op.drop_table('recommended_books')
     op.drop_table('picked_books')
-    op.drop_table('disabled_books')
     op.drop_table('session')
     op.drop_table('book')
     # ### end Alembic commands ###

@@ -7,4 +7,4 @@ ar = np.array([1, 6, 9, 3, 5, 7])
 
 ranked_ar = np.argsort(-ar)
 print(ranked_ar[:, None])
-print(np.mean(np.where(ranked_ar[:, None] == sel)[0]))
+print(np.where(ranked_ar[:, None] == 4)[0])

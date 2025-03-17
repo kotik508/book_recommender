@@ -15,7 +15,7 @@ h3 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 85% !important;
+    width: 70% !important;
     margin-left: 0;
     margin-right: 15%;
     padding-top: max(10vh, 50px);
@@ -47,7 +47,10 @@ h3 {
 }
 
 .description-btn {
-    background: #5E3826;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(94, 56, 38);
     color: #F7E7CE;
     border: none;
     padding: 2vh;
@@ -57,6 +60,7 @@ h3 {
     font-weight: bold;
     text-align: center;
     font-size: max(1vw, 16px);
+    cursor: pointer;
 }
 
 .description-btn:hover {
@@ -69,14 +73,49 @@ h3 {
     transform: scale(0.99);
 }
 
+.description-btn.selected {
+    background: rgb(114, 76, 58);
+    color: antiquewhite;
+    transform: scale(1.02);
+    border: 4px solid #3D1E10;
+    text-align: center;
+}
+
+.submit {
+    margin-top: 4vh;
+    text-align: center;
+}
+
+.submit-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    color:black;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border: 3px solid rgb(92, 65, 48);
+    height: 4vh;
+    width: 10%;
+}
+
+.submit-btn:hover {
+    background-color: rgb(230, 220, 200);
+    border: 3px solid rgb(111, 85, 68);
+}
+
 /* 
 -----------------------------------------NAVBAR-----------------------------------------
 */
 
 .navbar-mp {
     position: fixed;
-    left: calc((100% - 15%) / 2);
+    left: calc((100% - 30%) / 2);
     transform: translateX(-50%);
+}
+
+.navbar-text-end {
+    transform: translate(-30%);
 }
 
 /* 
@@ -88,7 +127,7 @@ h3 {
     top: 0;
     right: 0;
     height: 100%;
-    width: 15%;
+    width: 30%;
     background-color: #3D1E10;
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
@@ -101,6 +140,20 @@ h3 {
     align-items: center;
     justify-items: start;
     overflow-y: auto;
+}
+
+.two-list {
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+}
+
+.left-list {
+    width: 50%;
+}
+
+.right-list {
+    width: 50%;
 }
 
 .best-books .upper-section {
@@ -143,6 +196,19 @@ h3 {
     font-size: max(0.8vw, 14px);
 }
 
+@media (max-width: 1300px) {
+    .best-books .pick-btn span {
+        display: none;
+    }
+    .best-books .pick-btn img {
+        margin-right: 0;
+        width: 50px;
+    }
+    .best-books .pick-btn {
+        justify-content: center;
+    }
+}
+
 img.book-image {
     width: 40px;
     height: 60px;
@@ -170,7 +236,6 @@ img.book-image {
     list-style-type: none;
     padding-left: 0;
     max-height: calc(40vh - 1px);
-    overflow-y: auto;
     padding-right: 5%;
 }
 
@@ -181,4 +246,21 @@ img.book-image {
 
 .best-books .rating {
     margin-left: 5%;
+}
+
+.tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #F7E7CE;
+    color: #4A261A;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+    z-index: 1000;
 }

@@ -39,17 +39,17 @@ async def book_choice():
             elif session['type'] == 'tags':
                 embeddings = np.array(Book.get_svds())
             else:
-                current_app.logger.warning(f'WARNING INVALID SESSION TYPE: {session['type']}')
+                current_app.logger.warning(f'INVALID SESSION TYPE: {session['type']}')
                 embeddings = np.array(Book.get_embeddings())
             
-            scores = Score.query.filter(Score.session_id == session['session_id'])
+            scores = Score.query.filter(Score.session_id == session['session_id']).order_by(Score.book_id).all()
             selected_cluster = int(request.form.get('answer'))
 
             now = time.time()
             update_scores(scores, embeddings, selected_cluster)
             current_app.logger.info(f'Update scores for session: {session['session_id']} and round: {Session.get_rounds()} took: {round(time.time()- now)} seconds')
 
-            if Session.query.filter(Session.id == session['session_id']).first().rounds < 11:
+            if Session.query.filter(Session.id == session['session_id']).first().rounds < 10:
                 now = time.time()
                 await get_answers()
                 current_app.logger.info(f'Generating descriptions took: {round(time.time()- now, 4)} seconds')
@@ -70,11 +70,11 @@ async def home():
         db.session.add(new_session)
         db.session.commit()
         session['session_id'] = new_session.id
-        session['type'] = 'description' if new_session.id % 2 == 1 else 'tags'
+        session['type'] = 'descriptions' if new_session.id % 2 == 1 else 'tags'
         new_session.version = session['type']
         db.session.commit()
 
-        books = Book.query.all()
+        books = Book.query.order_by(Book.id).all()
         scores = [Score(session_id=new_session.id, book_id=b.id, score=1/len(books)) for b in books]
         db.session.add_all(scores)
 

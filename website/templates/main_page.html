@@ -37,28 +37,55 @@ href="static/css/main_page.css" />
             <div class="row justify-content-center">
                 {% for index, description in summaries.items() %}
                 <div class="col-md-6 mb-4 d-flex">
-                    <button type="submit" name="answer" value="{{ index }}" class="description-btn">
-                        {{ description }}
-                    </button>
+                    <input type="radio" id="desc{{ index }}" name="answer" value="{{ index }}" class="d-none">
+                    <label for="desc{{ index }}" class="description-btn">{{ description }}</label>
                 </div>
                 {% endfor %}
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="submit-btn" id="submit-btn" disabled>Submit</button>
             </div>
         </form>
     </div>
     <div class="best-books">
         <div class="upper-section">
             <h3>Most relevant books</h3>
-            <ul>
-                {% for book in best_books[:20] %}
-                <li class="book-entry">
-                    <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
-                        <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
-                        <span>{{ book.title }}</span>
-                        <span class="rating">{{ book.avg_rating }}</span>
-                    </button>
-                </li>
-                {% endfor %}
-            </ul>
+            <div class="two-list">
+                <ul class="left-list">
+                    {% for book in best_books[:10] %}
+                    <li class="book-entry">
+                        <button 
+                            class="pick-btn" 
+                            type="button" 
+                            data-book-id="{{ book.id }}" 
+                            data-book-desc="{{ book.description }}" 
+                            data-title="{{ book.title }}"
+                            >
+                            <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
+                            <span>{{ book.title }}</span>
+                            <span class="rating">{{ book.avg_rating }}</span>
+                        </button>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <ul class="right-list">
+                    {% for book in best_books[10:20] %}
+                    <li class="book-entry">
+                        <button 
+                            class="pick-btn" 
+                            type="button" 
+                            data-book-id="{{ book.id }}"
+                            data-book-desc="{{ book.description }}" 
+                            data-title="{{ book.title }}"
+                            >
+                            <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
+                            <span>{{ book.title }}</span>
+                            <span class="rating">{{ book.avg_rating }}</span>
+                        </button>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="lower-section">
@@ -77,4 +104,10 @@ href="static/css/main_page.css" />
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script 
+src="{{ url_for('static', filename='js/selected_desc.js') }}"
+></script>
 {% endblock %}
