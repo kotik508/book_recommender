@@ -4,6 +4,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const submitButton = document.getElementById("submit-btn");
     const buttons = document.querySelectorAll(".pick-btn");
 
+    const form = document.querySelector("form");
+    const bookIdsInput = document.getElementById("book_ids");
+
+    form.addEventListener("submit", function () {
+        let bookIds = [];
+
+        document.querySelectorAll(".best-books .pick-btn").forEach(button => {
+            bookIds.push(button.getAttribute("data-book-id"));
+        });
+
+        bookIdsInput.value = bookIds.join(",");
+    });
+
     inputs.forEach((input, index) => {
         input.addEventListener("change", function () {
             options.forEach(btn => btn.classList.remove("selected"));
@@ -17,11 +30,19 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".tooltip").forEach(t => t.remove());
 
             const title = this.dataset.title || "Unknown Title";
-            const description = this.dataset.bookDesc || "No description available";
+            const fullDescription = this.dataset.bookDesc || "No description available";
+            const readMoreUrl = "https://www.goodreads.com/book/show/" + this.dataset.goodreadsId || "#";
+            const maxLength = 200;
+            let truncatedDescription = fullDescription;
+            
+            if (fullDescription.length > maxLength) {
+                truncatedDescription = fullDescription.substring(0, maxLength) + '... ' + 
+                    `<a href="${readMoreUrl}" class="read-more" target="_blank">Read more</a>`;
+            }
 
             const tooltip = document.createElement("div");
             tooltip.classList.add("tooltip");
-            tooltip.innerHTML = `<strong style="display: block; font-size: 1rem; margin-bottom: 5px;">${title}</strong>${description}`;
+            tooltip.innerHTML = `<strong style="display: block; font-size: 1rem; margin-bottom: 5px;">${title}</strong><span class="tooltip-text">${truncatedDescription}</span>`;
             document.body.appendChild(tooltip);
 
             Object.assign(tooltip.style, {
@@ -33,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 fontSize: "0.9rem",
                 boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
                 zIndex: "1000",
-                pointerEvents: "none",
+                pointerEvents: "auto",
                 maxWidth: "400px",
                 whiteSpace: "normal",
                 wordWrap: "break-word",
@@ -58,14 +79,20 @@ document.addEventListener("DOMContentLoaded", function () {
             tooltip.style.top = `${topPos}px`;
 
             this.tooltip = tooltip;
+
+            tooltip.addEventListener("mouseenter", function () {
+                clearTimeout(tooltip.hideTimeout);
+            });
+
+            tooltip.addEventListener("mouseleave", function () {
+                tooltip.hideTimeout = setTimeout(() => tooltip.remove(), 200);
+            });
         });
 
         button.addEventListener("mouseleave", function () {
             if (this.tooltip) {
-                const tooltipToRemove = this.tooltip;
-                this.tooltip = null;
-                setTimeout(() => {
-                    if (tooltipToRemove) tooltipToRemove.remove();
+                this.tooltip.hideTimeout = setTimeout(() => {
+                    if (this.tooltip) this.tooltip.remove();
                 }, 200);
             }
         });

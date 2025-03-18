@@ -81,12 +81,17 @@ def clustering(books: list[Book]):
     for cluster_id in range(4):
         cluster_indices = np.where(labels == cluster_id)[0]
 
-        cluster_embeddings = embeddings[cluster_indices]
-        distances = cdist(cluster_embeddings, centroids[cluster_id].reshape(1, -1), metric='euclidean').flatten()
+        best_books = [books[i] for i in cluster_indices]
 
-        top_indices = cluster_indices[np.argsort(distances)[:10]].tolist()
+        best_books_sorted = sorted(best_books, key=lambda book: int(book.id))[:5]
+        best_embeddings[cluster_id] = best_books_sorted
 
-        best_embeddings[cluster_id] = [books[i] for i in top_indices]
+        # cluster_embeddings = embeddings[cluster_indices]
+        # distances = cdist(cluster_embeddings, centroids[cluster_id].reshape(1, -1), metric='euclidean').flatten()
+
+        # top_indices = cluster_indices[np.argsort(distances)[:10]].tolist()
+
+        # best_embeddings[cluster_id] = [books[i] for i in top_indices]
 
     # for cs in best_embeddings.keys():
     #     for i in range(4):
@@ -94,12 +99,15 @@ def clustering(books: list[Book]):
 
     return best_embeddings
 
-def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma: np.float32 = np.float32(0.25)):
+def update_scores(scores: list[Score], embeddings, selected_cluster: int, disable_books: list[str], sigma: np.float32 = np.float32(0.25)):
 
     centroids = Session.get_centroids()
 
+    scores_list = []
+
     # Score calculation based on embedding distance
     for score, embedding in zip(scores, embeddings):
+    
         disp_sum = 0
         for x in centroids:
 
@@ -109,12 +117,19 @@ def update_scores(scores: list[Score], embeddings, selected_cluster: int, sigma:
         like_val = np.exp(-np.linalg.norm(centroids[selected_cluster] - embedding) / sigma)
         score.score = float(score.score * (like_val / (disp_sum + like_val)))
 
+        scores_list.append(score.score)
+
     # Score adjustment to keep values between 0 and 1
-    scores_list = np.array([s.score for s in scores])
+    scores_list = np.array(scores_list)
     scores_cal = np.divide(scores_list, np.max(scores_list))
     
     for score, new_score in zip(scores, scores_cal):
-        score.score = float(new_score)
+        if score.book_id not in disable_books:
+            score.score = float(new_score)
+        else:
+            score.score = float(np.e**(-10))
+
+    [score.__setattr__("score", new_score) for score, new_score in zip(scores, scores_cal) if score.book_id not in disable_books]
     
     db.session.commit()
 

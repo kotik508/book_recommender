@@ -13,12 +13,12 @@ views = Blueprint('views', __name__)
 @views.route('/books', methods=['GET', 'POST'])
 async def book_choice():
     if request.method == 'GET':
-        best_books = Book.get_best_books()
+        show_books = Book.get_best_books()
         picked_books = Session.get_picked_books()
         current_app.logger.info(f'Session: {session["session_id"]} in round: {Session.get_rounds()} has these picked books: {", ".join(str(book.id) for book in picked_books)}')
-        current_app.logger.info(f'Session: {session["session_id"]} in round: {Session.get_rounds()} has these best books: {", ".join(str(book.id) for book in best_books[:5])}')
+        current_app.logger.info(f'Session: {session["session_id"]} in round: {Session.get_rounds()} has these best books: {", ".join(str(book.id) for book in show_books['best_books']+show_books['sampled_books'])}')
         return render_template('main_page.html', summaries=session['summaries'], round=Session.get_rounds(), 
-                               best_books=best_books, picked_books=picked_books)
+                               best_books=show_books['best_books'], sampled_books=show_books['sampled_books'], picked_books=picked_books)
     
     elif request.method == 'POST':
         
@@ -26,7 +26,6 @@ async def book_choice():
         if request.is_json:
             data = request.get_json()
             Session.move_book(int(data['book_id']), data['add'])
-            best_books = Book.get_best_books()
             return jsonify({
                 'status': 'success',
                 'message': 'Book picked/removed'
@@ -41,12 +40,15 @@ async def book_choice():
             else:
                 current_app.logger.warning(f'INVALID SESSION TYPE: {session['type']}')
                 embeddings = np.array(Book.get_embeddings())
+
+            disable_books = request.form.get("book_ids", "").split(",")
+            disable_books = list(map(int, disable_books))
             
             scores = Score.query.filter(Score.session_id == session['session_id']).order_by(Score.book_id).all()
             selected_cluster = int(request.form.get('answer'))
 
             now = time.time()
-            update_scores(scores, embeddings, selected_cluster)
+            update_scores(scores, embeddings, selected_cluster, disable_books)
             current_app.logger.info(f'Update scores for session: {session['session_id']} and round: {Session.get_rounds()} took: {round(time.time()- now)} seconds')
 
             if Session.query.filter(Session.id == session['session_id']).first().rounds < 10:
@@ -93,9 +95,9 @@ async def home():
 def final_page():
     picked_books = Session.get_picked_books()
     recom_books = Book.get_best_books()
-    recom_ids = [book.id for book in recom_books[:5]]
+    recom_ids = [book.id for book in recom_books['best_books'][:5]]
     Session.move_to_recommend(recom_ids)
     current_app.logger.info(f'Session: {session["session_id"]} ended with these picked books: {", ".join(str(book.id) for book in picked_books)}')
-    current_app.logger.info(f'Session: {session["session_id"]} ended with these recommended books: {", ".join(str(book.id) for book in recom_books[:5])}')
-    return render_template('final.html', picked_books=picked_books, recom_books=recom_books)
+    current_app.logger.info(f'Session: {session["session_id"]} ended with these recommended books: {", ".join(str(book.id) for book in recom_books['best_books'])}')
+    return render_template('final.html', picked_books=picked_books, recom_books=recom_books['best_books'][:5])
 

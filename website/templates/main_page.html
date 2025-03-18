@@ -34,6 +34,7 @@ href="static/css/main_page.css" />
             Which of these texts best describe what you are looking for in a book?
         </h2>
         <form action="/books" method="post" onsubmit="showLoader()">
+            <input type="hidden" name="book_ids" id="book_ids">
             <div class="row justify-content-center">
                 {% for index, description in summaries.items() %}
                 <div class="col-md-6 mb-4 d-flex">
@@ -52,12 +53,13 @@ href="static/css/main_page.css" />
             <h3>Most relevant books</h3>
             <div class="two-list">
                 <ul class="left-list">
-                    {% for book in best_books[:10] %}
+                    {% for book in best_books %}
                     <li class="book-entry">
                         <button 
                             class="pick-btn" 
                             type="button" 
-                            data-book-id="{{ book.id }}" 
+                            data-book-id="{{ book.id }}"
+                            data-goodreads-id="{{ book.goodreads_id }}"
                             data-book-desc="{{ book.description }}" 
                             data-title="{{ book.title }}"
                             >
@@ -69,12 +71,13 @@ href="static/css/main_page.css" />
                     {% endfor %}
                 </ul>
                 <ul class="right-list">
-                    {% for book in best_books[10:20] %}
+                    {% for book in sampled_books %}
                     <li class="book-entry">
                         <button 
                             class="pick-btn" 
                             type="button" 
                             data-book-id="{{ book.id }}"
+                            data-goodreads-id="{{ book.goodreads_id }}"
                             data-book-desc="{{ book.description }}" 
                             data-title="{{ book.title }}"
                             >

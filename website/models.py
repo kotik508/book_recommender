@@ -148,11 +148,14 @@ class Book(db.Model):
     
     @classmethod
     def get_best_books(cls):
-        query = text("SELECT b.* FROM book b LEFT JOIN score s ON b.id = s.book_id WHERE s.session_id = :session_id ORDER BY s.score DESC LIMIT 20;")
+        query = text("SELECT b.* FROM book b LEFT JOIN score s ON b.id = s.book_id WHERE s.session_id = :session_id ORDER BY s.score DESC LIMIT 100;")
         results = db.session.execute(query, {"session_id": int(session['session_id'])})
         best_books = results.fetchall()
         picked_books = [b.id for b in Session.get_picked_books()]
-        return [book for book in best_books if book.id not in picked_books]
+        show_books = {}
+        show_books['best_books'] = [book for book in best_books if book not in picked_books][:10]
+        show_books['sampled_books'] = [book for book in best_books if book not in (picked_books + show_books['best_books'])][:10]
+        return show_books
 
 class Score(db.Model):
     __tablename__ = "score"

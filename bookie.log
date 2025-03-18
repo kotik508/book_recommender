@@ -2778,3 +2778,387 @@ Repopulating the table.
 2025-03-17 23:54:12,375 - INFO - Session: 10 in round: 0 has these best books: 2, 3, 4, 5, 6
 2025-03-17 23:54:30,610 - INFO - Session: 10 in round: 0 has these picked books: 
 2025-03-17 23:54:30,611 - INFO - Session: 10 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:16:18,296 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 19:16:20,789 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 19:17:02,705 - INFO - Score transform took: 0.0636 seconds
+2025-03-18 19:17:02,715 - INFO - Mean rank: 4741.064
+2025-03-18 19:17:02,715 - INFO - 1984 position: [2690]
+2025-03-18 19:17:02,719 - INFO - 1984 score: 0.00010853049706967658
+2025-03-18 19:17:03,096 - INFO - Clustering took: 0.3767 seconds
+2025-03-18 19:17:04,520 - INFO - Generating descriptions took: 3.2469 seconds
+2025-03-18 19:17:04,522 - INFO - Started session: 11 with type: descriptions.
+2025-03-18 19:17:04,567 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:17:04,568 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:35:43,787 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:35:43,788 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:36:09,663 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:36:09,665 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:39:46,699 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:39:46,700 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:42:09,974 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:42:09,975 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:42:49,121 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:42:49,122 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:42:59,189 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:42:59,190 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:43:17,953 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:43:17,954 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:45:34,319 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:45:34,320 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:45:35,868 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:45:35,869 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:47:07,772 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:47:07,773 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:49:23,380 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:49:23,381 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:49:34,372 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:49:34,373 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:50:03,801 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:50:03,802 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:50:56,773 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:50:56,774 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:51:28,602 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:51:28,603 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 19:52:02,496 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 19:52:02,498 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6
+2025-03-18 20:03:52,067 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:11:50,676 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:18:48,898 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:18:51,524 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:18:52,458 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 20:19:32,893 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:19:35,647 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 20:19:35,648 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:20:32,287 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:20:32,337 - INFO - Session: 11 in round: 0 has these picked books: 
+2025-03-18 20:20:32,338 - INFO - Session: 11 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:20:57,542 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:21:04,151 - INFO - Session: 11 ended with these picked books: 
+2025-03-18 20:21:04,151 - INFO - Session: 11 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:29:26,228 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:32:15,885 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:32:43,005 - INFO - Score transform took: 0.0533 seconds
+2025-03-18 20:32:43,015 - INFO - Mean rank: 4511.722
+2025-03-18 20:32:43,016 - INFO - 1984 position: [2690]
+2025-03-18 20:32:43,020 - INFO - 1984 score: 0.00010853049706967658
+2025-03-18 20:34:51,654 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:34:57,756 - INFO - Score transform took: 0.0524 seconds
+2025-03-18 20:34:57,766 - INFO - Mean rank: 4537.896
+2025-03-18 20:34:57,766 - INFO - 1984 position: [2690]
+2025-03-18 20:34:57,770 - INFO - 1984 score: 0.00010853049706967658
+2025-03-18 20:34:58,321 - INFO - Clustering took: 0.55 seconds
+2025-03-18 20:34:59,562 - INFO - Generating descriptions took: 3.248 seconds
+2025-03-18 20:34:59,563 - INFO - Started session: 13 with type: descriptions.
+2025-03-18 20:34:59,610 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-18 20:34:59,611 - INFO - Session: 13 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:36:36,395 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:36:36,447 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-18 20:36:36,448 - INFO - Session: 13 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:36:41,442 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-18 20:36:41,443 - INFO - Session: 13 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:36:42,577 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-18 20:36:42,578 - INFO - Session: 13 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:36:43,299 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-18 20:36:43,300 - INFO - Session: 13 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:37:21,780 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:37:24,106 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-18 20:37:24,108 - INFO - Session: 13 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:38:07,145 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:38:13,470 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:38:13,533 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-18 20:38:13,534 - INFO - Session: 13 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:39:05,942 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:39:05,997 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-18 20:39:05,998 - INFO - Session: 13 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-18 20:40:28,426 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:40:29,929 - INFO - Session: 13 in round: 0 has these picked books: 
+2025-03-18 20:40:29,930 - INFO - Session: 13 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-18 20:41:15,769 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 20:42:34,619 - INFO - Update scores for session: 13 and round: 0 took: 1 seconds
+2025-03-18 20:42:36,220 - INFO - Score transform took: 0.1822 seconds
+2025-03-18 20:42:36,229 - INFO - Mean rank: 2738.042
+2025-03-18 20:42:36,230 - INFO - 1984 position: [7032]
+2025-03-18 20:42:36,234 - INFO - 1984 score: 0.6610514829035202
+2025-03-18 20:42:36,759 - INFO - Clustering took: 0.5242 seconds
+2025-03-18 20:42:37,846 - INFO - Generating descriptions took: 3.2259 seconds
+2025-03-18 20:42:37,868 - INFO - Moving session with id: 13 to round: 1
+2025-03-18 20:42:37,907 - INFO - Session: 13 in round: 1 has these picked books: 
+2025-03-18 20:42:37,909 - INFO - Session: 13 in round: 1 has these best books: 5511, 4764, 8469, 5125, 1522, 5586, 2430, 4184, 5435, 7962, 3402, 4033, 4795, 5935, 3801, 7085, 8785, 8258, 7366, 5044
+2025-03-18 20:44:51,534 - INFO - Update scores for session: 13 and round: 1 took: 1 seconds
+2025-03-18 20:44:53,149 - INFO - Score transform took: 0.1925 seconds
+2025-03-18 20:44:53,159 - INFO - Mean rank: 2389.2
+2025-03-18 20:44:53,159 - INFO - 1984 position: [680]
+2025-03-18 20:44:53,163 - INFO - 1984 score: 0.8431937950258523
+2025-03-18 20:44:53,593 - INFO - Clustering took: 0.4295 seconds
+2025-03-18 20:44:54,627 - INFO - Generating descriptions took: 3.0924 seconds
+2025-03-18 20:44:54,650 - INFO - Moving session with id: 13 to round: 2
+2025-03-18 20:44:54,686 - INFO - Session: 13 in round: 2 has these picked books: 
+2025-03-18 20:44:54,687 - INFO - Session: 13 in round: 2 has these best books: 7302, 3794, 8329, 7257, 1713, 190, 2348, 2091, 8359, 99, 3659, 8343, 6780, 8669, 6408, 8353, 4494, 5408, 432, 1519
+2025-03-18 20:45:32,842 - INFO - Update scores for session: 13 and round: 2 took: 1 seconds
+2025-03-18 20:45:34,316 - INFO - Score transform took: 0.0533 seconds
+2025-03-18 20:45:34,325 - INFO - Mean rank: 2115.646
+2025-03-18 20:45:34,326 - INFO - 1984 position: [837]
+2025-03-18 20:45:34,330 - INFO - 1984 score: 0.7453477657035154
+2025-03-18 20:45:34,787 - INFO - Clustering took: 0.4569 seconds
+2025-03-18 20:45:35,933 - INFO - Generating descriptions took: 3.0903 seconds
+2025-03-18 20:45:35,956 - INFO - Moving session with id: 13 to round: 3
+2025-03-18 20:45:35,987 - INFO - Session: 13 in round: 3 has these picked books: 
+2025-03-18 20:45:35,988 - INFO - Session: 13 in round: 3 has these best books: 2348, 2638, 432, 2195, 5408, 7722, 1392, 57, 2936, 1254, 3787, 2211, 3659, 3662, 8042, 7297, 7274, 196, 68, 6780
+2025-03-18 20:45:58,988 - INFO - Update scores for session: 13 and round: 3 took: 1 seconds
+2025-03-18 20:46:00,616 - INFO - Score transform took: 0.0554 seconds
+2025-03-18 20:46:00,625 - INFO - Mean rank: 1182.604
+2025-03-18 20:46:00,625 - INFO - 1984 position: [396]
+2025-03-18 20:46:00,629 - INFO - 1984 score: 0.6672392027659902
+2025-03-18 20:46:01,098 - INFO - Clustering took: 0.4686 seconds
+2025-03-18 20:46:02,240 - INFO - Generating descriptions took: 3.2509 seconds
+2025-03-18 20:46:02,263 - INFO - Moving session with id: 13 to round: 4
+2025-03-18 20:46:02,296 - INFO - Session: 13 in round: 4 has these picked books: 
+2025-03-18 20:46:02,297 - INFO - Session: 13 in round: 4 has these best books: 2348, 432, 190, 2638, 196, 1058, 8117, 1254, 7486, 6780, 1544, 99, 8925, 57, 8218, 1746, 218, 3328, 4930, 2936
+2025-03-18 20:46:25,831 - INFO - Update scores for session: 13 and round: 4 took: 1 seconds
+2025-03-18 20:46:27,325 - INFO - Score transform took: 0.0543 seconds
+2025-03-18 20:46:27,335 - INFO - Mean rank: 886.198
+2025-03-18 20:46:27,335 - INFO - 1984 position: [336]
+2025-03-18 20:46:27,340 - INFO - 1984 score: 0.6109480920709647
+2025-03-18 20:46:27,983 - INFO - Clustering took: 0.6429 seconds
+2025-03-18 20:46:28,901 - INFO - Generating descriptions took: 3.069 seconds
+2025-03-18 20:46:28,924 - INFO - Moving session with id: 13 to round: 5
+2025-03-18 20:46:28,957 - INFO - Session: 13 in round: 5 has these picked books: 
+2025-03-18 20:46:28,958 - INFO - Session: 13 in round: 5 has these best books: 8117, 2348, 3798, 1544, 3623, 397, 3024, 7486, 2551, 1058, 6315, 8148, 8218, 46, 132, 3398, 4364, 6439, 7897, 5857
+2025-03-18 20:47:15,023 - INFO - Update scores for session: 13 and round: 5 took: 1 seconds
+2025-03-18 20:47:16,527 - INFO - Score transform took: 0.054 seconds
+2025-03-18 20:47:16,536 - INFO - Mean rank: 822.372
+2025-03-18 20:47:16,537 - INFO - 1984 position: [128]
+2025-03-18 20:47:16,541 - INFO - 1984 score: 0.6663466005808291
+2025-03-18 20:47:17,276 - INFO - Clustering took: 0.7352 seconds
+2025-03-18 20:47:18,433 - INFO - Generating descriptions took: 3.4088 seconds
+2025-03-18 20:47:18,455 - INFO - Moving session with id: 13 to round: 6
+2025-03-18 20:47:18,487 - INFO - Session: 13 in round: 6 has these picked books: 
+2025-03-18 20:47:18,488 - INFO - Session: 13 in round: 6 has these best books: 3024, 8117, 1980, 5587, 3333, 1069, 8190, 7902, 5216, 5857, 34, 6362, 3798, 7485, 8285, 4364, 7610, 830, 3623, 6315
+2025-03-18 20:48:24,442 - INFO - Update scores for session: 13 and round: 6 took: 1 seconds
+2025-03-18 20:48:26,018 - INFO - Score transform took: 0.2039 seconds
+2025-03-18 20:48:26,027 - INFO - Mean rank: 775.028
+2025-03-18 20:48:26,028 - INFO - 1984 position: [89]
+2025-03-18 20:48:26,032 - INFO - 1984 score: 0.5850366906044385
+2025-03-18 20:48:26,457 - INFO - Clustering took: 0.4256 seconds
+2025-03-18 20:48:27,748 - INFO - Generating descriptions took: 3.305 seconds
+2025-03-18 20:48:27,772 - INFO - Moving session with id: 13 to round: 7
+2025-03-18 20:48:27,808 - INFO - Session: 13 in round: 7 has these picked books: 
+2025-03-18 20:48:27,809 - INFO - Session: 13 in round: 7 has these best books: 1980, 3333, 8190, 1069, 3024, 5587, 8117, 7902, 6362, 8624, 8285, 7485, 34, 8391, 5216, 7739, 830, 4271, 7516, 5857
+2025-03-18 20:48:42,684 - INFO - Update scores for session: 13 and round: 7 took: 1 seconds
+2025-03-18 20:48:44,116 - INFO - Score transform took: 0.0533 seconds
+2025-03-18 20:48:44,125 - INFO - Mean rank: 812.692
+2025-03-18 20:48:44,125 - INFO - 1984 position: [68]
+2025-03-18 20:48:44,130 - INFO - 1984 score: 0.5240803525592828
+2025-03-18 20:48:44,591 - INFO - Clustering took: 0.4609 seconds
+2025-03-18 20:48:46,023 - INFO - Generating descriptions took: 3.3387 seconds
+2025-03-18 20:48:46,048 - INFO - Moving session with id: 13 to round: 8
+2025-03-18 20:48:46,084 - INFO - Session: 13 in round: 8 has these picked books: 
+2025-03-18 20:48:46,086 - INFO - Session: 13 in round: 8 has these best books: 1980, 3333, 8190, 454, 7739, 6673, 4235, 34, 1069, 8285, 5587, 9212, 1160, 5870, 6948, 1255, 6362, 3024, 8391, 5560
+2025-03-18 20:49:40,836 - INFO - Update scores for session: 13 and round: 8 took: 1 seconds
+2025-03-18 20:49:42,419 - INFO - Score transform took: 0.2002 seconds
+2025-03-18 20:49:42,428 - INFO - Mean rank: 965.834
+2025-03-18 20:49:42,428 - INFO - 1984 position: [43]
+2025-03-18 20:49:42,432 - INFO - 1984 score: 0.56024400211872
+2025-03-18 20:49:42,825 - INFO - Clustering took: 0.3928 seconds
+2025-03-18 20:49:43,908 - INFO - Generating descriptions took: 3.0705 seconds
+2025-03-18 20:49:43,930 - INFO - Moving session with id: 13 to round: 9
+2025-03-18 20:49:43,961 - INFO - Session: 13 in round: 9 has these picked books: 
+2025-03-18 20:49:43,962 - INFO - Session: 13 in round: 9 has these best books: 1980, 7739, 8190, 34, 3333, 454, 4235, 8285, 1160, 1069, 7485, 3024, 1255, 6673, 6362, 6948, 9212, 5560, 5843, 3410
+2025-03-18 20:50:19,109 - INFO - Update scores for session: 13 and round: 9 took: 1 seconds
+2025-03-18 20:50:20,539 - INFO - Score transform took: 0.0571 seconds
+2025-03-18 20:50:20,549 - INFO - Mean rank: 910.11
+2025-03-18 20:50:20,549 - INFO - 1984 position: [54]
+2025-03-18 20:50:20,553 - INFO - 1984 score: 0.45909162260274355
+2025-03-18 20:50:21,031 - INFO - Clustering took: 0.4774 seconds
+2025-03-18 20:50:21,980 - INFO - Generating descriptions took: 2.8694 seconds
+2025-03-18 20:50:22,002 - INFO - Moving session with id: 13 to round: 10
+2025-03-18 20:50:22,033 - INFO - Session: 13 in round: 10 has these picked books: 
+2025-03-18 20:50:22,034 - INFO - Session: 13 in round: 10 has these best books: 1980, 8190, 7739, 4235, 3333, 1069, 454, 7485, 34, 3024, 8285, 6362, 1160, 6673, 6948, 1255, 5560, 5587, 3410, 5843
+2025-03-18 20:50:42,296 - INFO - Update scores for session: 13 and round: 10 took: 1 seconds
+2025-03-18 20:50:42,338 - INFO - Session: 13 ended with these picked books: 
+2025-03-18 20:50:42,338 - INFO - Session: 13 ended with these recommended books: 1980, 34, 8190, 7739, 7485, 8285, 1069, 3333, 1160, 3024
+2025-03-18 21:07:02,845 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:08:28,168 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:09:04,406 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:09:43,627 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:09:48,757 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:09:55,873 - INFO - Score transform took: 0.0525 seconds
+2025-03-18 21:09:55,882 - INFO - Mean rank: 4655.51
+2025-03-18 21:09:55,882 - INFO - 1984 position: [2690]
+2025-03-18 21:09:55,887 - INFO - 1984 score: 0.00010853049706967658
+2025-03-18 21:09:56,441 - INFO - Clustering took: 0.5538 seconds
+2025-03-18 21:09:57,775 - INFO - Generating descriptions took: 3.3276 seconds
+2025-03-18 21:09:57,776 - INFO - Started session: 14 with type: tags.
+2025-03-18 21:09:57,826 - INFO - Session: 14 in round: 0 has these picked books: 
+2025-03-18 21:09:57,826 - INFO - Session: 14 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-18 21:10:21,195 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:10:22,423 - INFO - Update scores for session: 14 and round: 0 took: 1 seconds
+2025-03-18 21:10:24,036 - INFO - Score transform took: 0.1847 seconds
+2025-03-18 21:10:24,045 - INFO - Mean rank: 965.462
+2025-03-18 21:10:24,045 - INFO - 1984 position: [3511]
+2025-03-18 21:10:24,049 - INFO - 1984 score: 0.36751506340419454
+2025-03-18 21:10:24,514 - INFO - Clustering took: 0.4643 seconds
+2025-03-18 21:10:25,471 - INFO - Generating descriptions took: 3.0473 seconds
+2025-03-18 21:10:25,491 - INFO - Moving session with id: 14 to round: 1
+2025-03-18 21:10:25,528 - INFO - Session: 14 in round: 1 has these picked books: 
+2025-03-18 21:10:25,529 - INFO - Session: 14 in round: 1 has these best books: 8986, 3651, 6177, 6300, 5260, 4752, 477, 4840, 3720, 1223, 7683, 6928, 1969, 8954, 1870, 2770, 2154, 927, 2937, 180
+2025-03-18 21:11:10,324 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:11:11,577 - INFO - Update scores for session: 14 and round: 1 took: 1 seconds
+2025-03-18 21:11:13,200 - INFO - Score transform took: 0.1838 seconds
+2025-03-18 21:11:13,209 - INFO - Mean rank: 265.15
+2025-03-18 21:11:13,209 - INFO - 1984 position: [845]
+2025-03-18 21:11:13,214 - INFO - 1984 score: 0.33798240468956536
+2025-03-18 21:11:13,713 - INFO - Clustering took: 0.4981 seconds
+2025-03-18 21:11:14,743 - INFO - Generating descriptions took: 3.1661 seconds
+2025-03-18 21:11:14,764 - INFO - Moving session with id: 14 to round: 2
+2025-03-18 21:11:14,798 - INFO - Session: 14 in round: 2 has these picked books: 
+2025-03-18 21:11:14,798 - INFO - Session: 14 in round: 2 has these best books: 1438, 2718, 2394, 3817, 2838, 2144, 4894, 1988, 381, 226, 145, 746, 1639, 2149, 906, 7890, 7936, 1595, 773, 720
+2025-03-18 21:12:24,438 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:12:39,578 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:17:45,702 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:26:34,541 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:37:40,012 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:37:42,554 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:37:42,603 - INFO - Session: 14 in round: 2 has these picked books: 
+2025-03-18 21:37:42,603 - INFO - Session: 14 in round: 2 has these best books: 1438, 2718, 2394, 3817, 2838, 2144, 4894, 1988, 381, 226, 145, 746, 1639, 2149, 906, 7890, 7936, 1595, 773, 720
+2025-03-18 21:38:44,071 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:38:45,303 - INFO - Update scores for session: 14 and round: 2 took: 1 seconds
+2025-03-18 21:38:46,898 - INFO - Score transform took: 0.1837 seconds
+2025-03-18 21:38:46,908 - INFO - Mean rank: 257.774
+2025-03-18 21:38:46,909 - INFO - 1984 position: [295]
+2025-03-18 21:38:46,914 - INFO - 1984 score: 0.27089433744193336
+2025-03-18 21:38:47,369 - INFO - Clustering took: 0.4542 seconds
+2025-03-18 21:38:48,622 - INFO - Generating descriptions took: 3.3181 seconds
+2025-03-18 21:38:48,645 - INFO - Moving session with id: 14 to round: 3
+2025-03-18 21:38:48,683 - INFO - Session: 14 in round: 3 has these picked books: 
+2025-03-18 21:38:48,683 - INFO - Session: 14 in round: 3 has these best books: 4603, 4571, 8038, 1043, 2241, 2017, 4474, 797, 5760, 9080, 5350, 810, 1398, 375, 7203, 7842, 1377, 5133, 1823, 9049
+2025-03-18 21:39:23,873 - INFO - Update scores for session: 14 and round: 3 took: 1 seconds
+2025-03-18 21:39:25,559 - INFO - Score transform took: 0.1984 seconds
+2025-03-18 21:39:25,569 - INFO - Mean rank: 263.306
+2025-03-18 21:39:25,569 - INFO - 1984 position: [916]
+2025-03-18 21:39:25,573 - INFO - 1984 score: 0.020784910655353546
+2025-03-18 21:39:26,018 - INFO - Clustering took: 0.4444 seconds
+2025-03-18 21:39:27,027 - INFO - Generating descriptions took: 3.1533 seconds
+2025-03-18 21:39:27,049 - INFO - Moving session with id: 14 to round: 4
+2025-03-18 21:39:27,080 - INFO - Session: 14 in round: 4 has these picked books: 
+2025-03-18 21:39:27,081 - INFO - Session: 14 in round: 4 has these best books: 810, 375, 1444, 4672, 835, 2607, 63, 2619, 2823, 4898, 5688, 1402, 939, 8614, 540, 2424, 6433, 4819, 7409, 2711
+2025-03-18 21:39:43,096 - INFO - Score transform took: 0.0504 seconds
+2025-03-18 21:39:43,105 - INFO - Mean rank: 4506.772
+2025-03-18 21:39:43,105 - INFO - 1984 position: [2690]
+2025-03-18 21:39:43,110 - INFO - 1984 score: 0.00010853049706967658
+2025-03-18 21:39:43,577 - INFO - Clustering took: 0.4664 seconds
+2025-03-18 21:39:44,567 - INFO - Generating descriptions took: 2.9212 seconds
+2025-03-18 21:39:44,569 - INFO - Started session: 15 with type: descriptions.
+2025-03-18 21:39:44,615 - INFO - Session: 15 in round: 0 has these picked books: 
+2025-03-18 21:39:44,616 - INFO - Session: 15 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-18 21:39:56,010 - INFO - Update scores for session: 15 and round: 0 took: 1 seconds
+2025-03-18 21:39:57,514 - INFO - Score transform took: 0.0507 seconds
+2025-03-18 21:39:57,524 - INFO - Mean rank: 1774.204
+2025-03-18 21:39:57,524 - INFO - 1984 position: [8720]
+2025-03-18 21:39:57,529 - INFO - 1984 score: 0.5161796463855186
+2025-03-18 21:39:57,955 - INFO - Clustering took: 0.4257 seconds
+2025-03-18 21:39:59,000 - INFO - Generating descriptions took: 2.9883 seconds
+2025-03-18 21:39:59,022 - INFO - Moving session with id: 15 to round: 1
+2025-03-18 21:39:59,056 - INFO - Session: 15 in round: 1 has these picked books: 
+2025-03-18 21:39:59,057 - INFO - Session: 15 in round: 1 has these best books: 6218, 3693, 399, 7370, 4162, 7907, 4119, 4797, 5800, 595, 6343, 1054, 5923, 7820, 5182, 2402, 410, 5129, 2048, 6087
+2025-03-18 21:40:16,161 - INFO - Update scores for session: 15 and round: 1 took: 1 seconds
+2025-03-18 21:40:17,804 - INFO - Score transform took: 0.1973 seconds
+2025-03-18 21:40:17,814 - INFO - Mean rank: 1390.764
+2025-03-18 21:40:17,814 - INFO - 1984 position: [7020]
+2025-03-18 21:40:17,819 - INFO - 1984 score: 0.4209661137945845
+2025-03-18 21:40:18,283 - INFO - Clustering took: 0.4642 seconds
+2025-03-18 21:40:19,298 - INFO - Generating descriptions took: 3.1356 seconds
+2025-03-18 21:40:19,320 - INFO - Moving session with id: 15 to round: 2
+2025-03-18 21:40:19,346 - INFO - Session: 15 in round: 2 has these picked books: 
+2025-03-18 21:40:19,347 - INFO - Session: 15 in round: 2 has these best books: 5099, 8623, 4998, 5479, 1432, 3100, 1216, 6935, 2464, 9113, 1447, 2786, 2294, 8844, 2962, 7717, 6720, 2167, 4797, 8067
+2025-03-18 21:40:36,191 - INFO - Update scores for session: 15 and round: 2 took: 1 seconds
+2025-03-18 21:40:37,786 - INFO - Score transform took: 0.2002 seconds
+2025-03-18 21:40:37,795 - INFO - Mean rank: 1097.518
+2025-03-18 21:40:37,795 - INFO - 1984 position: [8738]
+2025-03-18 21:40:37,800 - INFO - 1984 score: 0.2861223766000118
+2025-03-18 21:40:38,273 - INFO - Clustering took: 0.4727 seconds
+2025-03-18 21:40:39,105 - INFO - Generating descriptions took: 2.9128 seconds
+2025-03-18 21:40:39,130 - INFO - Moving session with id: 15 to round: 3
+2025-03-18 21:40:39,157 - INFO - Session: 15 in round: 3 has these picked books: 
+2025-03-18 21:40:39,158 - INFO - Session: 15 in round: 3 has these best books: 7370, 399, 3092, 595, 6343, 6218, 7844, 4162, 5353, 3693, 5923, 9117, 8839, 5182, 4797, 5479, 577, 6706, 6087, 8844
+2025-03-18 21:41:11,242 - INFO - Update scores for session: 15 and round: 3 took: 1 seconds
+2025-03-18 21:41:12,729 - INFO - Score transform took: 0.0515 seconds
+2025-03-18 21:41:12,738 - INFO - Mean rank: 861.91
+2025-03-18 21:41:12,739 - INFO - 1984 position: [8018]
+2025-03-18 21:41:12,744 - INFO - 1984 score: 0.24518910029205426
+2025-03-18 21:41:13,168 - INFO - Clustering took: 0.4238 seconds
+2025-03-18 21:41:14,158 - INFO - Generating descriptions took: 2.9155 seconds
+2025-03-18 21:41:14,182 - INFO - Moving session with id: 15 to round: 4
+2025-03-18 21:41:14,208 - INFO - Session: 15 in round: 4 has these picked books: 
+2025-03-18 21:41:14,209 - INFO - Session: 15 in round: 4 has these best books: 5099, 1216, 4998, 3100, 1447, 8623, 6935, 4797, 2294, 2962, 3092, 7370, 1432, 5479, 2786, 4384, 4633, 7181, 411, 4377
+2025-03-18 21:41:57,454 - INFO - Update scores for session: 15 and round: 4 took: 1 seconds
+2025-03-18 21:41:59,098 - INFO - Score transform took: 0.1988 seconds
+2025-03-18 21:41:59,108 - INFO - Mean rank: 796.982
+2025-03-18 21:41:59,108 - INFO - 1984 position: [8658]
+2025-03-18 21:41:59,113 - INFO - 1984 score: 0.21384903825486115
+2025-03-18 21:41:59,652 - INFO - Clustering took: 0.539 seconds
+2025-03-18 21:42:00,764 - INFO - Generating descriptions took: 3.309 seconds
+2025-03-18 21:42:00,788 - INFO - Moving session with id: 15 to round: 5
+2025-03-18 21:42:00,814 - INFO - Session: 15 in round: 5 has these picked books: 
+2025-03-18 21:42:00,815 - INFO - Session: 15 in round: 5 has these best books: 1216, 1054, 5099, 577, 7620, 2294, 4384, 1447, 4797, 4377, 4113, 3850, 3092, 7370, 1526, 1285, 6706, 5182, 464, 9117
+2025-03-18 21:42:48,315 - INFO - Update scores for session: 15 and round: 5 took: 1 seconds
+2025-03-18 21:42:49,958 - INFO - Score transform took: 0.203 seconds
+2025-03-18 21:42:49,967 - INFO - Mean rank: 1646.072
+2025-03-18 21:42:49,967 - INFO - 1984 position: [8629]
+2025-03-18 21:42:49,972 - INFO - 1984 score: 0.34753888243674075
+2025-03-18 21:42:50,443 - INFO - Clustering took: 0.4712 seconds
+2025-03-18 21:42:52,530 - INFO - Generating descriptions took: 4.213 seconds
+2025-03-18 21:42:52,555 - INFO - Moving session with id: 15 to round: 6
+2025-03-18 21:42:52,584 - INFO - Session: 15 in round: 6 has these picked books: 
+2025-03-18 21:42:52,585 - INFO - Session: 15 in round: 6 has these best books: 7620, 4113, 3202, 1054, 1289, 1216, 1750, 5099, 1285, 1447, 9207, 7338, 3850, 4377, 7181, 6706, 5321, 7820, 3317, 1683
+2025-03-18 21:43:25,641 - INFO - Update scores for session: 15 and round: 6 took: 1 seconds
+2025-03-18 21:43:27,098 - INFO - Score transform took: 0.0549 seconds
+2025-03-18 21:43:27,107 - INFO - Mean rank: 1226.298
+2025-03-18 21:43:27,108 - INFO - 1984 position: [7172]
+2025-03-18 21:43:27,112 - INFO - 1984 score: 0.2515161499816189
+2025-03-18 21:43:27,616 - INFO - Clustering took: 0.5033 seconds
+2025-03-18 21:43:29,095 - INFO - Generating descriptions took: 3.453 seconds
+2025-03-18 21:43:29,120 - INFO - Moving session with id: 15 to round: 7
+2025-03-18 21:43:29,149 - INFO - Session: 15 in round: 7 has these picked books: 
+2025-03-18 21:43:29,150 - INFO - Session: 15 in round: 7 has these best books: 1447, 1216, 5099, 7338, 1289, 6935, 411, 3100, 1432, 7181, 4113, 3850, 1285, 4704, 387, 3202, 4377, 7717, 7168, 408
+2025-03-18 21:45:17,684 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:49:38,827 - INFO - Table 'book' exists with 9214 books present.
+2025-03-18 21:50:03,114 - INFO - Score transform took: 0.0527 seconds
+2025-03-18 21:50:03,123 - INFO - Mean rank: 4516.906
+2025-03-18 21:50:03,123 - INFO - 1984 position: [2690]
+2025-03-18 21:50:03,127 - INFO - 1984 score: 0.00010853049706967658
+2025-03-18 21:50:03,590 - INFO - Clustering took: 0.4619 seconds
+2025-03-18 21:50:04,779 - INFO - Generating descriptions took: 3.0892 seconds
+2025-03-18 21:50:04,780 - INFO - Started session: 16 with type: tags.
+2025-03-18 21:50:04,826 - INFO - Session: 16 in round: 0 has these picked books: 
+2025-03-18 21:50:04,827 - INFO - Session: 16 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-18 21:50:19,657 - INFO - Update scores for session: 16 and round: 0 took: 1 seconds
+2025-03-18 21:50:21,139 - INFO - Score transform took: 0.0543 seconds
+2025-03-18 21:50:21,149 - INFO - Mean rank: 997.036
+2025-03-18 21:50:21,149 - INFO - 1984 position: [3670]
+2025-03-18 21:50:21,155 - INFO - 1984 score: 0.39594184720857195
+2025-03-18 21:50:21,925 - INFO - Clustering took: 0.7695 seconds
+2025-03-18 21:50:22,762 - INFO - Generating descriptions took: 3.1051 seconds
+2025-03-18 21:50:22,784 - INFO - Moving session with id: 16 to round: 1
+2025-03-18 21:50:22,817 - INFO - Session: 16 in round: 1 has these picked books: 
+2025-03-18 21:50:22,818 - INFO - Session: 16 in round: 1 has these best books: 7546, 3651, 4721, 4556, 6940, 4830, 8234, 8443, 5447, 7580, 6292, 7487, 7307, 8071, 8744, 5882, 554, 9061, 8986, 8964
+2025-03-18 21:51:16,672 - INFO - Update scores for session: 16 and round: 1 took: 1 seconds
+2025-03-18 21:51:18,199 - INFO - Score transform took: 0.0542 seconds
+2025-03-18 21:51:18,209 - INFO - Mean rank: 251.932
+2025-03-18 21:51:18,209 - INFO - 1984 position: [3526]
+2025-03-18 21:51:18,214 - INFO - 1984 score: 0.027664701808963858
+2025-03-18 21:51:18,714 - INFO - Clustering took: 0.4998 seconds
+2025-03-18 21:51:19,761 - INFO - Generating descriptions took: 3.089 seconds
+2025-03-18 21:51:19,782 - INFO - Moving session with id: 16 to round: 2
+2025-03-18 21:51:19,806 - INFO - Session: 16 in round: 2 has these picked books: 
+2025-03-18 21:51:19,806 - INFO - Session: 16 in round: 2 has these best books: 7858, 7108, 8530, 4147, 1683, 1657, 2215, 1535, 2150, 4770, 8874, 4079, 6800, 5991, 6720, 4384, 1073, 7338, 8216, 1567
+2025-03-18 21:52:00,075 - INFO - Update scores for session: 16 and round: 2 took: 1 seconds
+2025-03-18 21:52:01,510 - INFO - Score transform took: 0.0535 seconds
+2025-03-18 21:52:01,520 - INFO - Mean rank: 256.158
+2025-03-18 21:52:01,520 - INFO - 1984 position: [3442]
+2025-03-18 21:52:01,525 - INFO - 1984 score: 0.0032540211101008167
+2025-03-18 21:52:01,984 - INFO - Clustering took: 0.4589 seconds
+2025-03-18 21:52:03,025 - INFO - Generating descriptions took: 2.9489 seconds
+2025-03-18 21:52:03,046 - INFO - Moving session with id: 16 to round: 3
+2025-03-18 21:52:03,070 - INFO - Session: 16 in round: 3 has these picked books: 
+2025-03-18 21:52:03,070 - INFO - Session: 16 in round: 3 has these best books: 6832, 2837, 4564, 5927, 3764, 5796, 3214, 1111, 2243, 1207, 2786, 2733, 1388, 2198, 4046, 3100, 249, 1432, 7994, 544
