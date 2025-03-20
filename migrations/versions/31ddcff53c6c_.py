@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: da6228900bf6
+Revision ID: 31ddcff53c6c
 Revises: 
-Create Date: 2025-03-17 18:58:48.590931
+Create Date: 2025-03-20 21:37:05.153586
 
 """
 from alembic import op
@@ -11,7 +11,7 @@ import pgvector
 
 
 # revision identifiers, used by Alembic.
-revision = 'da6228900bf6'
+revision = '31ddcff53c6c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -39,14 +39,24 @@ def upgrade():
     )
     op.create_table('session',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('version', sa.String(length=50), nullable=True),
+    sa.Column('code', sa.String(length=10), nullable=False),
+    sa.Column('type', sa.String(length=50), nullable=True),
     sa.Column('centroid1', pgvector.sqlalchemy.vector.VECTOR(), nullable=True),
     sa.Column('centroid2', pgvector.sqlalchemy.vector.VECTOR(), nullable=True),
     sa.Column('centroid3', pgvector.sqlalchemy.vector.VECTOR(), nullable=True),
     sa.Column('centroid4', pgvector.sqlalchemy.vector.VECTOR(), nullable=True),
+    sa.Column('summary1', sa.String(length=400), nullable=True),
+    sa.Column('summary2', sa.String(length=400), nullable=True),
+    sa.Column('summary3', sa.String(length=400), nullable=True),
+    sa.Column('summary4', sa.String(length=400), nullable=True),
     sa.Column('start_date', sa.DateTime(timezone=True), nullable=True),
     sa.Column('rounds', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.Column('age_category', sa.String(length=20), nullable=True),
+    sa.Column('education', sa.String(length=150), nullable=True),
+    sa.Column('gender', sa.String(length=20), nullable=True),
+    sa.Column('email', sa.String(length=200), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('code')
     )
     op.create_table('picked_books',
     sa.Column('session_id', sa.Integer(), nullable=False),

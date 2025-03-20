@@ -41,7 +41,7 @@ async def get_answers():
         get_description(best_embeddings[3])
     )
 
-    session['summaries'] = summaries
+    Session.assign_summaries(summaries)
 
 def create_embeddings():
     model = SentenceTransformer('Snowflake/snowflake-arctic-embed-l-v2.0')

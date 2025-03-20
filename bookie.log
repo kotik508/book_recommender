@@ -3162,3 +3162,113 @@ Repopulating the table.
 2025-03-18 21:52:03,046 - INFO - Moving session with id: 16 to round: 3
 2025-03-18 21:52:03,070 - INFO - Session: 16 in round: 3 has these picked books: 
 2025-03-18 21:52:03,070 - INFO - Session: 16 in round: 3 has these best books: 6832, 2837, 4564, 5927, 3764, 5796, 3214, 1111, 2243, 1207, 2786, 2733, 1388, 2198, 4046, 3100, 249, 1432, 7994, 544
+2025-03-20 19:46:44,261 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 19:47:05,501 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 19:54:42,802 - ERROR - Table 'book' does not exist.
+2025-03-20 19:55:13,254 - ERROR - Table 'book' does not exist.
+2025-03-20 19:55:29,952 - ERROR - Table 'book' does not exist.
+2025-03-20 20:29:07,735 - INFO - Table 'book' exists with, but only 0 books are present.
+Repopulating the table.
+2025-03-20 20:29:14,373 - INFO - Populated table 'book' with 9214 books.
+2025-03-20 20:29:16,820 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 20:30:58,248 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 20:32:44,638 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 20:32:49,929 - INFO - Score transform took: 0.1744 seconds
+2025-03-20 20:32:49,939 - INFO - Mean rank: 4628.826
+2025-03-20 20:32:49,939 - INFO - 1984 position: [2690]
+2025-03-20 20:32:49,940 - INFO - 1984 score: 0.00010853049706967658
+2025-03-20 20:32:50,542 - INFO - Clustering took: 0.6021 seconds
+2025-03-20 20:32:51,873 - INFO - Generating descriptions took: 3.4795 seconds
+2025-03-20 20:32:51,874 - INFO - Started session: 2 with type: tags.
+2025-03-20 20:32:51,918 - INFO - Session: 2 in round: 0 has these picked books: 
+2025-03-20 20:32:51,919 - INFO - Session: 2 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-20 20:33:25,060 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 20:33:25,104 - INFO - Session: 2 in round: 0 has these picked books: 
+2025-03-20 20:33:25,105 - INFO - Session: 2 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 31
+2025-03-20 20:48:52,405 - INFO - Score transform took: 0.0464 seconds
+2025-03-20 20:48:52,414 - INFO - Mean rank: 4605.672
+2025-03-20 20:48:52,415 - INFO - 1984 position: [2690]
+2025-03-20 20:48:52,416 - INFO - 1984 score: 0.00010853049706967658
+2025-03-20 20:48:53,161 - INFO - Clustering took: 0.745 seconds
+2025-03-20 20:48:54,348 - INFO - Generating descriptions took: 3.365 seconds
+2025-03-20 20:48:54,350 - INFO - Started session: 3 with type: descriptions.
+2025-03-20 20:48:54,390 - INFO - Session: 3 in round: 0 has these picked books: 
+2025-03-20 20:48:54,391 - INFO - Session: 3 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-20 20:56:50,151 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 20:58:26,889 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:02:32,875 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:09:12,371 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:12:23,140 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:15:32,990 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:23:44,881 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:24:07,121 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:27:26,024 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:28:19,387 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:31:48,257 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:34:23,958 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:36:15,434 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:37:05,136 - ERROR - Table 'book' does not exist.
+2025-03-20 21:37:15,780 - ERROR - Table 'book' does not exist.
+2025-03-20 21:37:34,969 - ERROR - Table 'book' does not exist.
+2025-03-20 21:37:53,583 - INFO - Table 'book' exists with, but only 0 books are present.
+Repopulating the table.
+2025-03-20 21:38:00,320 - INFO - Populated table 'book' with 9214 books.
+2025-03-20 21:38:02,876 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:38:56,194 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:39:51,587 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:40:03,827 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:40:07,426 - INFO - Score transform took: 0.1769 seconds
+2025-03-20 21:40:07,436 - INFO - Mean rank: 4714.142
+2025-03-20 21:40:07,436 - INFO - 1984 position: [2690]
+2025-03-20 21:40:07,437 - INFO - 1984 score: 0.00010853049706967658
+2025-03-20 21:40:07,895 - INFO - Clustering took: 0.4582 seconds
+2025-03-20 21:40:09,313 - INFO - Generating descriptions took: 3.45 seconds
+2025-03-20 21:40:41,768 - INFO - Table 'book' exists with 9214 books present.
+2025-03-20 21:40:45,439 - INFO - Score transform took: 0.1828 seconds
+2025-03-20 21:40:45,448 - INFO - Mean rank: 4775.714
+2025-03-20 21:40:45,448 - INFO - 1984 position: [2690]
+2025-03-20 21:40:45,450 - INFO - 1984 score: 0.00010853049706967658
+2025-03-20 21:40:45,903 - INFO - Clustering took: 0.453 seconds
+2025-03-20 21:40:47,357 - INFO - Generating descriptions took: 3.5011 seconds
+2025-03-20 21:40:47,358 - INFO - Started session: 2 with type: tags.
+2025-03-20 21:40:47,403 - INFO - Session: 2 in round: 0 has these picked books: 
+2025-03-20 21:40:47,404 - INFO - Session: 2 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-20 21:40:54,190 - INFO - Update scores for session: 2 and round: 0 took: 1 seconds
+2025-03-20 21:40:55,780 - INFO - Score transform took: 0.196 seconds
+2025-03-20 21:40:55,789 - INFO - Mean rank: 943.282
+2025-03-20 21:40:55,790 - INFO - 1984 position: [3659]
+2025-03-20 21:40:55,791 - INFO - 1984 score: 0.2776906136336611
+2025-03-20 21:40:56,240 - INFO - Clustering took: 0.4495 seconds
+2025-03-20 21:40:57,498 - INFO - Generating descriptions took: 3.3078 seconds
+2025-03-20 21:40:57,512 - INFO - Moving session with id: 2 to round: 1
+2025-03-20 21:40:57,540 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:40:57,541 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 2047, 1130, 180, 255, 171, 2381, 782, 1159, 640, 525, 6845, 1885, 937, 2154, 8219, 7628
+2025-03-20 21:41:05,855 - INFO - Loaded session: 2 with type: tags.
+2025-03-20 21:41:05,879 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:41:05,879 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 2047, 1130, 180, 255, 171, 2381, 782, 1159, 640, 525, 6845, 1885, 937, 2154, 8219, 7628
+2025-03-20 21:41:25,424 - INFO - Loaded session: 2 with type: tags.
+2025-03-20 21:41:25,444 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:41:25,445 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:42:05,541 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:42:05,541 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:42:24,505 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:42:24,505 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:42:52,986 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:42:52,987 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:44:59,246 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:44:59,246 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:45:47,822 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:45:47,823 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:47:59,072 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:47:59,073 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:51:58,315 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:51:58,315 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:53:55,233 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:53:55,233 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:54:17,164 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:54:17,164 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:54:21,040 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:54:21,040 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:54:48,507 - INFO - Session: 2 in round: 1 has these picked books: 
+2025-03-20 21:54:48,508 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
+2025-03-20 21:55:06,510 - INFO - Added book: 7546 to selected books.

@@ -31,7 +31,7 @@ body {
 .navbar a {
     color: #F7E7CE;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.3rem;
     font-weight: bold;
     font-family: 'Merriweather', serif;
     padding: 0 15px;
@@ -41,7 +41,7 @@ body {
 .navbar span {
     color: #F7E7CE;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.3rem;
     font-weight: bold;
     font-family: 'Merriweather', serif;
     padding: 0 15px;
@@ -54,8 +54,14 @@ body {
     width: 100%;
 }
 
-.navbar a:hover {
-    color: #EADBC8; /* Lighter parchment color for a subtle glow */
+.navbar .round-box-text {
+    display: inline-block;
+    padding: 2% 1vh;
+    border: 2px solid #6f4f3b;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    align-content: center;
 }
 
 .navbar .round-box {
@@ -66,6 +72,11 @@ body {
     font-weight: bold;
     font-size: 1.3rem;
     align-content: center;
+}
+
+.navbar .round-box:hover {
+    background-color: rgb(94, 58, 46);
+    border-color: rgb(121, 89, 69);
 }
 
 /* 

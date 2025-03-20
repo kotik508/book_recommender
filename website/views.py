@@ -1,5 +1,6 @@
 from flask import Blueprint, redirect, render_template, url_for, request, flash, session, jsonify, current_app
 from .computations import update_scores, get_answers
+import uuid
 from .models import Session, Book, Score
 import asyncio
 from .text_generation import get_description
@@ -17,8 +18,9 @@ async def book_choice():
         picked_books = Session.get_picked_books()
         current_app.logger.info(f'Session: {session["session_id"]} in round: {Session.get_rounds()} has these picked books: {", ".join(str(book.id) for book in picked_books)}')
         current_app.logger.info(f'Session: {session["session_id"]} in round: {Session.get_rounds()} has these best books: {", ".join(str(book.id) for book in show_books['best_books']+show_books['sampled_books'])}')
-        return render_template('main_page.html', summaries=session['summaries'], round=Session.get_rounds(), 
-                               best_books=show_books['best_books'], sampled_books=show_books['sampled_books'], picked_books=picked_books)
+        return render_template('main_page.html', summaries=Session.get_summaries(), round=Session.get_rounds(), 
+                               best_books=show_books['best_books'], sampled_books=show_books['sampled_books'], 
+                               picked_books=picked_books, session_code=session['session_code'])
     
     elif request.method == 'POST':
         
@@ -68,26 +70,36 @@ async def home():
 
     elif request.method == 'POST':
 
-        new_session = Session()
-        db.session.add(new_session)
-        db.session.commit()
-        session['session_id'] = new_session.id
-        session['type'] = 'descriptions' if new_session.id % 2 == 1 else 'tags'
-        new_session.version = session['type']
-        db.session.commit()
+        if "session_code" in request.form:
+            sess_code = request.form.get('session_code')
+            session['session_code'] = sess_code
+            sess = Session.query.filter(Session.code ==sess_code).first()
+            session['session_id'] = sess.id
+            session['type'] = sess.type
+            flash(f'Loaded a session with code {sess_code}!', category='success')
+            current_app.logger.info(f'Loaded session: {session['session_id']} with type: {Session.get_type()}.')
+        else:
+            session['session_code'] = str(uuid.uuid4())[:8]
+            new_session = Session(code=session['session_code'])
+            db.session.add(new_session)
+            db.session.commit()
+            session['session_id'] = new_session.id
+            session['type'] = 'descriptions' if new_session.id % 2 == 1 else 'tags'
+            new_session.type = session['type']
+            db.session.commit()
 
-        books = Book.query.order_by(Book.id).all()
-        scores = [Score(session_id=new_session.id, book_id=b.id, score=1/len(books)) for b in books]
-        db.session.add_all(scores)
+            books = Book.query.order_by(Book.id).all()
+            scores = [Score(session_id=new_session.id, book_id=b.id, score=1/len(books)) for b in books]
+            db.session.add_all(scores)
 
-        db.session.commit()
-        flash('Started a session!', category='success')
+            db.session.commit()
+            flash('Started a session!', category='success')
 
-        now = time.time()
-        await get_answers()
-        current_app.logger.info(f'Generating descriptions took: {round(time.time()- now, 4)} seconds')
-    
-        current_app.logger.info(f'Started session: {session['session_id']} with type: {Session.get_type()}.')
+            now = time.time()
+            await get_answers()
+            current_app.logger.info(f'Generating descriptions took: {round(time.time()- now, 4)} seconds')
+        
+            current_app.logger.info(f'Started session: {session['session_id']} with type: {Session.get_type()}.')
 
     return redirect(url_for('views.book_choice'))
 

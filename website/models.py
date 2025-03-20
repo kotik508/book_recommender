@@ -22,15 +22,24 @@ class Session(db.Model):
     __tablename__ = "session"
 
     id = db.Column(db.Integer, primary_key=True)
-    version = db.Column(db.String(50))
+    code = db.Column(db.String(10), unique=True, nullable=False)
+    type = db.Column(db.String(50))
     picked_books = db.relationship('Book', secondary=picked_books, backref='picked_by_session')
     recommended_books = db.relationship('Book', secondary=recommended_books, backref='recommended_by_session')
     centroid1 = db.Column(Vector)
     centroid2 = db.Column(Vector)
     centroid3 = db.Column(Vector)
     centroid4 = db.Column(Vector)
+    summary1 = db.Column(db.String(400))
+    summary2 = db.Column(db.String(400))
+    summary3 = db.Column(db.String(400))
+    summary4 = db.Column(db.String(400))
     start_date = db.Column(db.DateTime(timezone=True), default=func.now())
     rounds = db.Column(db.Integer, default=0)
+    age_category = db.Column(db.String(20))
+    education = db.Column(db.String(150))
+    gender = db.Column(db.String(20))
+    email = db.Column(db.String(200))
     scores = db.relationship('Score', back_populates='session', cascade='all, delete-orphan')
 
     @classmethod
@@ -47,7 +56,7 @@ class Session(db.Model):
     @classmethod
     def get_type(cls):
         sess = cls.query.filter(cls.id == session['session_id']).first()
-        return sess.version
+        return sess.type
 
     @classmethod
     def assign_centroids(cls, centroids):
@@ -57,6 +66,25 @@ class Session(db.Model):
         sess.centroid3 = centroids[2].tolist()
         sess.centroid4 = centroids[3].tolist()
         db.session.commit()
+
+    @classmethod
+    def assign_summaries(cls, summaries: dict):
+        sess = cls.query.filter(cls.id == session['session_id']).first()
+        sess.summary1 = summaries[0]
+        sess.summary2 = summaries[1]
+        sess.summary3 = summaries[2]
+        sess.summary4 = summaries[3]
+        db.session.commit()
+
+    @classmethod
+    def get_summaries(cls):
+        sess = cls.query.filter(cls.id == session['session_id']).first()
+        summaries = {}
+        summaries[0] = sess.summary1
+        summaries[1] = sess.summary2
+        summaries[2] = sess.summary3
+        summaries[3] = sess.summary4
+        return summaries
 
     @classmethod
     def get_centroids(cls):
