@@ -8,15 +8,60 @@ href="static/css/final.css" />
 
 {% block navbar_class %}navbar-sp{% endblock %}
 {% block navbar %}
-<div class="navbar-nav-final mx-auto">
+<div class="navbar-nav-final">
     <span class="navbar-text">
         <div class="round-box">
             <a class="nav-item nav-link" id="new_sess" href="/">Start Again</a>
         </div>
+    </span>
+    <span class="session-code">
+        <div class="round-box-text">
+            Session code: {{ session_code }}
+        </div>
+    </span>
 </div>
 {% endblock %}
 
 {% block content %}
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="close">
+            <span class="close-btn">&times;</span>
+        </div>
+        <h2>Enter Your Details</h2>
+        <form id="infoForm" action="/final" method="POST">
+            <select name="age_category">
+                <option value="">Select Age Category</option>
+                <option value="uder 18">under 18</option>
+                <option value="18-30">18-30</option>
+                <option value="31-50">31-50</option>
+                <option value="51-70">51-70</option>
+                <option value="70+">70+</option>
+            </select>
+            <select name="gender">
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <select name="education">
+                <option value="">Select Highest Finished Education</option>
+                <option value="primary">Primary School</option>
+                <option value="secondary">Secondary School</option>
+                <option value="high_school">High School</option>
+                <option value="bachelor">Bachelor’s Degree</option>
+                <option value="master">Master’s Degree</option>
+                <option value="doctoral">Doctoral Degree (Ph.D., MD, JD, etc.)</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="email" name="email" placeholder="Enter your email">
+            <div class="submit">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="main">
     <div class="separator">
         <div class="cont picked">
@@ -45,4 +90,10 @@ href="static/css/final.css" />
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script 
+    src="{{ url_for('static', filename='js/demography.js') }}">
+</script>
 {% endblock %}

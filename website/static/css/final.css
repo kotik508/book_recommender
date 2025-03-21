@@ -28,16 +28,6 @@ h2 {
     flex-direction: column;
 }
 
-/* .picked {
-    padding-left: 15%;
-    padding-right: 7.5%;
-}
-
-.recom {
-    padding-left: 7.5%;
-    padding-right: 15%;
-} */
-
 .booklet {
     margin-bottom: 1vh;
 }
@@ -61,6 +51,116 @@ img.book-image {
     transform: translateX(-50%);
 }
 
-.navbar-nav .navbar-text-end {
-    transform: translate(-40%);
+.navbar-nav-final {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* 
+-----------------------------------------DEMOGRAPHICS-----------------------------------------
+*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F7E7CE;
+    padding: 25px;
+    border-radius: 15px;
+    width: 20%;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    display: flex;
+    justify-content: end;
+    width: 95%;
+}
+
+.close-btn {
+    color: #4A261A;
+    float: right;
+    width: 7%;
+    aspect-ratio: 1/1;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50px;
+    justify-content: center;
+    align-content: center;
+}
+
+.close-btn:hover {
+    background-color: rgb(172, 3, 3);
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    color: #4A261A;
+    font-weight: bold;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+input, select {
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #4A261A;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.submit {
+    margin-top: 3vh;
+    width: 100%;
+}
+
+.submit-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    color: black;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    border: 3px solid rgb(92, 65, 48);
+    height: 4vh;
+    width: 30%;
+    padding: 10px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: rgb(230, 220, 200);
+    border: 3px solid rgb(111, 85, 68);
+    transform: scale(1.01);
+}
+
+.submit-btn:active {
+    transform: scale(0.99);
 }

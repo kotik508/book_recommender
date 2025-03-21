@@ -121,7 +121,10 @@ def update_scores(scores: list[Score], embeddings, selected_cluster: int, disabl
 
     # Score adjustment to keep values between 0 and 1
     scores_list = np.array(scores_list)
-    scores_cal = np.divide(scores_list, np.max(scores_list))
+    if np.max(scores_list) > 0:
+        scores_cal = np.divide(scores_list, np.max(scores_list))
+    else:
+        scores_cal = np.divide(scores_list, float(np.e**(-10)))
     
     for score, new_score in zip(scores, scores_cal):
         if score.book_id not in disable_books:

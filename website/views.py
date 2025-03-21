@@ -103,13 +103,27 @@ async def home():
 
     return redirect(url_for('views.book_choice'))
 
-@views.route('/final', methods=['GET'])
+@views.route('/final', methods=['GET', 'POST'])
 def final_page():
-    picked_books = Session.get_picked_books()
-    recom_books = Book.get_best_books()
-    recom_ids = [book.id for book in recom_books['best_books'][:5]]
-    Session.move_to_recommend(recom_ids)
-    current_app.logger.info(f'Session: {session["session_id"]} ended with these picked books: {", ".join(str(book.id) for book in picked_books)}')
-    current_app.logger.info(f'Session: {session["session_id"]} ended with these recommended books: {", ".join(str(book.id) for book in recom_books['best_books'])}')
-    return render_template('final.html', picked_books=picked_books, recom_books=recom_books['best_books'][:5])
-
+    if request.method == "GET":
+        picked_books = Session.get_picked_books()
+        recom_books = Book.get_best_books()
+        recom_ids = [book.id for book in recom_books['best_books'][:5]]
+        Session.move_to_recommend(recom_ids)
+        current_app.logger.info(f'Session: {session["session_id"]} ended with these picked books: {", ".join(str(book.id) for book in picked_books)}')
+        current_app.logger.info(f'Session: {session["session_id"]} ended with these recommended books: {", ".join(str(book.id) for book in recom_books['best_books'])}')
+        return render_template('final.html', picked_books=picked_books, recom_books=recom_books['best_books'][:5],
+                               session_code=session['session_code'])
+    
+    if request.method == "POST":
+        sess = Session.query.filter(Session.id==session['session_id']).first()
+        sess.age_category = request.form.get("age_category") if request.form.get("age_category") != "" else None
+        sess.email = request.form.get("email") if request.form.get("email") != "" else None
+        sess.gender = request.form.get("gender") if request.form.get("gender") != "" else None
+        sess.education = request.form.get("education") if request.form.get("education") != "" else None
+        db.session.commit()
+        return jsonify({
+                'status': 'success',
+                'message': 'Demography added'
+            }), 200
+    

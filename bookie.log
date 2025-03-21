@@ -3272,3 +3272,257 @@ Repopulating the table.
 2025-03-20 21:54:48,507 - INFO - Session: 2 in round: 1 has these picked books: 
 2025-03-20 21:54:48,508 - INFO - Session: 2 in round: 1 has these best books: 3651, 8986, 2770, 7546, 4666, 6845, 85, 2154, 468, 2937, 2381, 180, 782, 927, 3978, 937, 1885, 1159, 171, 640
 2025-03-20 21:55:06,510 - INFO - Added book: 7546 to selected books.
+2025-03-21 16:52:07,704 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 16:52:10,308 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 16:52:17,471 - INFO - Score transform took: 0.0592 seconds
+2025-03-21 16:52:17,481 - INFO - Mean rank: 4331.37
+2025-03-21 16:52:17,481 - INFO - 1984 position: [2690]
+2025-03-21 16:52:17,482 - INFO - 1984 score: 0.00010853049706967658
+2025-03-21 16:52:17,964 - INFO - Clustering took: 0.4817 seconds
+2025-03-21 16:52:19,343 - INFO - Generating descriptions took: 3.3264 seconds
+2025-03-21 16:52:19,345 - INFO - Started session: 3 with type: descriptions.
+2025-03-21 16:52:19,392 - INFO - Session: 3 in round: 0 has these picked books: 
+2025-03-21 16:52:19,393 - INFO - Session: 3 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-21 16:52:24,078 - INFO - Session: 3 ended with these picked books: 
+2025-03-21 16:52:24,078 - INFO - Session: 3 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 16:56:12,586 - INFO - Score transform took: 0.051 seconds
+2025-03-21 16:56:12,595 - INFO - Mean rank: 4620.846
+2025-03-21 16:56:12,595 - INFO - 1984 position: [2690]
+2025-03-21 16:56:12,597 - INFO - 1984 score: 0.00010853049706967658
+2025-03-21 16:56:13,077 - INFO - Clustering took: 0.4799 seconds
+2025-03-21 16:56:14,057 - INFO - Generating descriptions took: 2.9007 seconds
+2025-03-21 16:56:14,058 - INFO - Started session: 4 with type: tags.
+2025-03-21 16:56:14,095 - INFO - Session: 4 in round: 0 has these picked books: 
+2025-03-21 16:56:14,096 - INFO - Session: 4 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-21 16:56:16,493 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 16:56:16,493 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 16:57:51,316 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 16:57:51,316 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 16:58:09,566 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 16:58:09,566 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 16:58:21,756 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 16:58:21,756 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 16:58:36,408 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 16:58:36,408 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:06:19,082 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:06:19,082 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:09:22,413 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:09:22,413 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:09:53,956 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:09:53,956 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:09:57,280 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:09:57,280 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:10:21,805 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:10:21,805 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:14:26,347 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:14:26,348 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:14:44,097 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:14:44,097 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:14:45,388 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:14:45,388 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:15:02,902 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:15:02,902 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:15:06,425 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:15:06,425 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:15:35,315 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:15:35,315 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:15:42,242 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:15:42,242 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:16:09,084 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:16:09,084 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:16:16,562 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:16:16,562 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:19:21,211 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:19:21,211 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:19:23,237 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:19:23,237 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:19:26,253 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:19:26,253 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:19:28,552 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:19:28,553 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:19:43,260 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:19:43,261 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:21:12,086 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:21:12,086 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:21:22,723 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:21:22,723 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:21:27,372 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:21:27,372 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:22:22,316 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:22:22,316 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:22:35,011 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:22:35,011 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:22:44,489 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:22:44,489 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:23:10,908 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:23:10,908 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:27:25,722 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:27:25,722 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:27:40,644 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:27:40,645 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:29:04,751 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:29:04,751 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:29:12,844 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:29:12,844 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:29:25,897 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:29:25,897 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:29:31,495 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:29:31,495 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:29:37,548 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:29:37,548 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:29:44,839 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:29:44,839 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:29:57,791 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:29:57,791 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:30:24,513 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:30:24,513 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:31:14,808 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:31:14,808 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:31:51,501 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:31:51,501 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:33:01,021 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:33:01,021 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:33:57,078 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:33:57,078 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:35:53,193 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:35:53,193 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:36:10,052 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:36:10,052 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:50:29,843 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:50:29,843 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:52:02,616 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:52:02,616 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:58:11,177 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 17:58:15,151 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:58:15,151 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 17:58:17,467 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 17:58:17,468 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:03:21,990 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:03:21,990 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:03:48,385 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:03:48,430 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:03:48,430 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:04:30,867 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:04:31,172 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:04:31,172 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:04:58,688 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:04:58,688 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:25:01,392 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:25:01,392 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:27:56,030 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:27:56,030 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:28:47,607 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:28:54,872 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:28:54,872 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:33:06,717 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:33:07,737 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:33:07,737 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:35:12,337 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:35:21,615 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:35:21,661 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:35:21,661 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:43:58,514 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:43:58,514 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:45:04,560 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:45:04,606 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:45:04,606 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:45:28,780 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:45:28,828 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:45:28,828 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:45:38,909 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:45:38,909 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:45:41,814 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:45:41,814 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:45:44,057 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:45:44,057 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:45:51,896 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:45:51,897 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:46:04,377 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:46:04,377 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:52:11,516 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:52:11,516 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:52:17,371 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:52:17,371 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:52:23,112 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:52:23,113 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:52:38,226 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:52:38,270 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:52:38,270 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:52:42,651 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:52:42,651 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:52:54,382 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:52:54,429 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:52:54,430 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:53:24,202 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:53:24,202 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:55:49,088 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:55:49,088 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:55:57,800 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:55:57,800 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:56:15,546 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:56:15,546 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 18:58:49,556 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:59:04,620 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 18:59:36,091 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 18:59:36,091 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:00:05,997 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:00:05,997 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:00:14,873 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:00:14,873 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:00:30,325 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:00:30,325 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:01:48,390 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:01:48,390 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:02:46,956 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:02:46,956 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:02:54,386 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:02:54,386 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:03:01,812 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:03:01,812 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:04:10,512 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:04:10,513 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:05:55,541 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:05:55,541 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:07:47,544 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:07:47,544 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:08:27,804 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:08:27,804 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:08:32,663 - INFO - Session: 4 ended with these picked books: 
+2025-03-21 19:08:32,663 - INFO - Session: 4 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:08:45,001 - INFO - Score transform took: 0.1823 seconds
+2025-03-21 19:08:45,011 - INFO - Mean rank: 4759.178
+2025-03-21 19:08:45,011 - INFO - 1984 position: [2690]
+2025-03-21 19:08:45,013 - INFO - 1984 score: 0.00010853049706967658
+2025-03-21 19:08:45,517 - INFO - Clustering took: 0.5033 seconds
+2025-03-21 19:08:46,932 - INFO - Generating descriptions took: 3.496 seconds
+2025-03-21 19:08:46,934 - INFO - Started session: 5 with type: descriptions.
+2025-03-21 19:08:46,976 - INFO - Session: 5 in round: 0 has these picked books: 
+2025-03-21 19:08:46,977 - INFO - Session: 5 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+2025-03-21 19:08:50,978 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:08:50,978 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:10:47,190 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:10:47,190 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:11:13,058 - INFO - Session: 5 in round: 0 has these picked books: 
+2025-03-21 19:11:13,059 - INFO - Session: 5 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 31
+2025-03-21 19:12:35,385 - INFO - Session: 5 in round: 0 has these picked books: 
+2025-03-21 19:12:35,387 - INFO - Session: 5 in round: 0 has these best books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 31
+2025-03-21 19:12:38,762 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:12:38,762 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:13:57,085 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 19:13:57,133 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:13:57,133 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:17:55,337 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:17:55,338 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:18:45,668 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:18:45,668 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:19:37,696 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:19:37,696 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:20:10,490 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 19:21:47,015 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 19:23:00,367 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:23:00,367 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:23:23,002 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:23:23,002 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+2025-03-21 19:25:10,926 - INFO - Table 'book' exists with 9214 books present.
+2025-03-21 19:25:11,179 - INFO - Session: 5 ended with these picked books: 
+2025-03-21 19:25:11,179 - INFO - Session: 5 ended with these recommended books: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
