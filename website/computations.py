@@ -1,6 +1,5 @@
 from scipy.spatial.distance import cdist
 from flask import session, current_app
-from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
 from .text_generation import get_description
 from .models import Score, Session, Book
@@ -43,19 +42,8 @@ async def get_answers():
 
     Session.assign_summaries(summaries)
 
-def create_embeddings():
-    model = SentenceTransformer('Snowflake/snowflake-arctic-embed-l-v2.0')
-
-    books = pd.read_csv('goodreads_scraper/books_cleaned.csv')
-
-    embeddings = model.encode(books['description'], )
-
-    print('Embeddings created')
-
-    np.save('../embeddings.npy', embeddings)
-
 def load_embeddings():
-    desc_emb = np.load('../embeddings.npy')
+    desc_emb = np.load('data/embeddings.npy')
     return desc_emb
 
 def clustering(books: list[Book]):
