@@ -1,4 +1,4 @@
-FROM python:3.12.9-slim
+FROM python:3.12-slim
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -8,18 +8,17 @@ RUN apt-get update && apt-get install -y \
     python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /bookie
+WORKDIR /app
 
-ENV FLASK_RUN_HOST=0.0.0.0
+COPY requirements.txt requirements.txt
 
-COPY requirements.txt .
-
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN flask --app main.py db migrate
+ENV FLASK_APP=main.py
+ENV FLASK_ENV=production
 
 EXPOSE 5000
 
-CMD ["python", "./main.py"]
+# CMD ["flask", "run", '-h', '0.0.0.0']

@@ -3558,3 +3558,6 @@ Repopulating the table.
 2025-03-21 20:09:23,292 - INFO - Moving session with id: 7 to round: 1
 2025-03-21 20:09:23,320 - INFO - Session: 7 in round: 1 has these picked books: 
 2025-03-21 20:09:23,321 - INFO - Session: 7 in round: 1 has these best books: 7610, 178, 2508, 5216, 9151, 1334, 3791, 3970, 830, 9212, 3398, 8391, 1544, 6363, 1980, 5200, 5375, 3034, 3333, 97
+2025-03-22 21:25:06,290 - ERROR - Table 'book' does not exist.
+2025-03-22 21:25:07,493 - ERROR - Table 'book' does not exist.
+2025-03-22 21:26:29,540 - ERROR - Table 'book' does not exist.
