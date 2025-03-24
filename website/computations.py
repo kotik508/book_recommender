@@ -1,7 +1,7 @@
 from scipy.spatial.distance import cdist
 from flask import session, current_app
 from sklearn.cluster import KMeans
-from .text_generation import get_description
+from .text_generation import run_async_process, get_description
 from .models import Score, Session, Book
 from . import db
 import asyncio
@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 
-async def get_answers():
+def get_answers():
 
     books = Book.query.order_by(Book.id).all()
     now = time.time()
@@ -32,13 +32,9 @@ async def get_answers():
     best_embeddings = clustering(books_sampled)
     current_app.logger.info(f'Clustering took: {round(time.time()- now, 4)} seconds')
 
-    summaries = {}
-    summaries[0], summaries[1], summaries[2], summaries[3] = await asyncio.gather(
-        get_description(best_embeddings[0]),
-        get_description(best_embeddings[1]),
-        get_description(best_embeddings[2]),
-        get_description(best_embeddings[3])
-    )
+    tasks = [get_description(best_embeddings[i]) for i in best_embeddings.keys()]
+
+    summaries = run_async_process(tasks)
 
     Session.assign_summaries(summaries)
 
@@ -119,8 +115,6 @@ def update_scores(scores: list[Score], embeddings, selected_cluster: int, disabl
             score.score = float(new_score)
         else:
             score.score = float(np.e**(-10))
-
-    [score.__setattr__("score", new_score) for score, new_score in zip(scores, scores_cal) if score.book_id not in disable_books]
     
     db.session.commit()
 

@@ -12,7 +12,7 @@ views = Blueprint('views', __name__)
 
 
 @views.route('/books', methods=['GET', 'POST'])
-async def book_choice():
+def book_choice():
     if request.method == 'GET':
         show_books = Book.get_best_books()
         picked_books = Session.get_picked_books()
@@ -55,7 +55,7 @@ async def book_choice():
 
             if Session.query.filter(Session.id == session['session_id']).first().rounds < 10:
                 now = time.time()
-                await get_answers()
+                get_answers()
                 current_app.logger.info(f'Generating descriptions took: {round(time.time()- now, 4)} seconds')
                 Session.increase_session_round()
                 current_app.logger.info(f'Moving session with id: {session['session_id']} to round: {Session.get_rounds()}')
@@ -64,7 +64,7 @@ async def book_choice():
                 return redirect(url_for('views.final_page'))
 
 @views.route('/', methods=['GET', 'POST'])
-async def home():
+def home():
     if request.method == 'GET':
         return render_template('home.html')
 
@@ -96,7 +96,7 @@ async def home():
             flash('Started a session!', category='success')
 
             now = time.time()
-            await get_answers()
+            get_answers()
             current_app.logger.info(f'Generating descriptions took: {round(time.time()- now, 4)} seconds')
         
             current_app.logger.info(f'Started session: {session['session_id']} with type: {Session.get_type()}.')
