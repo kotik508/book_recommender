@@ -11,14 +11,14 @@ import pandas as pd
 
 
 def get_answers():
-
-    books = Book.query.order_by(Book.id).all()
     now = time.time()
+    books = Book.query.order_by(Book.id).all()
     scores = np.array([score.score for score in Score.get_scores_from_sample(books)])
     exp = (15 - Session.get_rounds()) / 2
     weights = scores**(exp)
     weights = np.divide(weights, np.sum(weights))
     current_app.logger.info(f'Score transform took: {round(time.time()- now, 4)} seconds')
+    now = time.time()
     books_sampled = np.random.choice(list(range(len(books))), size=500, replace=False, p=weights)
     sorted = np.argsort(-scores)
     current_app.logger.info("Mean rank: " + str(np.mean(np.where(sorted[:, None] == books_sampled)[0])))
@@ -27,16 +27,19 @@ def get_answers():
     current_app.logger.info(f'1984 position: {np.where(sorted[:, None] == 2714)[0]}')
     current_app.logger.info(f'1984 score: {Score.query.filter((Score.book_id == 2715) & (Score.session_id == session['session_id'])).first().score}')
     books_sampled = [books[book] for book in books_sampled]
+    current_app.logger.info(f'Books sample took: {round(time.time()- now, 4)} seconds')
 
     now = time.time()
     best_embeddings = clustering(books_sampled)
     current_app.logger.info(f'Clustering took: {round(time.time()- now, 4)} seconds')
 
+    now = time.time()
     tasks = [get_description(best_embeddings[i]) for i in best_embeddings.keys()]
 
     summaries = run_async_process(tasks)
 
     Session.assign_summaries(summaries)
+    current_app.logger.info(f'Summ gen took + assign took: {round(time.time()- now, 4)} seconds')
 
 def load_embeddings():
     desc_emb = np.load('data/embeddings.npy')

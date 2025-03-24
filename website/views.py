@@ -2,7 +2,6 @@ from flask import Blueprint, redirect, render_template, url_for, request, flash,
 from .computations import update_scores, get_answers
 import uuid
 from .models import Session, Book, Score
-import asyncio
 from .text_generation import get_description
 from . import db
 import numpy as np
@@ -79,6 +78,14 @@ def home():
             flash(f'Loaded a session with code {sess_code}!', category='success')
             current_app.logger.info(f'Loaded session: {session['session_id']} with type: {Session.get_type()}.')
         else:
+            now = time.time()
+            Book.get_books()
+            current_app.logger.info(f'DB test took: {round(time.time() - now, 4)}')
+
+            now = time.time()
+            Book.get_book_ids()
+            current_app.logger.info(f'DB test took: {round(time.time() - now, 4)}')
+
             session['session_code'] = str(uuid.uuid4())[:8]
             new_session = Session(code=session['session_code'])
             db.session.add(new_session)
@@ -87,7 +94,6 @@ def home():
             session['type'] = 'descriptions' if new_session.id % 2 == 1 else 'tags'
             new_session.type = session['type']
             db.session.commit()
-
             books = Book.query.order_by(Book.id).all()
             scores = [Score(session_id=new_session.id, book_id=b.id, score=1/len(books)) for b in books]
             db.session.add_all(scores)

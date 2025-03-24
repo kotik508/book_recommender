@@ -185,6 +185,18 @@ class Book(db.Model):
         show_books['sampled_books'] = [book for book in best_books if book not in (picked_books + show_books['best_books'])][:10]
         return show_books
 
+    @classmethod
+    def get_books(cls):
+        query = text("SELECT b.* FROM book b ORDER BY b.id;")
+        results = db.session.execute(query)
+        return results
+    
+    @classmethod
+    def get_book_ids(cls):
+        query = text("SELECT b.id FROM book b ORDER BY b.id;")
+        results = db.session.execute(query)
+        return results
+
 class Score(db.Model):
     __tablename__ = "score"
 
