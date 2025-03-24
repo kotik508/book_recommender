@@ -54,7 +54,8 @@ def book_choice():
 
             if Session.query.filter(Session.id == session['session_id']).first().rounds < 10:
                 now = time.time()
-                get_answers()
+                book_ids = Book.get_book_ids()
+                get_answers(book_ids)
                 current_app.logger.info(f'Generating descriptions took: {round(time.time()- now, 4)} seconds')
                 Session.increase_session_round()
                 current_app.logger.info(f'Moving session with id: {session['session_id']} to round: {Session.get_rounds()}')
@@ -78,14 +79,6 @@ def home():
             flash(f'Loaded a session with code {sess_code}!', category='success')
             current_app.logger.info(f'Loaded session: {session['session_id']} with type: {Session.get_type()}.')
         else:
-            now = time.time()
-            Book.get_books()
-            current_app.logger.info(f'DB test took: {round(time.time() - now, 4)}')
-
-            now = time.time()
-            Book.get_book_ids()
-            current_app.logger.info(f'DB test took: {round(time.time() - now, 4)}')
-
             session['session_code'] = str(uuid.uuid4())[:8]
             new_session = Session(code=session['session_code'])
             db.session.add(new_session)
@@ -94,15 +87,15 @@ def home():
             session['type'] = 'descriptions' if new_session.id % 2 == 1 else 'tags'
             new_session.type = session['type']
             db.session.commit()
-            books = Book.query.order_by(Book.id).all()
-            scores = [Score(session_id=new_session.id, book_id=b.id, score=1/len(books)) for b in books]
+            book_ids = Book.get_book_ids()
+            scores = [Score(session_id=new_session.id, book_id=b, score=1/len(book_ids)) for b in book_ids]
             db.session.add_all(scores)
 
             db.session.commit()
             flash('Started a session!', category='success')
 
             now = time.time()
-            get_answers()
+            get_answers(book_ids)
             current_app.logger.info(f'Generating descriptions took: {round(time.time()- now, 4)} seconds')
         
             current_app.logger.info(f'Started session: {session['session_id']} with type: {Session.get_type()}.')

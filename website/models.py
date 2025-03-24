@@ -175,6 +175,21 @@ class Book(db.Model):
         return [row[0] for row in results]
     
     @classmethod
+    def get_book_ids(cls):
+        book_ids = db.session.query(cls.id).order_by(cls.id).all()
+        return [row[0] for row in book_ids]
+    
+    @classmethod
+    def get_embeddings_from_ids(cls, book_ids):
+        results = db.session.query(cls.embedding).filter(cls.id.in_(book_ids)).order_by(cls.id).all()
+        return [row[0] for row in results]
+    
+    @classmethod
+    def get_svds_from_ids(cls, book_ids):
+        results = db.session.query(cls.svd).filter(cls.id.in_(book_ids)).order_by(cls.id).all()
+        return [row[0] for row in results]
+    
+    @classmethod
     def get_best_books(cls):
         query = text("SELECT b.* FROM book b LEFT JOIN score s ON b.id = s.book_id WHERE s.session_id = :session_id ORDER BY s.score DESC LIMIT 100;")
         results = db.session.execute(query, {"session_id": int(session['session_id'])})
@@ -184,18 +199,6 @@ class Book(db.Model):
         show_books['best_books'] = [book for book in best_books if book not in picked_books][:10]
         show_books['sampled_books'] = [book for book in best_books if book not in (picked_books + show_books['best_books'])][:10]
         return show_books
-
-    @classmethod
-    def get_books(cls):
-        query = text("SELECT b.* FROM book b ORDER BY b.id;")
-        results = db.session.execute(query)
-        return results
-    
-    @classmethod
-    def get_book_ids(cls):
-        query = text("SELECT b.id FROM book b ORDER BY b.id;")
-        results = db.session.execute(query)
-        return results
 
 class Score(db.Model):
     __tablename__ = "score"
@@ -209,9 +212,8 @@ class Score(db.Model):
     book = db.relationship('Book', back_populates='scores')
 
     @classmethod
-    def get_scores_from_sample(cls, books: list[Book]):
+    def get_scores_from_sample(cls, book_ids: list[Book]):
         session_id = session['session_id']
-        book_ids = [int(book.id) for book in books]
         scores = cls.query.filter((cls.session_id == session_id) & (cls.book_id.in_(book_ids))).order_by(cls.book_id).all()
         return scores
     
