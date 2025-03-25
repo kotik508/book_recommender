@@ -95,8 +95,8 @@ h3 {
     font-size: 1.5rem;
     border-radius: 20px;
     border: 3px solid rgb(92, 65, 48);
-    height: 4vh;
-    width: 10%;
+    height: max(4vh, 50px);
+    width: max(10%, 100px);
 }
 
 .submit-btn:hover {

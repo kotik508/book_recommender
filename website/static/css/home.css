@@ -1,3 +1,33 @@
+.post-form-code {
+    display: flex;
+    justify-content: center;
+    width: 35%;
+    height: max(5vh, 30px);
+}
+
+.user-code {
+    padding: 2% 5%;
+    font-size: 1.2rem;
+    font-family: 'Merriweather', serif;
+    color: #4A261A;
+    background-color: #F7E7CE;
+    border: 2px solid #6f4f3b;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.user-code::placeholder {
+    color: #8B5E3C;
+    font-style: italic;
+}
+
+.user-code:focus {
+    outline: none;
+    border-color: rgb(121, 89, 69);
+    box-shadow: 0px 0px 8px rgba(121, 89, 69, 0.6);
+}
+
 .post-form {
     display: flex;
     justify-content: center;
@@ -12,7 +42,7 @@
     background-color: antiquewhite;
     color:black;
     font-size: 1.5rem;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 3px solid rgb(92, 65, 48);
 }
 
