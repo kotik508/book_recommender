@@ -205,6 +205,10 @@ h3 {
     }
 }
 
+.best-books .title {
+    max-width: 50%;
+}
+
 img.book-image {
     width: 40px;
     height: 60px;
