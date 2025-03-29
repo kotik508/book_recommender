@@ -16,8 +16,12 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+RUN mkdir -p /app/logs
+
 ENV FLASK_APP=main.py
 ENV FLASK_ENV=production
+
+RUN echo "Starting app..."
 
 EXPOSE 8000
 
