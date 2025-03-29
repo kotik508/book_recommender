@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const leftList = document.querySelector(".left-list");
     const lowerSection = document.querySelector(".lower-section ul");
 
-    console.log('here');
-
     upperSections.forEach(upperSection => {
         upperSection.addEventListener("click", function (event) {
             if (event.target.closest(".pick-btn")) {
@@ -41,8 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let bookItem = event.target.closest(".book-entry");
         if (bookItem) {
             let bookId = bookItem.querySelector(".pick-btn").getAttribute("data-book-id");
-
-            console.log("Moving book back to the left list.");
 
             let returnedBookItem = bookItem.cloneNode(true);
             leftList.appendChild(returnedBookItem);

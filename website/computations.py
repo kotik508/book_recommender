@@ -14,7 +14,6 @@ def get_answers(book_ids):
     now = time.time()
     scores = np.array([score.score for score in Score.get_scores_from_sample(book_ids)])
     exp = (15 - Session.get_rounds()) / 2 - 2
-    # exp = 5 + (Session.get_rounds() / 2)
     weights = scores**(exp)
     weights = np.divide(weights, np.sum(weights))
     current_app.logger.info(f'Score transform took: {round(time.time()- now, 4)} seconds')
@@ -28,12 +27,11 @@ def get_answers(book_ids):
     # current_app.logger.info(f'HP score: {Score.query.filter((Score.book_id == 121) & (Score.session_id == session['session_id'])).first().score}')
     # current_app.logger.info(f'1984 position: {np.where(sorted[:, None] == 2714)[0]}')
     # current_app.logger.info(f'1984 score: {Score.query.filter((Score.book_id == 2715) & (Score.session_id == session['session_id'])).first().score}')
+    # current_app.logger.info(f'LOTR position: {np.where(sorted[:, None] == 75)[0]}')
+    # current_app.logger.info(f'LOTR score: {Score.query.filter((Score.book_id == 76) & (Score.session_id == session['session_id'])).first().score}')
     
-    current_app.logger.info(f'LOTR position: {np.where(sorted[:, None] == 75)[0]}')
-    current_app.logger.info(f'LOTR score: {Score.query.filter((Score.book_id == 76) & (Score.session_id == session['session_id'])).first().score}')
     books_sampled = [book_ids[book] for book in books_sampled]
     books_sampled.sort()
-    current_app.logger.info(books_sampled[:20])
     current_app.logger.info(f'Books sample took: {round(time.time()- now, 4)} seconds')
 
     now = time.time()

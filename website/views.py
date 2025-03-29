@@ -43,6 +43,7 @@ def book_choice():
                 embeddings = np.array(Book.get_embeddings())
 
             disable_books = request.form.get("book_ids", "").split(",")
+            current_app.logger.info(len(disable_books))
             disable_books = list(map(int, disable_books))
             
             scores = Score.query.filter(Score.session_id == session['session_id']).order_by(Score.book_id).all()

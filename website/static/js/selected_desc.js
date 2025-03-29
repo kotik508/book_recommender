@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function () {
         let bookIds = [];
 
-        document.querySelectorAll(".best-books .pick-btn").forEach(button => {
+        document.querySelectorAll(".best-books .upper-section .pick-btn").forEach(button => {
             bookIds.push(button.getAttribute("data-book-id"));
         });
 
