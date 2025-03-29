@@ -121,6 +121,10 @@ def final_page():
         sess.gender = request.form.get("gender") if request.form.get("gender") != "" else None
         sess.education = request.form.get("education") if request.form.get("education") != "" else None
         db.session.commit()
+        current_app.logger.info(f'Session {sess.id} has age category: {sess.age_category}')
+        current_app.logger.info(f'Session {sess.id} has gender: {sess.gender}')
+        current_app.logger.info(f'Session {sess.id} has education: {sess.education}')
+        current_app.logger.info(f'Session {sess.id} has email: {sess.email}')
         return jsonify({
                 'status': 'success',
                 'message': 'Demography added'
