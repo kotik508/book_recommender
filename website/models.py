@@ -105,13 +105,13 @@ class Session(db.Model):
         if add=='pick':
             if book_obj not in session_obj.picked_books and len(session_obj.picked_books) < 5:
                 session_obj.picked_books.append(book_obj)
-                current_app.logger.info(f'Added book: {book_obj.id} to selected books.')
+                current_app.logger.info(f'Session: {session_obj.id} added book: {book_obj.id} to selected books.')
             else:
                 current_app.logger.error('Too many picked books.')
         elif add=='rm_pick':
             if book_obj in session_obj.picked_books:
                 session_obj.picked_books.remove(book_obj)
-                current_app.logger.info(f'Removed book: {book_obj.id} from selected books.')
+                current_app.logger.info(f'Session: {session_obj.id} removed book: {book_obj.id} from selected books.')
         else:
             current_app.logger.error('Wrong add messsage')
 

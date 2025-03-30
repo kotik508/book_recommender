@@ -43,14 +43,15 @@ def book_choice():
                 embeddings = np.array(Book.get_embeddings())
 
             disable_books = request.form.get("book_ids", "").split(",")
-            current_app.logger.info(len(disable_books))
             disable_books = list(map(int, disable_books))
             
             scores = Score.query.filter(Score.session_id == session['session_id']).order_by(Score.book_id).all()
             selected_cluster = int(request.form.get('answer'))
 
             now = time.time()
-            update_scores(scores, embeddings, selected_cluster, disable_books)
+            # sigma = 0.3 - (0.02 * int(Session.get_rounds()))
+            sigma = 0.2
+            update_scores(scores, embeddings, selected_cluster, disable_books, sigma)
             current_app.logger.info(f'Update scores for session: {session['session_id']} and round: {Session.get_rounds()} took: {round(time.time()- now)} seconds')
 
             if Session.query.filter(Session.id == session['session_id']).first().rounds < 10:
