@@ -37,6 +37,7 @@ class Session(db.Model):
     summary4 = db.Column(db.String(400))
     start_date = db.Column(db.DateTime(timezone=True), default=func.now())
     rounds = db.Column(db.Integer, default=0)
+    sigma = db.Column(db.Float)
     age_category = db.Column(db.String(20))
     education = db.Column(db.String(150))
     gender = db.Column(db.String(20))
@@ -48,6 +49,13 @@ class Session(db.Model):
         sess = cls.query.filter(cls.id == session['session_id']).first()
         sess.rounds += 1
         db.session.commit()
+    
+    @classmethod
+    def assign_sigma(cls, sigma):
+        sess = cls.query.filter(cls.id == session['session_id']).first()
+        if sess.sigma != sigma:
+            sess.sigma = sigma
+            db.session.commit()
 
     @classmethod
     def get_rounds(cls):
@@ -139,11 +147,6 @@ class Session(db.Model):
     def get_picked_books(cls):
         session_obj = cls.query.get(session['session_id'])
         return session_obj.picked_books
-    
-    @classmethod
-    def get_disabled_books(cls):
-        session_obj = cls.query.get(session['session_id'])
-        return session_obj.disabled_books
 
 class Book(db.Model):
     __tablename__ = "book"
@@ -229,7 +232,7 @@ class Score(db.Model):
     book = db.relationship('Book', back_populates='scores')
 
     @classmethod
-    def get_scores_from_sample(cls, book_ids: list[Book]):
+    def get_scores_from_sample(cls, book_ids: list[int]):
         session_id = session['session_id']
         scores = cls.query.filter((cls.session_id == session_id) & (cls.book_id.in_(book_ids))).order_by(cls.book_id).all()
         return scores

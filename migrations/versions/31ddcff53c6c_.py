@@ -53,6 +53,7 @@ def upgrade():
     sa.Column('summary4', sa.String(length=400), nullable=True),
     sa.Column('start_date', sa.DateTime(timezone=True), nullable=True),
     sa.Column('rounds', sa.Integer(), nullable=True),
+    sa.Column('sigma', sa.Float(), nullable=True),
     sa.Column('age_category', sa.String(length=20), nullable=True),
     sa.Column('education', sa.String(length=150), nullable=True),
     sa.Column('gender', sa.String(length=20), nullable=True),

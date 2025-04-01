@@ -86,6 +86,17 @@ h3 {
     text-align: center;
 }
 
+.btns {
+    margin-top: 2vh;
+    display: flex;
+}
+
+.bt {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
 .submit-btn {
     display: inline-flex;
     justify-content: center;
@@ -103,6 +114,25 @@ h3 {
     background-color: rgb(230, 220, 200);
     border: 3px solid rgb(111, 85, 68);
 }
+
+.reset-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(170, 38, 38, 0.071);
+    color:black;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border: 3px solid rgb(81, 10, 10);
+    height: max(4vh, 50px);
+    width: max(62%, 100px);
+}
+
+.reset-btn:hover {
+    background-color: rgba(170, 38, 38, 0.141);
+    border: 3px solid rgb(101, 30, 30);
+}
+
 
 /* 
 -----------------------------------------NAVBAR-----------------------------------------
@@ -263,4 +293,12 @@ img.book-image {
     transition: opacity 0.2s ease-in-out;
     pointer-events: none;
     z-index: 1000;
+}
+
+/* 
+-----------------------------------------FLASH MESSAGES-----------------------------------------
+*/
+
+.flash-container {
+    left: 35%;
 }

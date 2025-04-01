@@ -1,11 +1,11 @@
 from flask import Blueprint, redirect, render_template, url_for, request, flash, session, jsonify, current_app
-from .computations import update_scores, get_answers
+from .computations import update_scores, get_answers, disable_books
 import uuid
 from .models import Session, Book, Score
-from .text_generation import get_description
 from . import db
 import numpy as np
 import time
+import random
 
 views = Blueprint('views', __name__)
 
@@ -33,26 +33,34 @@ def book_choice():
             }), 200
 
         else:
+            dis_books = request.form.get("book_ids", "").split(",")
+            dis_books = list(map(int, dis_books))
 
-            if session['type'] == 'descriptions':
-                embeddings = np.array(Book.get_embeddings())
-            elif session['type'] == 'tags':
-                embeddings = np.array(Book.get_svds())
+            if request.form.get("answer"):
+
+                if session['type'] == 'descriptions':
+                    embeddings = np.array(Book.get_embeddings())
+                elif session['type'] == 'tags':
+                    embeddings = np.array(Book.get_svds())
+                else:
+                    current_app.logger.warning(f'INVALID SESSION TYPE: {session['type']}')
+                    embeddings = np.array(Book.get_embeddings())
+
+                
+                scores = Score.query.filter(Score.session_id == session['session_id']).order_by(Score.book_id).all()
+                selected_cluster = int(request.form.get('answer'))
+
+                now = time.time()
+                if session['type'] == 'descriptions':
+                    sigma = random.sample([0.02, 0.03, 0.04, 0.05, 0.06], 1)
+                else:
+                    sigma = random.sample([0.2, 0.22, 0.24, 0.18, 0.16], 1)
+                Session.assign_sigma(sigma)
+                update_scores(scores=scores, embeddings=embeddings, selected_cluster=selected_cluster,
+                                disable_books=dis_books, sigma=sigma)
+                current_app.logger.info(f'Update scores for session: {session['session_id']} and round: {Session.get_rounds()} took: {round(time.time()- now)} seconds')
             else:
-                current_app.logger.warning(f'INVALID SESSION TYPE: {session['type']}')
-                embeddings = np.array(Book.get_embeddings())
-
-            disable_books = request.form.get("book_ids", "").split(",")
-            disable_books = list(map(int, disable_books))
-            
-            scores = Score.query.filter(Score.session_id == session['session_id']).order_by(Score.book_id).all()
-            selected_cluster = int(request.form.get('answer'))
-
-            now = time.time()
-            # sigma = 0.3 - (0.02 * int(Session.get_rounds()))
-            sigma = 0.2
-            update_scores(scores, embeddings, selected_cluster, disable_books, sigma)
-            current_app.logger.info(f'Update scores for session: {session['session_id']} and round: {Session.get_rounds()} took: {round(time.time()- now)} seconds')
+                disable_books(dis_books)
 
             if Session.query.filter(Session.id == session['session_id']).first().rounds < 10:
                 now = time.time()
@@ -65,6 +73,7 @@ def book_choice():
             else:
                 return redirect(url_for('views.final_page'))
 
+
 @views.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'GET':
@@ -72,14 +81,19 @@ def home():
 
     elif request.method == 'POST':
 
-        if "session_code" in request.form:
+        if request.form.get('session_code'):
             sess_code = request.form.get('session_code')
-            session['session_code'] = sess_code
-            sess = Session.query.filter(Session.code ==sess_code).first()
-            session['session_id'] = sess.id
-            session['type'] = sess.type
-            flash(f'Loaded a session with code {sess_code}!', category='success')
-            current_app.logger.info(f'Loaded session: {session['session_id']} with type: {Session.get_type()}.')
+            try:
+                session['session_code'] = sess_code
+                sess = Session.query.filter(Session.code == sess_code).first()
+                session['session_id'] = sess.id
+                session['type'] = sess.type
+                flash(f'Loaded a session with code {sess_code}!', category='success')
+                current_app.logger.info(f'Loaded session: {session['session_id']} with type: {Session.get_type()}.')
+            except Exception as e:
+                current_app.logger.exception(f'Tried to load a session with incorrect code: {sess_code}.')
+                flash(f'Incorrect session code', category='error')
+                return redirect(url_for('views.home'))
         else:
             session['session_code'] = str(uuid.uuid4())[:8]
             new_session = Session(code=session['session_code'])

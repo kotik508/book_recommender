@@ -164,3 +164,11 @@ input, select {
 .submit-btn:active {
     transform: scale(0.99);
 }
+
+/* 
+-----------------------------------------FLASH MESSAGES-----------------------------------------
+*/
+
+.flash-container {
+    left: 50%;
+}

@@ -21,30 +21,34 @@ href="static/css/home.css" />
         <p>
             Bookie is here to help you discover new books that might interest you. Answer questions to get recommendations on the right-side panel. You can select up to 5 titles from the recommendations. 
             When you have selected 5 books you can click <b>End</b> to finish. Otherwise the application will end automatically after 10 rounds of questions and display the best books for you.
+            You can use the session code, which appears after starting a session, to return to that session anytime.
         </p>
-        <p>
-            You can use the session code, which appears after starting a session, to return to that session anytime. Try to complete two sessions,
-            first trying to find a book based on your preferences. For the second session try to find a perfect book for your summer holiday!
-        </p>
+        <ul>
+            <b>Your task is to complete two sessions with these instructions:</b>
+            <li>find books based on your current preferences</li>
+            <li>find perfect books for your summer holiday</li>
+        </ul>
         <p>
             This project is made as a part of my Bachelor thesis and the data from here will be anonymized and used in it.
+            By completing this study, you consent to the use of your data.
+            If you change your mind, you can contact me about deleting this data at <b>kotik.adam74@gmail.com.</b>
         </p>
         <p>
             Start by clicking the button below.
         </p>
     </div>
-    <div class="buttons">
-        <form class="post-form" action="/" method="POST" onsubmit="showLoader()">
+    <form class="post-form" action="/" method="POST" onsubmit="showLoader()">
+        <div class="post-form-button">
             <button class="btn" 
             id="centered-button" 
             type="submit">
                 <i class="bi bi-book"></i> Start
             </button>
-        </form>
-        <form class="post-form-code" action="/" method="POST" onsubmit="showLoader()">
-            <input class="user-code" id="user-code" type="text" name="session_code" placeholder="Enter session code" required>
-        </form>
-    </div>
+        </div>
+        <div class="post-form-code">
+            <input class="user-code" id="user-code" type="text" name="session_code" placeholder="Enter session code">
+        </div>
+    </form>
 </div>
 
 <script>
@@ -61,6 +65,6 @@ href="static/css/home.css" />
             }
         });
     });
-    </script>
+</script>
 {% endblock %}
 

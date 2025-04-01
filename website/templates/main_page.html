@@ -48,8 +48,13 @@ href="static/css/main_page.css" />
                 </div>
                 {% endfor %}
             </div>
-            <div class="text-center mt-3">
-                <button type="submit" class="submit-btn" id="submit-btn" disabled>Submit</button>
+            <div class="btns">
+                <div class="bt">
+                    <button type="submit" class="submit-btn" id="submit-btn" disabled>Submit</button>
+                </div>
+                <div class="bt">
+                    <button type="submit" value="" class="reset-btn" id="submit-btn" >None of the descriptions fit</button>
+                </div>
             </div>
         </form>
     </div>
@@ -116,6 +121,6 @@ href="static/css/main_page.css" />
 
 {% block scripts %}
 <script 
-src="{{ url_for('static', filename='js/selected_desc.js') }}"
+src="{{ url_for('static', filename='js/select_books.js') }}"
 ></script>
 {% endblock %}

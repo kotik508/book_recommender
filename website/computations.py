@@ -4,7 +4,6 @@ from sklearn.cluster import KMeans
 from .text_generation import run_async_process, get_description
 from .models import Score, Session, Book
 from . import db
-import asyncio
 import time
 import numpy as np
 import pandas as pd
@@ -13,7 +12,6 @@ import pandas as pd
 def get_answers(book_ids):
     now = time.time()
     scores = np.array([score.score for score in Score.get_scores_from_sample(book_ids)])
-    # exp = (15 - Session.get_rounds()) / 2 - 2
     exp = 8
     weights = scores**(exp)
     weights = np.divide(weights, np.sum(weights))
@@ -132,3 +130,8 @@ def update_scores(scores: list[Score], embeddings, selected_cluster: int, disabl
     db.session.commit()
 
 
+def disable_books(book_ids: list[int]):
+    scores = Score.get_scores_from_sample(book_ids)
+    for score in scores:
+        score.score = float(np.e**(-10))
+    db.session.commit()
