@@ -5,6 +5,7 @@ from flask import session, current_app
 from sqlalchemy import text
 import numpy as np
 import random
+import ast
 
 
 picked_books = db.Table(
@@ -196,7 +197,7 @@ class Book(db.Model):
     @classmethod
     def get_best_books(cls):
         query = text(
-            "SELECT b.id, b.goodreads_id, b.title, b.author, b.description, b.cover_image_uri, b.avg_rating "
+            "SELECT b.id, b.goodreads_id, b.title, b.author, b.description, b.cover_image_uri, b.avg_rating, b.tags "
             "FROM book b "
             "LEFT JOIN score s ON b.id = s.book_id "
             "WHERE s.session_id = :session_id "
@@ -219,6 +220,22 @@ class Book(db.Model):
             show_books['sampled_books'] = random.sample(remaining_books, min(len(remaining_books), 10))
             
         return show_books
+    
+    @classmethod
+    def get_tags(cls, books):
+        tags = {}
+        for book in books:
+            tgs = ast.literal_eval(book.tags)
+            if tgs:
+                if len(tgs) > 2:
+                    tags[book.id] = tgs[:3]
+                else:
+                    tags[book.id] = tgs
+            else:
+                tags[book.id] = []
+        return tags
+
+
 
 class Score(db.Model):
     __tablename__ = "score"

@@ -72,6 +72,7 @@ href="static/css/main_page.css" />
                             data-goodreads-id="{{ book.goodreads_id }}"
                             data-book-desc="{{ book.description }}" 
                             data-title="{{ book.title }}"
+                            data-tags="{{ bb_tags[book.id] }}"
                             >
                             <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
                             <span class="title">{{ book.title }}</span>
@@ -90,6 +91,7 @@ href="static/css/main_page.css" />
                             data-goodreads-id="{{ book.goodreads_id }}"
                             data-book-desc="{{ book.description }}" 
                             data-title="{{ book.title }}"
+                            data-tags="{{ sb_tags[book.id] }}"
                             >
                             <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
                             <span class="title">{{ book.title }}</span>
@@ -106,7 +108,15 @@ href="static/css/main_page.css" />
             <ul>
                 {% for book in picked_books %}
                 <li class="book-entry">
-                    <button class="pick-btn" type="button" data-book-id="{{ book.id }}">
+                    <button 
+                        class="pick-btn" 
+                        type="button" 
+                        data-book-id="{{ book.id }}"
+                        data-goodreads-id="{{ book.goodreads_id }}"
+                        data-book-desc="{{ book.description }}" 
+                        data-title="{{ book.title }}"
+                        data-tags="{{ pb_tags[book.id] }}"
+                        >
                         <img src="{{ book.cover_image_uri }}" alt="book.title" class="book-image">
                         <span>{{ book.title }}</span>
                         <span class="rating">{{ book.avg_rating }}</span>

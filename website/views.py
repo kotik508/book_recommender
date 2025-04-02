@@ -14,12 +14,19 @@ views = Blueprint('views', __name__)
 def book_choice():
     if request.method == 'GET':
         show_books = Book.get_best_books()
+        try:
+            bb_tags = Book.get_tags(show_books['best_books'])
+        except Exception as e:
+            current_app.logger.exception(e)
+        sb_tags = Book.get_tags(show_books['sampled_books'])
         picked_books = Session.get_picked_books()
+        pb_tags = Book.get_tags(picked_books)
         current_app.logger.info(f'Session: {session["session_id"]} in round: {Session.get_rounds()} has these picked books: {", ".join(str(book.id) for book in picked_books)}')
         current_app.logger.info(f'Session: {session["session_id"]} in round: {Session.get_rounds()} has these best books: {", ".join(str(book.id) for book in show_books['best_books']+show_books['sampled_books'])}')
         return render_template('main_page.html', summaries=Session.get_summaries(), round=Session.get_rounds(), 
                                best_books=show_books['best_books'], sampled_books=show_books['sampled_books'], 
-                               picked_books=picked_books, session_code=session['session_code'])
+                               picked_books=picked_books, session_code=session['session_code'],
+                               bb_tags=bb_tags, sb_tags=sb_tags, pb_tags=pb_tags)
     
     elif request.method == 'POST':
         
@@ -51,13 +58,17 @@ def book_choice():
                 selected_cluster = int(request.form.get('answer'))
 
                 now = time.time()
-                if session['type'] == 'descriptions':
-                    sigma = random.sample([0.02, 0.03, 0.04, 0.05, 0.06], 1)
+                if int(Session.get_rounds()) < 1:
+                    if session['type'] == 'descriptions':
+                        sigma = random.sample([0.02, 0.03, 0.04, 0.05, 0.06], 1)[0]
+                    else:
+                        sigma = random.sample([0.2, 0.22, 0.24, 0.18, 0.16], 1)[0]
                 else:
-                    sigma = random.sample([0.2, 0.22, 0.24, 0.18, 0.16], 1)
-                Session.assign_sigma(sigma)
+                    sigma = Session.query.filter(Session.id == session['session_id']).first().sigma
+
                 update_scores(scores=scores, embeddings=embeddings, selected_cluster=selected_cluster,
                                 disable_books=dis_books, sigma=sigma)
+                Session.assign_sigma(sigma)
                 current_app.logger.info(f'Update scores for session: {session['session_id']} and round: {Session.get_rounds()} took: {round(time.time()- now)} seconds')
             else:
                 disable_books(dis_books)

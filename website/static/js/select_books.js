@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".tooltip").forEach(t => t.remove());
 
             const title = this.dataset.title || "Unknown Title";
+            const tagsString = this.dataset.tags;
+            const tags = JSON.parse(tagsString.replace(/'/g, '"'));
             const fullDescription = this.dataset.bookDesc || "No description available";
             const readMoreUrl = "https://www.goodreads.com/book/show/" + (this.dataset.goodreadsId || "#");
             const maxLength = 200;
@@ -51,7 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const tooltip = document.createElement("div");
             tooltip.classList.add("tooltip");
             tooltip.innerHTML = `<strong style="display: block; font-size: 1rem; margin-bottom: 5px;">${title}</strong>
-                                 <span class="tooltip-text">${truncatedDescription}</span>`;
+                    <span style="display: block; font-size: 0.85rem; color: gray; margin-bottom: 5px;">${tags.join(', ')}</span>
+                    <span class="tooltip-text">${truncatedDescription}</span>`;
             document.body.appendChild(tooltip);
 
             Object.assign(tooltip.style, {
