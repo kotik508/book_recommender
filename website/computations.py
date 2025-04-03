@@ -1,4 +1,3 @@
-from scipy.spatial.distance import cdist
 from flask import session, current_app
 from sklearn.cluster import KMeans
 from .text_generation import run_async_process, get_description
