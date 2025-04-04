@@ -42,6 +42,7 @@ def book_choice():
             dis_books = request.form.get("book_ids", "").split(",")
             dis_books = list(map(int, dis_books))
             sigma = get_sigma()
+            current_app.logger.info(f'Session: {session['session_id']} sigma: {sigma}')
 
             if request.form.get("answer"):
 
@@ -60,7 +61,6 @@ def book_choice():
                 now = time.time()
 
                 
-                current_app.logger.info(f'Sigma: {sigma}')
 
                 update_scores(scores=scores, embeddings=embeddings, selected_cluster=selected_cluster,
                                 disable_books=dis_books, sigma=sigma)
