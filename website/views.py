@@ -1,11 +1,10 @@
 from flask import Blueprint, redirect, render_template, url_for, request, flash, session, jsonify, current_app
-from .computations import update_scores, get_answers, disable_books
+from .computations import update_scores, get_answers, disable_books, get_sigma
 import uuid
 from .models import Session, Book, Score
 from . import db
 import numpy as np
 import time
-import random
 
 views = Blueprint('views', __name__)
 
@@ -42,6 +41,7 @@ def book_choice():
         else:
             dis_books = request.form.get("book_ids", "").split(",")
             dis_books = list(map(int, dis_books))
+            sigma = get_sigma()
 
             if request.form.get("answer"):
 
@@ -58,19 +58,7 @@ def book_choice():
                 selected_cluster = int(request.form.get('answer'))
 
                 now = time.time()
-                if int(Session.get_rounds()) < 1:
-                    if session['type'] == 'descriptions':
-                        sigma = random.sample([0.02, 0.03, 0.04, 0.05, 0.06], 1)[0]
-                    else:
-                        sigma = random.sample([0.2, 0.22, 0.24, 0.18, 0.16], 1)[0]
-                    if sigma:
-                        Session.assign_sigma(sigma)
-                    else:
-                        current_app.logger.error(f"No sigma")
-                else:
-                    sigma = Session.query.filter(Session.id == session['session_id']).first().sigma
-                    if not sigma:
-                        current_app.logger.error(f"No sigma")
+
                 
                 current_app.logger.info(f'Sigma: {sigma}')
 

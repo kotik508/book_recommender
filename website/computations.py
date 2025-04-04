@@ -5,6 +5,7 @@ from .models import Score, Session, Book
 from . import db
 import time
 import numpy as np
+import random
 
 
 def get_answers(book_ids):
@@ -133,3 +134,25 @@ def disable_books(book_ids: list[int]):
     for score in scores:
         score.score = float(np.e**(-10))
     db.session.commit()
+
+def get_sigma():
+    if int(Session.get_rounds()) < 1:
+        if session['type'] == 'descriptions':
+            sigma = random.sample([0.02, 0.03, 0.04, 0.05, 0.06], 1)[0]
+        else:
+            sigma = random.sample([0.2, 0.22, 0.24, 0.18, 0.16], 1)[0]
+        if sigma:
+            Session.assign_sigma(sigma)
+        else:
+            current_app.logger.error(f"No sigma")
+    else:
+        sigma = Session.query.filter(Session.id == session['session_id']).first().sigma
+        if not sigma:
+            current_app.logger.error(f"No sigma")
+            if session['type'] == 'descriptions':
+                sigma = random.sample([0.02, 0.03, 0.04, 0.05, 0.06], 1)[0]
+            else:
+                sigma = random.sample([0.2, 0.22, 0.24, 0.18, 0.16], 1)[0]
+            if sigma:
+                Session.assign_sigma(sigma)
+    return sigma
