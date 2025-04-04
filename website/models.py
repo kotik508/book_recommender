@@ -54,9 +54,8 @@ class Session(db.Model):
     @classmethod
     def assign_sigma(cls, sigma):
         sess = cls.query.filter(cls.id == session['session_id']).first()
-        if sess.sigma != sigma:
-            sess.sigma = sigma
-            db.session.commit()
+        sess.sigma = sigma
+        db.session.commit()
 
     @classmethod
     def get_rounds(cls):

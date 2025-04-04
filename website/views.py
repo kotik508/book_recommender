@@ -63,12 +63,19 @@ def book_choice():
                         sigma = random.sample([0.02, 0.03, 0.04, 0.05, 0.06], 1)[0]
                     else:
                         sigma = random.sample([0.2, 0.22, 0.24, 0.18, 0.16], 1)[0]
+                    if sigma:
+                        Session.assign_sigma(sigma)
+                    else:
+                        current_app.logger.error(f"No sigma")
                 else:
                     sigma = Session.query.filter(Session.id == session['session_id']).first().sigma
+                    if not sigma:
+                        current_app.logger.error(f"No sigma")
+                
+                current_app.logger.info(f'Sigma: {sigma}')
 
                 update_scores(scores=scores, embeddings=embeddings, selected_cluster=selected_cluster,
                                 disable_books=dis_books, sigma=sigma)
-                Session.assign_sigma(sigma)
                 current_app.logger.info(f'Update scores for session: {session['session_id']} and round: {Session.get_rounds()} took: {round(time.time()- now)} seconds')
             else:
                 disable_books(dis_books)
