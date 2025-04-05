@@ -64,7 +64,7 @@ def clustering(book_ids):
     kmeans = KMeans(n_clusters=4, n_init=10, max_iter=1000)
     kmeans.fit(embeddings)
     labels = kmeans.labels_
-    centroids = kmeans.cluster_centers_
+    centroids = kmeans.cluster_centers_ / np.linalg.norm(kmeans.cluster_centers_, axis=1, keepdims=True)
     Session.assign_centroids(centroids)
 
     best_embeddings = {}
@@ -79,17 +79,6 @@ def clustering(book_ids):
 
         best_books_sorted = sorted(best_books, key=lambda book: int(book.id))[:5]
         best_embeddings[cluster_id] = best_books_sorted
-
-        # cluster_embeddings = embeddings[cluster_indices]
-        # distances = cdist(cluster_embeddings, centroids[cluster_id].reshape(1, -1), metric='euclidean').flatten()
-
-        # top_indices = cluster_indices[np.argsort(distances)[:10]].tolist()
-
-        # best_embeddings[cluster_id] = [books[i] for i in top_indices]
-
-    # for cs in best_embeddings.keys():
-    #     for i in range(4):
-    #         current_app.logger.info(f'Best book for cluster {cs}: Book {i} {best_embeddings[cs][i].title}')
 
     return best_embeddings
 

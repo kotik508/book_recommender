@@ -60,8 +60,6 @@ def book_choice():
 
                 now = time.time()
 
-                
-
                 update_scores(scores=scores, embeddings=embeddings, selected_cluster=selected_cluster,
                                 disable_books=dis_books, sigma=sigma)
                 current_app.logger.info(f'Update scores for session: {session['session_id']} and round: {Session.get_rounds()} took: {round(time.time()- now)} seconds')
