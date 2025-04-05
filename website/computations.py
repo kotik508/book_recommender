@@ -95,38 +95,43 @@ def clustering(book_ids):
 
 def update_scores(scores: list[Score], embeddings, selected_cluster: int, disable_books: list[str], sigma: np.float32 = np.float32(0.25)):
 
-    centroids = Session.get_centroids()
+    try:
 
-    scores_list = []
+        centroids = Session.get_centroids()
 
-    # Score calculation based on embedding distance
-    for score, embedding in zip(scores, embeddings):
-    
-        disp_sum = 0
-        for x in centroids:
+        scores_list = []
 
-            if not np.array_equal(x, centroids[selected_cluster]):
-                disp_sum += np.exp(-np.linalg.norm(x - embedding) / sigma)
+        # Score calculation based on embedding distance
+        for score, embedding in zip(scores, embeddings):
         
-        like_val = np.exp(-np.linalg.norm(centroids[selected_cluster] - embedding) / sigma)
-        score.score = float(score.score * (like_val / (disp_sum + like_val)))
+            disp_sum = 0
+            for x in centroids:
 
-        scores_list.append(score.score)
+                if not np.array_equal(x, centroids[selected_cluster]):
+                    disp_sum += np.exp(-np.dot(x, embedding) / sigma)
+            
+            like_val = np.exp(-np.dot(centroids[selected_cluster], embedding) / sigma)
+            score.score = float(score.score * (like_val / (disp_sum + like_val)))
 
-    # Score adjustment to keep values between 0 and 1
-    scores_list = np.array(scores_list)
-    if np.max(scores_list) > 0:
-        scores_cal = np.divide(scores_list, np.max(scores_list))
-    else:
-        scores_cal = np.divide(scores_list, float(np.e**(-10)))
-    
-    for score, new_score in zip(scores, scores_cal):
-        if score.book_id not in disable_books:
-            score.score = float(new_score)
+            scores_list.append(score.score)
+
+        # Score adjustment to keep values between 0 and 1
+        scores_list = np.array(scores_list)
+        if np.max(scores_list) > 0:
+            scores_cal = np.divide(scores_list, np.max(scores_list))
         else:
-            score.score = float(np.e**(-10))
+            scores_cal = np.divide(scores_list, float(np.e**(-10)))
+        
+        for score, new_score in zip(scores, scores_cal):
+            if score.book_id not in disable_books:
+                score.score = float(new_score)
+            else:
+                score.score = float(np.e**(-10))
+        
+        db.session.commit()
     
-    db.session.commit()
+    except Exception as e:
+        current_app.logger.exception(e)
 
 
 def disable_books(book_ids: list[int]):
