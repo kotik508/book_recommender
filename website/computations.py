@@ -92,18 +92,24 @@ def update_scores(scores: list[Score], embeddings, selected_cluster: int, disabl
 
         # Score calculation based on embedding distance
         for score, embedding in zip(scores, embeddings):
+
+            if not np.linalg.norm(embedding) == 0:
         
-            disp_sum = 0
-            for x in centroids:
+                disp_sum = 0
+                for x in centroids:
 
-                if not np.array_equal(x, centroids[selected_cluster]):
-                    disp_sum += np.exp(-(1 - np.dot(x, embedding)) / sigma)
+                    if not np.array_equal(x, centroids[selected_cluster]):
+                        disp_sum += np.exp(-(1 - np.dot(x, embedding)) / sigma)
+                
+                like_val = np.exp(-(1 - np.dot(centroids[selected_cluster], embedding)) / sigma)
+                score.score = float(score.score * (like_val / (disp_sum + like_val)))
+
+                scores_list.append(score.score)
             
-            like_val = np.exp(-(1 - np.dot(centroids[selected_cluster], embedding)) / sigma)
-            score.score = float(score.score * (like_val / (disp_sum + like_val)))
-
-            scores_list.append(score.score)
-
+            else:
+                score.score = float(0)
+                scores_list.append(score.score)
+                
         # Score adjustment to keep values between 0 and 1
         scores_list = np.array(scores_list)
         if np.max(scores_list) > 0:

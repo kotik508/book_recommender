@@ -14,7 +14,31 @@ tags_matrix = pd.DataFrame(mlb.fit_transform(books['tags']), columns=mlb.classes
 svd = TruncatedSVD(n_components=150)
 svd_matrix = svd.fit_transform(tags_matrix)
 
-np.save('../../svd_vectors.npy', svd_matrix)
+norms = np.linalg.norm(svd_matrix, axis=1, keepdims=True)
+
+no = []
+for i, n in enumerate(norms):
+    if not np.isclose(n, 1):
+        no.append(n)
+
+print(len(no))
+
+norms = np.where(norms == 0, 1, norms)
+
+normalized_svds = svd_matrix / norms
+
+norms2 = np.linalg.norm(normalized_svds, axis=1, keepdims=True)
+
+no = []
+for i, n in enumerate(norms2):
+    if not np.isclose(n, 1):
+        no.append(n)
+
+print(len(no))
+
+print(min(norms2))
+
+np.save('data/svd_vectors.npy', normalized_svds)
 
 # svd.fit(tags_matrix)
 
