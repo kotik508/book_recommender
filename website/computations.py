@@ -97,9 +97,9 @@ def update_scores(scores: list[Score], embeddings, selected_cluster: int, disabl
             for x in centroids:
 
                 if not np.array_equal(x, centroids[selected_cluster]):
-                    disp_sum += np.exp(-np.dot(x, embedding) / sigma)
+                    disp_sum += np.exp(-(1 - np.dot(x, embedding)) / sigma)
             
-            like_val = np.exp(-np.dot(centroids[selected_cluster], embedding) / sigma)
+            like_val = np.exp(-(1 - np.dot(centroids[selected_cluster], embedding)) / sigma)
             score.score = float(score.score * (like_val / (disp_sum + like_val)))
 
             scores_list.append(score.score)
@@ -132,7 +132,8 @@ def disable_books(book_ids: list[int]):
 def get_sigma():
     if int(Session.get_rounds()) < 1:
         if session['type'] == 'descriptions':
-            sigma = random.sample([0.02, 0.03, 0.04, 0.05, 0.06], 1)[0]
+            sigma = 0.01
+            # sigma = random.sample([0.02, 0.03, 0.04, 0.05, 0.06], 1)[0]
         else:
             sigma = random.sample([0.2, 0.22, 0.24, 0.18, 0.16], 1)[0]
         if sigma:
