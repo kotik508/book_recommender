@@ -165,7 +165,7 @@ class Book(db.Model):
     tags = db.Column(db.String(250))
     rating_distribution = db.Column(db.String(300))
     embedding = db.Column(Vector(1024))
-    svd = db.Column(Vector(150))
+    svd = db.Column(Vector(233))
     scores = db.relationship('Score', back_populates='book', cascade='all, delete-orphan')
 
     @classmethod

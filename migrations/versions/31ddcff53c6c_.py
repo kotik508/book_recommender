@@ -34,7 +34,7 @@ def upgrade():
     sa.Column('tags', sa.String(length=250), nullable=True),
     sa.Column('rating_distribution', sa.String(length=300), nullable=True),
     sa.Column('embedding', pgvector.sqlalchemy.vector.VECTOR(dim=1024), nullable=True),
-    sa.Column('svd', pgvector.sqlalchemy.vector.VECTOR(dim=150), nullable=True),
+    sa.Column('svd', pgvector.sqlalchemy.vector.VECTOR(dim=233), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('session',
