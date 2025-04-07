@@ -7,7 +7,7 @@ from website.computations import load_embeddings, clustering, initialize_scores
 
 embeddings = load_embeddings()
 scores = initialize_scores(len(embeddings))
-books = pd.read_csv('goodreads_scraper/books_cleaned.csv')
+books = pd.read_csv('../bakalarka/goodreads_scraper/books_cleaned.csv')
 books['tags'] = books['tags'].apply(ast.literal_eval)
 labels, centroids, best_embeddings = clustering(embeddings, scores)
 

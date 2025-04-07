@@ -81,13 +81,17 @@
 
 h2 {
     font-size: max(1.5vw, 24px);
-    margin-bottom: 5vh;
+    margin-bottom: 1vh;
 }
 
 p {
     font-size: max(1.2vw, 16px);
     text-align: center;
     margin-top: 2vh;
+}
+
+.last {
+    margin-bottom: 3vh;
 }
 
 ul {
