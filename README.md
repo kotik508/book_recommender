@@ -1,1 +1,1 @@
-Sample README
+This web application functions as a cold start book recommender, meaning it does not have any prior data about its users and tries to recommend books solely based on their answers.

@@ -10,7 +10,7 @@ import random
 
 def get_answers(book_ids):
     now = time.time()
-    scores = np.array([score.score for score in Score.get_scores_from_sample(book_ids)])
+    scores = np.array([score.score for score in Score.get_scores_from_sample(book_ids)]) + 1e-10
     exp = 8
     weights = scores**(exp)
     weights = np.divide(weights, np.sum(weights))
@@ -138,9 +138,9 @@ def disable_books(book_ids: list[int]):
 def get_sigma():
     if int(Session.get_rounds()) < 1:
         if session['type'] == 'descriptions':
-            sigma = 0.04
+            sigma = 0.01
         else:
-            sigma = 0.1
+            sigma = 0.11
         if sigma:
             Session.assign_sigma(sigma)
         else:
@@ -150,9 +150,9 @@ def get_sigma():
         if not sigma:
             current_app.logger.error(f"No sigma")
             if session['type'] == 'descriptions':
-                sigma = 0.04
+                sigma = 0.01
             else:
-                sigma = 0.1
+                sigma = 0.11
             if sigma:
                 Session.assign_sigma(sigma)
     return sigma
