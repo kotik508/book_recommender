@@ -23,13 +23,85 @@ href="static/css/final.css" />
 {% endblock %}
 
 {% block content %}
-<div id="myModal" class="modal">
+<div id="questionModal" class="modal-quest">
+    <div class="modal-content">
+        <form id="questionForm">
+            <input type="hidden" name="form_type" value="question_form">
+            <label for="question1"> Are you satisfied with the recommendations that were given? </label><br>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="question1" value="yes" id="question1-yes" required>
+                    <label for="question1-yes">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="question1" value="no" id="question1-no">
+                    <label for="question1-no">No</label>
+                </div>
+            </div><br><br>
+
+            <label for="question2"> Was the app easy to use and navigate? </label><br>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="question2" value="yes" id="question2-yes" required>
+                    <label for="question2-yes">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="question2" value="no" id="question2-no">
+                    <label for="question2-no">No</label>
+                </div>
+            </div><br><br>
+
+            <label for="question3"> Was there enough information about the recommended books? </label><br>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="question3" value="yes" id="question3-yes" required>
+                    <label for="question3-yes">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="question3" value="no" id="question3-no">
+                    <label for="question3-no">No</label>
+                </div>
+            </div><br><br>
+
+            <label for="question4"> The answers gave me enough variety to choose from. (1 - disagree, 5 - agree) </label><br>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="question4" value="1" id="question4-1" required>
+                    <label for="question4-1">1</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="question4" value="2" id="question4-2">
+                    <label for="question4-2">2</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="question4" value="3" id="question4-3">
+                    <label for="question4-3">3</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="question4" value="4" id="question4-4">
+                    <label for="question4-4">4</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="question4" value="5" id="question4-5">
+                    <label for="question4-5">5</label>
+                </div>
+            </div><br><br>
+
+            <div class="submit">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="myModal" class="modal-demo">
     <div class="modal-content">
         <div class="close">
             <span class="close-btn">&times;</span>
         </div>
         <h2>Enter Your Details</h2>
         <form id="infoForm" action="/final" method="POST">
+            <input type="hidden" name="form_type" value="info_form">
             <select name="age_category">
                 <option value="">Select Age Category</option>
                 <option value="uder 18">under 18</option>

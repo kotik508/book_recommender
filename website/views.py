@@ -135,18 +135,42 @@ def final_page():
                                session_code=session['session_code'])
     
     if request.method == "POST":
+
         sess = Session.query.filter(Session.id==session['session_id']).first()
-        sess.age_category = request.form.get("age_category") if request.form.get("age_category") != "" else None
-        sess.email = request.form.get("email") if request.form.get("email") != "" else None
-        sess.gender = request.form.get("gender") if request.form.get("gender") != "" else None
-        sess.education = request.form.get("education") if request.form.get("education") != "" else None
-        db.session.commit()
-        current_app.logger.info(f'Session {sess.id} has age category: {sess.age_category}')
-        current_app.logger.info(f'Session {sess.id} has gender: {sess.gender}')
-        current_app.logger.info(f'Session {sess.id} has education: {sess.education}')
-        current_app.logger.info(f'Session {sess.id} has email: {sess.email}')
-        return jsonify({
-                'status': 'success',
-                'message': 'Demography added'
-            }), 200
-    
+        form_type = request.form.get('form_type')
+        current_app.logger.info(form_type)
+
+        if form_type == 'info_form':
+            sess.age_category = request.form.get("age_category") if request.form.get("age_category") != "" else None
+            sess.email = request.form.get("email") if request.form.get("email") != "" else None
+            sess.gender = request.form.get("gender") if request.form.get("gender") != "" else None
+            sess.education = request.form.get("education") if request.form.get("education") != "" else None
+            db.session.commit()
+            current_app.logger.info(f'Session {sess.id} has age category: {sess.age_category}')
+            current_app.logger.info(f'Session {sess.id} has gender: {sess.gender}')
+            current_app.logger.info(f'Session {sess.id} has education: {sess.education}')
+            current_app.logger.info(f'Session {sess.id} has email: {sess.email}')
+            return jsonify({
+                    'status': 'success',
+                    'message': 'Demography added'
+                }), 200
+
+        elif form_type == 'question_form':
+            sess.quest_recom = True if request.form.get('question1') == 'yes' else False
+            sess.quest_easy = True if request.form.get('question2') == 'yes' else False
+            sess.quest_info = True if request.form.get('question3') == 'yes' else False
+            sess.quest_var = int(request.form.get('question4'))
+            current_app.logger.info(f'Session {sess.id} question1 answer: {sess.quest_recom}')
+            current_app.logger.info(f'Session {sess.id} question2 answer: {sess.quest_easy}')
+            current_app.logger.info(f'Session {sess.id} question3 answer: {sess.quest_info}')
+            current_app.logger.info(f'Session {sess.id} question4 answer: {sess.quest_var}')
+            return jsonify({
+                    'status': 'success',
+                    'message': 'Questionnaire added'
+                }), 200
+
+        else:
+            return jsonify({
+                    'status': 'error',
+                    'message': 'Wrong form_type'
+                }), 400

@@ -138,9 +138,9 @@ def disable_books(book_ids: list[int]):
 def get_sigma():
     if int(Session.get_rounds()) < 1:
         if session['type'] == 'descriptions':
-            sigma = 0.01
-        else:
             sigma = 0.11
+        else:
+            sigma = 0.01
         if sigma:
             Session.assign_sigma(sigma)
         else:
@@ -150,9 +150,9 @@ def get_sigma():
         if not sigma:
             current_app.logger.error(f"No sigma")
             if session['type'] == 'descriptions':
-                sigma = 0.01
-            else:
                 sigma = 0.11
+            else:
+                sigma = 0.01
             if sigma:
                 Session.assign_sigma(sigma)
     return sigma

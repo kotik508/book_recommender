@@ -58,10 +58,55 @@ img.book-image {
 }
 
 /* 
+-----------------------------------------QESTIONNAIRE-----------------------------------------
+*/
+
+.modal-quest {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+.radio-item label {
+    font-size: 1.0rem;
+}
+
+.radio-group {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.radio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    accent-color: rgb(92, 65, 48);
+}
+
+/* 
 -----------------------------------------DEMOGRAPHICS-----------------------------------------
 */
 
-.modal {
+.modal-demo {
     display: none;
     position: fixed;
     z-index: 1;
