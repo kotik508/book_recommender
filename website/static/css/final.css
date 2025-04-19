@@ -101,6 +101,7 @@ input[type="radio"] {
     width: 15px;
     height: 15px;
     accent-color: rgb(92, 65, 48);
+    cursor: pointer;
 }
 
 /* 
@@ -122,7 +123,7 @@ input[type="radio"] {
 }
 
 .modal-content {
-    max-height: 90vh;
+    max-height: 85vh;
     overflow-y: auto;
     position: absolute;
     top: 50%;
