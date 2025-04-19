@@ -160,6 +160,7 @@ def final_page():
             sess.quest_easy = True if request.form.get('question2') == 'yes' else False
             sess.quest_info = True if request.form.get('question3') == 'yes' else False
             sess.quest_var = int(request.form.get('question4'))
+            db.session.commit()
             current_app.logger.info(f'Session {sess.id} question1 answer: {sess.quest_recom}')
             current_app.logger.info(f'Session {sess.id} question2 answer: {sess.quest_easy}')
             current_app.logger.info(f'Session {sess.id} question3 answer: {sess.quest_info}')
