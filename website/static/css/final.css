@@ -73,6 +73,7 @@ img.book-image {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
 }
 
 label {
@@ -121,6 +122,8 @@ input[type="radio"] {
 }
 
 .modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
     position: absolute;
     top: 50%;
     left: 50%;
