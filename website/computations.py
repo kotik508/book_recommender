@@ -52,35 +52,42 @@ def load_embeddings():
 
 def clustering(book_ids):
 
-    if session['type'] == 'descriptions':
-        embeddings = np.array(Book.get_embeddings_from_ids(book_ids))
-    elif session['type'] == 'tags':
-        embeddings = np.array(Book.get_svds_from_ids(book_ids))
-    else:
-        current_app.logger.warning(f'WARNING INVALID SESSION TYPE: {session['type']}')
-        embeddings = np.array(Book.get_embeddings_from_ids(book_ids))
+    try:
 
-    # find clusters using k-means with k = 4
-    kmeans = KMeans(n_clusters=4, n_init=10, max_iter=1000)
-    kmeans.fit(embeddings)
-    labels = kmeans.labels_
-    centroids = kmeans.cluster_centers_ / np.linalg.norm(kmeans.cluster_centers_, axis=1, keepdims=True)
-    Session.assign_centroids(centroids)
+        if session['type'] == 'descriptions':
+            embeddings = np.array(Book.get_embeddings_from_ids(book_ids))
+        elif session['type'] == 'tags':
+            embeddings = np.array(Book.get_svds_from_ids(book_ids))
+        else:
+            current_app.logger.warning(f'WARNING INVALID SESSION TYPE: {session['type']}')
+            embeddings = np.array(Book.get_embeddings_from_ids(book_ids))
 
-    best_embeddings = {}
+        # find clusters using k-means with k = 4
+        kmeans = KMeans(n_clusters=4, n_init=10, max_iter=1000)
+        kmeans.fit(embeddings)
+        labels = kmeans.labels_
+        centroids = kmeans.cluster_centers_ / np.linalg.norm(kmeans.cluster_centers_, axis=1, keepdims=True)
+        Session.assign_centroids(centroids)
+        scores = np.array([score.score for score in Score.get_scores_from_sample(book_ids)])
 
-    # Find 5 best matching book descriptions for each cluster
-    for cluster_id in range(4):
-        cluster_indices = np.where(labels == cluster_id)[0]
+        best_embeddings = {}
 
-        best_ids = [book_ids[i] for i in cluster_indices]
+        # Find 5 best matching book descriptions for each cluster
+        for cluster_id in range(4):
+            cluster_indices = np.where(labels == cluster_id)[0]
 
-        best_books = Book.query.filter(Book.id.in_(best_ids)).all()
+            cluster_book_ids = np.array(book_ids, object)[cluster_indices]
+            cluster_scores = scores[cluster_indices] 
 
-        best_books_sorted = sorted(best_books, key=lambda book: int(book.id))[:5]
-        best_embeddings[cluster_id] = best_books_sorted
+            books_sorted = cluster_book_ids[np.argsort(cluster_scores)[-5:][::-1]]
 
-    return best_embeddings
+            best_books = Book.query.filter(Book.id.in_(list(books_sorted))).all()
+            best_embeddings[cluster_id] = best_books
+
+        return best_embeddings
+    
+    except Exception as e:
+        current_app.logger.exception(e)
 
 def update_scores(scores: list[Score], embeddings, selected_cluster: int, disable_books: list[str], sigma: np.float32 = np.float32(0.25)):
 
