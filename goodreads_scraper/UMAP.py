@@ -69,7 +69,7 @@ for i, row in highlighted_df.iterrows():
         y=[row['y']],
         mode='markers+text',
         marker=dict(
-            size=12,
+            size=20,
             color='black',
             symbol=marker_symbols[i % len(marker_symbols)],
         ),
@@ -77,20 +77,33 @@ for i, row in highlighted_df.iterrows():
         textposition='top center',
         hoverinfo='text',
         textfont=dict(
-            size=30,
+            size=70,
             color='black',
             family='Arial'
         ),
         showlegend=False
     ))
 
+x_min, x_max = df['x'].min(), df['x'].max()
+extra_space = (x_max - x_min) * 0.1
+
 fig.update_layout(
-    legend_title="Clusters",
+    xaxis=dict(
+        range=[x_min, x_max + extra_space]
+    )
+)
+
+fig.update_layout(
     template="plotly_white",
     legend=dict(
-        font=dict(
-            size=30
-        )
+        orientation="h",
+        yanchor="bottom", 
+        y=1.02,     
+        xanchor="center",    
+        x=0.5,                    
+        font=dict(size=70),
+        itemsizing='constant',
+        itemwidth=30
     )
 )
 
